@@ -817,19 +817,39 @@
       .sec-head h2 { font-size: clamp(30px, 3.4vw, 48px); }
       .sec-head p { font-size: 17.5px; }
 
-      /* header nav : plain text links like care1 (no box buttons), active page underlined */
+      /* header : 로고·네모박스 크게 복원 (박스 버튼 유지, 활성 페이지는 남색 박스) */
       @media (min-width: 1181px) {
-        nav.main { gap: 30px; flex: none; margin-left: auto; }
+        .header-in { height: 124px; }
+        .brand img { width: 74px; height: 74px; }
+        .brand .bname strong { font-size: 31px; }
+        .brand .bname span { font-size: 13.5px; }
+        nav.main { gap: 10px; flex: 1 1 auto; min-width: 0; margin-left: 26px; align-items: center; }
         nav.main a {
-          flex: none; height: auto; padding: 12px 2px;
-          font-size: 17px !important; letter-spacing: -0.01em; line-height: 1.25;
-          background: none !important; box-shadow: none !important; border-radius: 0;
+          flex: 1 1 0; min-width: 0; height: 58px;
+          display: flex; align-items: center; justify-content: center;
+          text-align: center; white-space: nowrap;
+          font-size: 16.5px !important; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15;
+          color: var(--navy);
+          border-radius: 12px; padding: 6px 4px;
+          background: linear-gradient(180deg, #ffffff 0%, #e9f2f9 100%) !important;
+          box-shadow: 0 5px 14px rgba(8, 38, 63, 0.16), 0 1px 3px rgba(8, 38, 63, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+          transition: box-shadow .18s ease, transform .18s ease, background-color .18s ease, color .18s ease;
         }
         nav.main a:hover, nav.main a:focus-visible {
-          background: none !important; box-shadow: none !important; transform: none; color: var(--blue);
+          background: linear-gradient(180deg, #f5faff 0%, #d5e9f8 100%) !important;
+          box-shadow: 0 9px 20px rgba(8, 38, 63, 0.20), 0 2px 5px rgba(8, 38, 63, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+          transform: translateY(-1px); color: var(--blue);
         }
-        nav.main a.active { color: var(--blue); box-shadow: inset 0 -2px 0 var(--blue) !important; }
+        nav.main a.active {
+          background: linear-gradient(180deg, #0c4066 0%, #06263f 100%) !important;
+          color: #ffffff;
+          box-shadow: 0 8px 18px rgba(8, 38, 63, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+        }
       }
+      @media (min-width: 1181px) and (max-width: 1440px) {
+        nav.main a { font-size: 15px !important; }
+      }
+      .sidenav { top: 142px; }
 
       /* pages : only the routed page is shown; the rest behave as separate documents */
       .pg .page { display: none; }
@@ -963,27 +983,16 @@
     </header>
 
     <main id="top">
-      <!-- HERO : care1-style full-bleed photo, big headline, category tab row -->
-      <div class="chero">
-        <img class="chero-bg" src="assets/visit.jpg" alt="" />
-        <div class="chero-shade" aria-hidden="true"></div>
-        <div class="wrap chero-in">
-          <p class="chero-label">제빙기 청소</p>
-          <h1>속까지 깨끗한<br />얼음을 만듭니다</h1>
-          <p class="chero-lede">완전 분해 세척과 고온 스팀 살균으로 카페·체인점·호텔·프랜차이즈 매장의 제빙기를 관리합니다. 손님 입에 닿는 얼음, <strong>기계 속부터 깨끗하게</strong></p>
-          <div class="chero-tabs">
-            <nav aria-label="서비스 메뉴">
-              <a href="#/photos">현장 사진</a>
-              <a href="#/scope">청소 범위</a>
-              <a href="#/process">청소 과정</a>
-              <a href="#/services">클린서비스</a>
-              <a href="#/types">제빙기 종류·브랜드</a>
-              <a href="#/plans">이용 방식</a>
-              <a href="#/area">출장 지역</a>
-              <a href="#/faq">자주 묻는 질문</a>
-            </nav>
-            <span class="chero-crumb">홈</span>
+      <!-- HERO : 원래 히어로 복원 — 연하늘 그라데이션 + 밝은 제빙기 제품 사진(machine.jpg) -->
+      <div class="jhero">
+        <div class="wrap jhero-in">
+          <div class="jhero-txt">
+            <p class="smallcopy">업소용 제빙기 완전 분해 세척 전문</p>
+            <h1>속까지 깨끗한<br />얼음을 만듭니다</h1>
+            <div class="jhero-rule" aria-hidden="true"></div>
+            <p class="jhero-body">완전 분해 세척과 고온 스팀 살균으로 카페·체인점·호텔·프랜차이즈 매장의 제빙기를 관리합니다. 손님 입에 닿는 얼음, <strong>기계 속부터 깨끗하게</strong></p>
           </div>
+          <div class="jhero-img"><img src="assets/machine.jpg" alt="청소를 마친 스테인리스 업소용 제빙기" /></div>
         </div>
       </div>
 
@@ -1527,21 +1536,23 @@
           }
         });
 
-        // FAQ accordion
-        var items = document.querySelectorAll('.faq-item');
-        items.forEach(function (item) {
-          var btn = item.querySelector('.faq-q');
-          btn.addEventListener('click', function () {
-            var isOpen = item.classList.contains('open');
-            items.forEach(function (it) {
-              it.classList.remove('open');
-              it.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-            });
-            if (!isOpen) {
-              item.classList.add('open');
-              btn.setAttribute('aria-expanded', 'true');
-            }
+        // FAQ accordion (이벤트 위임 : 홈 원본과 서브페이지 복제본 모두 동작)
+        document.addEventListener('click', function (e) {
+          var btn = e.target && e.target.closest ? e.target.closest('.faq-q') : null;
+          if (!btn) return;
+          var item = btn.closest('.faq-item');
+          var box = btn.closest('.faq');
+          if (!item || !box) return;
+          var isOpen = item.classList.contains('open');
+          box.querySelectorAll('.faq-item').forEach(function (it) {
+            it.classList.remove('open');
+            var b = it.querySelector('.faq-q');
+            if (b) b.setAttribute('aria-expanded', 'false');
           });
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
         });
 
         // keyword panels : 탭(클릭)으로 펼치고 접기 — 한 번에 하나만, 다시 누르면 접힘
@@ -1597,17 +1608,23 @@
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeTypes(); closeArea(); } });
 
         // photo slider: slides sideways, auto + arrows + dots + swipe
-        var track = document.getElementById('sliderTrack');
-        if (track) {
-          var slides = track.children.length, idx = 0, dotsWrap = document.getElementById('sliderDots'), timer = null;
+        // 클래스 단위 초기화라 홈 원본과 서브페이지 복제본이 각각 독립 동작한다
+        function initSlider(sliderEl) {
+          if (!sliderEl || sliderEl.getAttribute('data-slider-init')) return;
+          var track = sliderEl.querySelector('.slider-track');
+          var dotsWrap = sliderEl.querySelector('.slider-dots');
+          if (!track || !dotsWrap) return;
+          sliderEl.setAttribute('data-slider-init', '1');
+          var slides = track.children.length, idx = 0, timer = null;
           for (var i = 0; i < slides; i++) { var d = document.createElement('button'); d.setAttribute('aria-label', (i + 1) + '번째 사진'); (function (n) { d.addEventListener('click', function () { go(n); restart(); }); })(i); dotsWrap.appendChild(d); }
           function paint() { track.style.transform = 'translateX(-' + (idx * 100) + '%)'; Array.prototype.forEach.call(dotsWrap.children, function (b, n) { b.classList.toggle('on', n === idx); }); }
           function go(n) { idx = (n + slides) % slides; paint(); }
-          document.getElementById('slidePrev').addEventListener('click', function () { go(idx - 1); restart(); });
-          document.getElementById('slideNext').addEventListener('click', function () { go(idx + 1); restart(); });
+          var prevBtn = sliderEl.querySelector('.slider-btn.prev');
+          var nextBtn = sliderEl.querySelector('.slider-btn.next');
+          if (prevBtn) prevBtn.addEventListener('click', function () { go(idx - 1); restart(); });
+          if (nextBtn) nextBtn.addEventListener('click', function () { go(idx + 1); restart(); });
           var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           function restart() { if (timer) clearInterval(timer); if (!reduced) timer = setInterval(function () { go(idx + 1); }, 4200); }
-          var sliderEl = document.getElementById('photoSlider');
           sliderEl.addEventListener('mouseenter', function () { if (timer) clearInterval(timer); });
           sliderEl.addEventListener('mouseleave', restart);
           var tx = null;
@@ -1615,6 +1632,10 @@
           sliderEl.addEventListener('touchend', function (e) { if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1)); tx = null; restart(); }, { passive: true });
           paint(); restart();
         }
+        window.ICELAB_initSliders = function () {
+          document.querySelectorAll('.slider').forEach(initSlider);
+        };
+        window.ICELAB_initSliders();
 
         // year
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -1800,17 +1821,34 @@
           return el('section', 'svc-sec', html);
         }
 
-        /* ----- build pages ----- */
+        /* ----- build pages -----
+           홈에는 전 섹션을 원래 순서대로 다시 노출하고,
+           서브페이지(왼쪽 세로 메뉴)는 같은 섹션의 복제본으로 구성해 양쪽 다 유지한다 */
+        function cloneForPage(node) {
+          if (!node) return null;
+          var c = node.cloneNode(true);
+          c.removeAttribute('id');
+          c.querySelectorAll('[id]').forEach(function (n) { n.removeAttribute('id'); });
+          if (c.classList && c.classList.contains('reveal')) c.classList.add('in');
+          c.querySelectorAll('.reveal').forEach(function (n) { n.classList.add('in'); });
+          return c;
+        }
+        var N = {
+          hero: q('.jhero'), menu: q('.menu-sec'), slider: q('.slider-sec'), brand: q('.brand-strip'),
+          why: byId('why'), scope: byId('scope'), process: byId('process'), services: byId('services'),
+          plans: byId('plans'), partners: byId('partners'), ba: byId('before-after'),
+          keywords: byId('keywords'), faq: byId('faq'), cta: q('.cta-sec')
+        };
         var home = page('home');
-        [q('.chero'), q('.menu-sec'), q('.brand-strip'), byId('why'), byId('partners'), byId('keywords'), q('.cta-sec')].forEach(function (n) { if (n) home.appendChild(n); });
+        [N.hero, N.menu, N.slider, N.brand, N.why, N.scope, N.process, N.services, N.plans, N.partners, N.ba, N.keywords, N.faq, N.cta].forEach(function (n) { if (n) home.appendChild(n); });
 
         var PAGES = { home: home };
-        PAGES.photos = buildSub('photos', [q('.slider-sec'), byId('before-after')]);
-        PAGES.scope = buildSub('scope', [byId('scope')]);
-        PAGES.process = buildSub('process', [byId('process')]);
-        PAGES.services = buildSub('services', [byId('services')]);
-        PAGES.plans = buildSub('plans', [byId('plans')]);
-        PAGES.faq = buildSub('faq', [byId('faq')]);
+        PAGES.photos = buildSub('photos', [cloneForPage(N.slider), cloneForPage(N.ba)]);
+        PAGES.scope = buildSub('scope', [cloneForPage(N.scope)]);
+        PAGES.process = buildSub('process', [cloneForPage(N.process)]);
+        PAGES.services = buildSub('services', [cloneForPage(N.services)]);
+        PAGES.plans = buildSub('plans', [cloneForPage(N.plans)]);
+        PAGES.faq = buildSub('faq', [cloneForPage(N.faq)]);
         ['svc-ice', 'svc-grinder', 'svc-ac', 'svc-frost', 'svc-store'].forEach(function (k) { PAGES[k] = buildSub(k, [svcSection(k)]); });
 
         function unwrap(overlayId, key) {
@@ -1828,17 +1866,19 @@
           }
           return buildSub(key, nodes);
         }
-        PAGES.types = unwrap('typesDetail', 'types');
-        PAGES.area = unwrap('areaDetail', 'area');
+        try { PAGES.types = unwrap('typesDetail', 'types'); } catch (e) { PAGES.types = buildSub('types', []); }
+        try { PAGES.area = unwrap('areaDetail', 'area'); } catch (e) { PAGES.area = buildSub('area', []); }
 
-        var lpTop = el('div', 'wrap lp-top', '<span class="lp-crumb">ICELAB 아이스랩 안내</span><a class="detail-close" href="#/" aria-label="메인으로 돌아가기">&times;</a>');
         var lpContent = byId('lpContent');
-        var lpPage = page('lp');
-        lpPage.appendChild(lpTop);
-        layout(lpPage, [lpContent]);
-        var lpOv = byId('lpOverlay');
-        if (lpOv && lpOv.parentNode) lpOv.parentNode.removeChild(lpOv);
-        PAGES.lp = lpPage;
+        try {
+          var lpTop = el('div', 'wrap lp-top', '<span class="lp-crumb">ICELAB 아이스랩 안내</span><a class="detail-close" href="#/" aria-label="메인으로 돌아가기">&times;</a>');
+          var lpPage = page('lp');
+          lpPage.appendChild(lpTop);
+          layout(lpPage, [lpContent]);
+          var lpOv = byId('lpOverlay');
+          if (lpOv && lpOv.parentNode) lpOv.parentNode.removeChild(lpOv);
+          PAGES.lp = lpPage;
+        } catch (e) { if (!PAGES.lp) PAGES.lp = page('lp'); }
 
         var TITLES = { home: null, lp: '안내' };
         Object.keys(SUB).forEach(function (k) { TITLES[k] = SUB[k].title; });
@@ -1864,6 +1904,30 @@
           }
           window.scrollTo(0, 0);
         }
+        /* 페이지 링크 클릭은 해시 변경(hashchange)에만 맡기지 않고 라우터가 직접 연다.
+           해시 이벤트가 전달되지 않는 미리보기·웹뷰 환경이나, 주소가 이미 목표 해시와
+           같아 hashchange가 발생하지 않는 경우에도 클릭이 반드시 동작하게 하기 위함.
+           대상: 헤더 메뉴, 타일, 클린서비스 5개 카드(홈 원본·서브페이지 복제본 모두),
+           왼쪽 세로 메뉴, 푸터, 관련 안내 카드, 페이지 하단 버튼 */
+        window.ICELAB_showPage = show;
+        document.addEventListener('click', function (e) {
+          if (e.button && e.button !== 0) return;
+          if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+          var a = e.target && e.target.closest ? e.target.closest('a[href^="#/"]') : null;
+          if (!a) return;
+          var href = a.getAttribute('href') || '';
+          var n = href.slice(2);
+          if (n === '') n = 'home';
+          if (n.indexOf('lp/') === 0) return;
+          if (!PAGES[n] || n === 'lp') return;
+          e.preventDefault();
+          if ((location.hash || '') !== href) {
+            try { history.pushState(null, '', href); }
+            catch (err) { try { location.hash = href; } catch (err2) {} }
+          }
+          show(n);
+        });
+        window.addEventListener('popstate', route);
         function route() {
           var h = location.hash || '';
           if (h.indexOf('#/lp/') === 0) {
@@ -1898,6 +1962,7 @@
           else location.hash = '#/';
         };
         document.documentElement.classList.add('pg');
+        if (window.ICELAB_initSliders) window.ICELAB_initSliders();
         window.addEventListener('hashchange', route);
         route();
       })();
