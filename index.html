@@ -1940,14 +1940,14 @@
           keywords: byId('keywords'), faq: byId('faq'), cta: q('.cta-sec')
         };
         var home = page('home');
-        [N.hero, N.menu, N.processLoop, N.hygieneMark, N.slider, N.brand, N.why, N.scope, N.process, N.services, N.plans, N.partners, N.ba, N.keywords, N.faq, N.cta].forEach(function (n) { if (n) home.appendChild(n); });
+        [N.hero, N.menu, N.processLoop, N.slider, N.brand, N.why, N.scope, N.process, N.services, N.plans, N.hygieneMark, N.partners, N.ba, N.keywords, N.faq, N.cta].forEach(function (n) { if (n) home.appendChild(n); });
 
         var PAGES = { home: home };
         PAGES.photos = buildSub('photos', [cloneForPage(N.slider), cloneForPage(N.ba)]);
         PAGES.scope = buildSub('scope', [cloneForPage(N.scope)]);
         PAGES.process = buildSub('process', [cloneForPage(N.processLoop), cloneForPage(N.process)]);
         PAGES.services = buildSub('services', [cloneForPage(N.services)]);
-        PAGES.plans = buildSub('plans', [cloneForPage(N.plans)]);
+        PAGES.plans = buildSub('plans', [cloneForPage(N.plans), cloneForPage(N.hygieneMark)]);
         PAGES.faq = buildSub('faq', [cloneForPage(N.faq)]);
         ['svc-ice', 'svc-grinder', 'svc-ac', 'svc-frost', 'svc-store'].forEach(function (k) { PAGES[k] = buildSub(k, [svcSection(k)]); });
 
