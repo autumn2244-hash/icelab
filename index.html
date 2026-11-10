@@ -1054,46 +1054,46 @@
 
     
       /* --- HOME DEEP NAVY THEME FOR PROCESS & EVIDENCE --- */
-      #home #process-loop {
+      #page-home #process-loop {
         padding: 96px 0 88px;
         background: #08263F;
         color: #ffffff;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       }
-      #home #process-loop .sec-head .kicker { color: #38BDF8 !important; }
-      #home #process-loop .sec-head h2 { color: #ffffff !important; }
-      #home #process-loop .sec-head p { color: #94A3B8 !important; }
-      #home #process-loop .proc-tab {
+      #page-home #process-loop .sec-head .kicker { color: #38BDF8 !important; }
+      #page-home #process-loop .sec-head h2 { color: #ffffff !important; }
+      #page-home #process-loop .sec-head p { color: #94A3B8 !important; }
+      #page-home #process-loop .proc-tab {
         background: rgba(255, 255, 255, 0.05);
         border: 1.5px solid rgba(255, 255, 255, 0.12);
         color: #ffffff;
       }
-      #home #process-loop .proc-tab:hover {
+      #page-home #process-loop .proc-tab:hover {
         background: rgba(255, 255, 255, 0.1);
         border-color: #38BDF8;
       }
-      #home #process-loop .proc-tab.active {
+      #page-home #process-loop .proc-tab.active {
         background: rgba(14, 116, 189, 0.35);
         border-color: #38BDF8;
         box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
       }
-      #home #process-loop .proc-tab div:first-child { color: #38BDF8 !important; }
-      #home #process-loop .proc-tab div:nth-child(2) { color: #ffffff !important; }
-      #home #process-loop .proc-stage {
+      #page-home #process-loop .proc-tab div:first-child { color: #38BDF8 !important; }
+      #page-home #process-loop .proc-tab div:nth-child(2) { color: #ffffff !important; }
+      #page-home #process-loop .proc-stage {
         background: #0C3150;
         border: 1.5px solid rgba(255, 255, 255, 0.12);
         box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
       }
-      #home #process-loop #procTitle { color: #ffffff !important; }
-      #home #process-loop #procDesc { color: #CBD5E1 !important; }
-      #home #process-loop #procPrev,
-      #home #process-loop #procNext {
+      #page-home #process-loop #procTitle { color: #ffffff !important; }
+      #page-home #process-loop #procDesc { color: #CBD5E1 !important; }
+      #page-home #process-loop #procPrev,
+      #page-home #process-loop #procNext {
         background: rgba(255, 255, 255, 0.08) !important;
         border-color: rgba(255, 255, 255, 0.2) !important;
         color: #ffffff !important;
       }
-      #home #process-loop #procPrev:hover,
-      #home #process-loop #procNext:hover {
+      #page-home #process-loop #procPrev:hover,
+      #page-home #process-loop #procNext:hover {
         background: rgba(255, 255, 255, 0.2) !important;
         border-color: #38BDF8 !important;
       }
@@ -1202,7 +1202,7 @@
       }
 
       /* Home Clean Light Grey Contrast for Before & After */
-      #home #before-after {
+      #page-home #before-after {
         padding: 96px 0;
         background: #f4f7fa;
         border-bottom: 1px solid var(--line);
@@ -2280,21 +2280,7 @@
       </div>
 
     
-    <!-- FLOATING SLIM CTA BAR -->
-    <div class="floating-cta-bar" id="floatingCta" aria-label="빠른 상담 및 안내">
-      <div class="wrap f-cta-in">
-        <div class="f-cta-txt">
-          <span class="f-cta-dot"></span>
-          <span class="f-cta-title"><strong>ICELAB</strong> 업소용 제빙기 완전 분해세척</span>
-          <span class="f-cta-desc">120℃ 고온스팀 살균 케어</span>
-        </div>
-        <div class="f-cta-actions">
-          <a href="#/process" class="f-cta-link">4대 공정 보기</a>
-          <a href="#/plans" class="f-cta-link">이용 방식 안내</a>
-          <span class="f-cta-btn consult" aria-disabled="true">전화 상담 (준비중)</span>
-        </div>
-      </div>
-    </div>
+
 
     </main>
 
@@ -2653,7 +2639,10 @@
           keywords: byId('keywords'), faq: byId('faq'), cta: q('.cta-sec')
         };
         var home = page('home');
-        [N.hero, N.menu, N.processLoop, N.ba, N.portfolio, N.hygieneMark, N.partners, N.why, N.scope, N.process, N.services, N.plans, N.keywords, N.faq, N.cta].forEach(function (n) { if (n) home.appendChild(n); });
+        [N.hero, N.menu, N.processLoop, N.ba, N.portfolio, N.hygieneMark, N.partners, N.brand, N.why, N.scope, N.process, N.services, N.plans, N.keywords, N.faq, N.cta].forEach(function (n) { if (n) home.appendChild(n); });
+        if (N.slider && N.slider.parentNode === main) {
+          main.removeChild(N.slider);
+        }
 
 
         function buildProcessTechSpec() {
@@ -3219,5 +3208,20 @@
         });
       })();
     </script>
+      <!-- FLOATING SLIM CTA BAR -->
+    <div class="floating-cta-bar" id="floatingCta" aria-label="빠른 상담 및 안내">
+      <div class="wrap f-cta-in">
+        <div class="f-cta-txt">
+          <span class="f-cta-dot"></span>
+          <span class="f-cta-title"><strong>ICELAB</strong> 업소용 제빙기 완전 분해세척</span>
+          <span class="f-cta-desc">120℃ 고온스팀 살균 케어</span>
+        </div>
+        <div class="f-cta-actions">
+          <a href="#/process" class="f-cta-link">4대 공정 보기</a>
+          <a href="#/plans" class="f-cta-link">이용 방식 안내</a>
+          <span class="f-cta-btn consult" aria-disabled="true">전화 상담 (준비중)</span>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
