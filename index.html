@@ -970,7 +970,7 @@
         pointer-events: none; z-index: 2;
       }
       .jhero-pill {
-        display: inline-flex; align-items: center; gap: 8px;
+        display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; width: fit-content;
         background: #eaf4fc; border: 1.5px solid #c5e1f7; color: #0a74bd;
         font-size: 13.5px; font-weight: 800; padding: 7px 16px; border-radius: 999px;
         margin-bottom: 16px; letter-spacing: -0.01em; box-shadow: 0 4px 12px rgba(10,116,189,0.08);
@@ -1853,9 +1853,8 @@
       </div>
     </div>
 
-    <script>
-
     <script src="assets/lp-data.js"></script>
+    <script>
       (function () {
         // 키워드 안내 링크 : 팝업이 아니라 별도 페이지(#/lp/…)로 이동
         document.addEventListener('click', function (e) {
