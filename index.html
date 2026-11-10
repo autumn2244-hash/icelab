@@ -181,15 +181,6 @@
       .hero-photo .float-card p { margin: 0; font-size: 14.5px; line-height: 1.5; }
       .hero-photo .float-card p strong { display: block; font-size: 15.5px; }
 
-      /* ---------- brand strip ---------- */
-      .brand-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
-      .brand-strip .wrap { padding-top: 22px; padding-bottom: 22px; text-align: center; }
-      .brand-strip p { margin: 0 0 10px; font-size: 13.5px; font-weight: 700; letter-spacing: .12em; color: var(--muted); }
-      .brand-strip .brands { font-size: 17px; font-weight: 700; letter-spacing: .01em; }
-      .brand-strip .brands span { white-space: nowrap; }
-      .brand-strip .brands i { font-style: normal; color: var(--ice); margin: 0 10px; }
-      .brand-strip .note { margin-top: 10px; font-size: 14.5px; color: var(--muted); font-weight: 500; letter-spacing: 0; }
-
       /* ---------- sections ---------- */
       section { padding: 76px 0; }
       section.alt { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -471,7 +462,6 @@
       .sec-head .kicker { color: var(--gold); }
       .sec-head .kicker::before { background: var(--gold); }
       .hero-badge .dot { background: var(--gold-bright); }
-      .brand-strip .brands i { color: var(--gold-bright); }
       .tile .arrow { background: var(--gold-bright); color: var(--navy); }
       .step .num { background: var(--navy); border-color: var(--navy); color: var(--gold-bright); letter-spacing: .12em; }
       @media (prefers-color-scheme: dark) { .step .num { background: var(--navy-2); border-color: var(--navy-2); color: var(--gold-bright); } }
@@ -620,7 +610,6 @@
       .faq { margin-left: auto; margin-right: auto; }
       .sec-head .kicker { justify-content: center; color: var(--navy); }
       .sec-head .kicker::before { display: none; }
-      .brand-strip { background: #ffffff; }
 
       /* gradient spot 2 : clean services */
       #services { background: linear-gradient(180deg, #DCE9FA 0%, #EDF4FC 55%, #FFFFFF 100%); }
@@ -659,74 +648,6 @@
 
       /* footer : near-black navy */
       footer { background: #05052E; }
-
-      /* ---------- keyword index : 4 groups (서비스·브랜드·정보·지역) in one row, expanding panels ---------- */
-      .kw-strip { display: flex; gap: 14px; align-items: stretch; }
-      .kw-panel {
-        flex: 1 1 0; min-width: 0; height: 424px;
-        background: #ffffff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
-        box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
-        transition: flex-grow .38s ease;
-      }
-      .kw-panel:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-      .kw-panel figure { margin: 0; height: 128px; flex: none; overflow: hidden; background: var(--surface-2); }
-      .kw-panel figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .kw-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 15px 18px 10px; flex: none; }
-      .kw-head h3 { font-size: 19px; font-weight: 800; color: var(--navy); margin: 0; white-space: nowrap; }
-      .kw-plus {
-        flex: none; width: 30px; height: 30px; border-radius: 50%;
-        border: 1.5px solid var(--navy); color: var(--navy);
-        display: flex; align-items: center; justify-content: center;
-        transition: transform .35s ease, background .2s ease, color .2s ease;
-      }
-      .kw-plus svg { width: 15px; height: 15px; display: block; }
-      .kw-body { flex: 1 1 auto; min-height: 0; display: grid; grid-template-rows: 1fr; }
-      .kw-clip { overflow: hidden; min-height: 0; }
-      .kw-chips { display: flex; flex-wrap: wrap; gap: 9px; padding: 2px 18px 20px; }
-      .kw-chips a {
-        display: inline-flex; align-items: center; gap: 7px;
-        border: 1.5px solid var(--navy); border-radius: 999px; background: #ffffff;
-        padding: 9px 17px; font-size: 15.5px; font-weight: 700; color: var(--navy); text-decoration: none;
-        transition: background .15s ease, color .15s ease;
-      }
-      .kw-chips a:hover { background: var(--navy); color: #ffffff; }
-      .kw-chips a .arr { font-size: 13px; opacity: .65; }
-      /* chips stay hidden until the panel expands */
-      .kw-panel .kw-chips {
-        opacity: 0; visibility: hidden; transform: translateY(8px); pointer-events: none;
-        transition: opacity .22s ease, transform .28s ease, visibility 0s linear .28s;
-      }
-      .kw-panel.kw-on .kw-chips {
-        opacity: 1; visibility: visible; transform: none; pointer-events: auto;
-        transition: opacity .3s ease .12s, transform .35s ease .12s, visibility 0s;
-      }
-      .kw-panel.kw-on .kw-plus { transform: rotate(45deg); background: var(--navy); color: #ffffff; }
-      /* desktop : hover or keyboard focus grows the panel */
-      @media (hover: hover) and (min-width: 861px) {
-        .kw-panel:hover, .kw-panel:focus, .kw-panel:focus-within { flex-grow: 3.1; }
-        .kw-panel:hover .kw-chips, .kw-panel:focus .kw-chips, .kw-panel:focus-within .kw-chips {
-          opacity: 1; visibility: visible; transform: none; pointer-events: auto;
-          transition: opacity .3s ease .12s, transform .35s ease .12s, visibility 0s;
-        }
-        .kw-panel:hover .kw-plus, .kw-panel:focus .kw-plus, .kw-panel:focus-within .kw-plus { transform: rotate(45deg); background: var(--navy); color: #ffffff; }
-      }
-      /* wide but no hover (touch laptop 등) : click으로 확장 */
-      @media (min-width: 861px) {
-        .kw-panel.kw-on { flex-grow: 3.1; }
-        .kw-head { cursor: pointer; }
-      }
-      /* mobile · tablet : 세로로 쌓고 탭으로 펼침 (한 번에 하나) */
-      @media (max-width: 860px) {
-        .kw-strip { flex-direction: column; }
-        .kw-panel { flex: none; width: 100%; height: auto; transition: none; }
-        .kw-panel figure { height: 100px; }
-        .kw-head { cursor: pointer; padding-bottom: 14px; }
-        .kw-body { grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
-        .kw-panel.kw-on .kw-body { grid-template-rows: 1fr; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .kw-panel, .kw-panel .kw-chips, .kw-body, .kw-plus { transition: none; }
-      }
 
       /* light reference design : keep the measured palette in dark OS mode too */
       @media (prefers-color-scheme: dark) {
@@ -1531,6 +1452,191 @@
         line-height: 1.5;
       }
 
+      /* ================================================================
+         MAIN DIET v3 : 9단계 설득 동선 · 섹션 리듬 · 호버 인터랙션
+         ================================================================ */
+
+      /* 2단계 WHY : 은은한 라이트 아이스블루 */
+      #page-home #why {
+        background: #F4F8FC;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      /* 4단계 BEFORE & AFTER : 화이트 */
+      #page-home #before-after { background: #ffffff; }
+      /* 5단계 PORTFOLIO : 라이트 틴트 */
+      #page-home #portfolio { background: #F8FBFE; border-bottom: 1px solid var(--line); }
+      /* 6단계 PARTNERS : 화이트 */
+      #page-home #partners { background: #ffffff; border-top: 0; border-bottom: 0; }
+      /* 7단계 SERVICES : 아이스블루 */
+      #page-home #services {
+        background: #F4F8FC;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      /* 8단계 FAQ : 화이트 */
+      #page-home #faq { background: #ffffff; border-top: 0; border-bottom: 0; }
+
+      /* ---------- WHY : X-Ray 투시 슬라이드 카드 ---------- */
+      #page-home .why-card {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        border-color: #e0ecf6;
+        transition: transform .42s cubic-bezier(.16, 1, .3, 1), box-shadow .42s ease, border-color .42s ease;
+      }
+      #page-home .why-card .why-base {
+        position: relative; z-index: 1;
+        transition: opacity .32s ease, transform .42s ease;
+      }
+      #page-home .why-card .xray {
+        position: absolute; inset: 0; z-index: 2;
+        padding: 26px 24px;
+        display: flex; flex-direction: column; justify-content: center; gap: 9px;
+        background: radial-gradient(120% 120% at 14% 0%, rgba(56, 189, 248, .30) 0%, rgba(8, 38, 63, .94) 52%, rgba(6, 30, 50, .98) 100%);
+        color: #eaf5fd;
+        opacity: 0;
+        transform: translateY(16px) scale(.98);
+        transition: opacity .34s ease, transform .46s cubic-bezier(.16, 1, .3, 1);
+        pointer-events: none;
+      }
+      #page-home .why-card .xray::before {
+        content: ""; position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(143, 216, 247, .10) 1px, transparent 1px);
+        background-size: 100% 26px;
+        opacity: .55; pointer-events: none;
+      }
+      #page-home .why-card .xray-tag {
+        position: relative; font-size: 11.5px; font-weight: 900;
+        letter-spacing: .18em; color: #7dd3fc;
+      }
+      #page-home .why-card .xray strong {
+        position: relative; display: block;
+        font-size: 16.5px; font-weight: 800; color: #ffffff;
+        line-height: 1.35; letter-spacing: -.01em;
+      }
+      #page-home .why-card .xray p {
+        position: relative; margin: 0;
+        display: block; overflow: visible;
+        -webkit-line-clamp: unset; -webkit-box-orient: initial;
+        font-size: 14px; line-height: 1.62; color: #cfe3f2;
+      }
+      #page-home .why-card .xray-scan {
+        position: absolute; left: 0; right: 0; top: 0; height: 2px; z-index: 3;
+        background: linear-gradient(90deg, rgba(143, 216, 247, 0), #8fd8f7, rgba(143, 216, 247, 0));
+        box-shadow: 0 0 18px rgba(143, 216, 247, .9);
+        opacity: 0; pointer-events: none;
+      }
+      @keyframes xraySweep {
+        0% { top: 0; opacity: 0; }
+        14% { opacity: 1; }
+        86% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+      }
+      @media (hover: hover) {
+        #page-home .why-card:hover,
+        #page-home .why-card:focus-within {
+          transform: translateY(-6px);
+          border-color: rgba(10, 116, 189, .55);
+          box-shadow: 0 24px 52px rgba(10, 116, 189, .20), 0 0 0 1px rgba(10, 116, 189, .16) inset;
+        }
+        #page-home .why-card:hover .why-base,
+        #page-home .why-card:focus-within .why-base { opacity: .14; transform: scale(.985); }
+        #page-home .why-card:hover .xray,
+        #page-home .why-card:focus-within .xray { opacity: 1; transform: none; }
+        #page-home .why-card:hover .xray-scan { opacity: 1; animation: xraySweep 2.1s cubic-bezier(.4, 0, .6, 1) infinite; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #page-home .why-card:hover .xray-scan { animation: none; }
+      }
+
+      /* ---------- PORTFOLIO : 슬림 카드 + 호버 인포 리빌 ---------- */
+      #page-home .pf-card { position: relative; overflow: hidden; }
+      #page-home .pf-img-wrap { height: 210px; }
+      #page-home .pf-body { padding: 16px 20px 18px; }
+      #page-home .pf-card h4 {
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+        overflow: hidden; margin: 0; font-size: 16.5px; line-height: 1.42;
+      }
+      #page-home .pf-reveal {
+        position: absolute; inset: 0; z-index: 3;
+        padding: 22px 22px 20px;
+        display: flex; flex-direction: column; justify-content: flex-end; gap: 8px;
+        background: linear-gradient(180deg, rgba(8, 38, 63, .70) 0%, rgba(8, 38, 63, .90) 58%, rgba(6, 30, 50, .95) 100%);
+        -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+        color: #eaf5fd;
+        opacity: 0; transform: translateY(18px);
+        transition: opacity .34s ease, transform .46s cubic-bezier(.16, 1, .3, 1);
+        pointer-events: none;
+      }
+      #page-home .pf-reveal .pf-rk {
+        font-size: 11px; font-weight: 900; letter-spacing: .18em; color: #7dd3fc;
+      }
+      #page-home .pf-reveal .pf-rt {
+        display: block; font-size: 15px; font-weight: 800; color: #ffffff;
+        line-height: 1.42; letter-spacing: -.01em;
+      }
+      #page-home .pf-reveal p {
+        margin: 0; font-size: 13.5px; line-height: 1.6; color: #d7e8f5;
+      }
+      #page-home .pf-reveal .pf-go {
+        margin-top: 4px; font-size: 13px; font-weight: 800; color: #ffffff;
+        display: inline-flex; align-items: center; gap: 6px;
+      }
+      #page-home .pf-card:hover .pf-reveal,
+      #page-home .pf-card:focus-within .pf-reveal,
+      #page-home .pf-card:focus-visible .pf-reveal { opacity: 1; transform: none; }
+
+      /* ---------- SERVICES : 가로 1행 마이크로 확장 아코디언 ---------- */
+      .svc-flex { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      @media (max-width: 640px) { .svc-flex { grid-template-columns: 1fr; } }
+      .svc-flex .svc-card { min-height: 0; align-items: flex-start; }
+      .svc-expand { overflow: hidden; }
+      .svc-expand p { margin: 8px 0 8px; font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+      .svc-expand .svc-go { font-size: 13px; font-weight: 800; color: var(--blue); white-space: nowrap; }
+      .svc-short { margin: 0; }
+
+      @media (min-width: 981px) {
+        #page-home #svcFlex { display: flex; gap: 14px; align-items: stretch; }
+        #page-home #svcFlex .svc-card {
+          flex: 1 1 0; min-width: 0;
+          padding: 24px 18px; min-height: 152px;
+          transition: flex-grow .52s cubic-bezier(.22, .8, .24, 1), background .3s ease, border-color .3s ease, box-shadow .3s ease;
+        }
+        #page-home #svcFlex .svc-expand {
+          max-height: 0; opacity: 0; transform: translateY(6px);
+          transition: max-height .46s cubic-bezier(.22, .8, .24, 1), opacity .3s ease, transform .46s cubic-bezier(.22, .8, .24, 1);
+        }
+        #page-home #svcFlex .svc-card h3 { white-space: nowrap; }
+        @media (hover: hover) {
+          #page-home #svcFlex:hover .svc-card { flex-grow: .8; }
+          #page-home #svcFlex .svc-card:hover,
+          #page-home #svcFlex .svc-card:focus-visible {
+            flex-grow: 3.1;
+            background: #ffffff;
+            border-color: var(--blue);
+            box-shadow: 0 22px 46px rgba(8, 38, 63, .16);
+          }
+          #page-home #svcFlex .svc-card:hover .svc-expand,
+          #page-home #svcFlex .svc-card:focus-visible .svc-expand {
+            max-height: 240px; opacity: 1; transform: none;
+          }
+        }
+      }
+
+      /* ---------- FAQ : 홈에는 핵심 3선만 ---------- */
+      #page-home #faq .faq-item.extra { display: none; }
+      .faq-all-btn { display: flex; justify-content: center; margin-top: 30px; }
+      .faq-all-btn a {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--navy); color: #ffffff; text-decoration: none;
+        font-weight: 800; font-size: 15.5px; padding: 14px 26px; border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(8, 38, 63, .18);
+        transition: background .2s ease, transform .2s ease;
+      }
+      .faq-all-btn a:hover { background: var(--navy-2); transform: translateY(-2px); }
+      #page-faq .faq-all-btn { display: none; }
+
     </style>
   </head>
   <body>
@@ -1711,17 +1817,6 @@
         </div>
       </div></div>
 
-      <!-- BRANDS -->
-      <div class="brand-strip">
-        <div class="wrap">
-          <p>취급 브랜드</p>
-          <div class="brands">
-            <span>호시자키</span><i>·</i><span>카이저</span><i>·</i><span>브레마</span><i>·</i><span>아이스트로</span><i>·</i><span>라셀르</span><i>·</i><span>한솔</span><i>·</i><span>네오트</span><i>·</i><span>매니토웍</span><i>·</i><span>스카치맨</span><i>·</i><span>아이스오매틱</span>
-          </div>
-          <p class="note">전 브랜드 모두 진행합니다. 모델명을 몰라도 괜찮습니다. 전화로 모델명을 알려 주시거나, 모델명 스티커 사진이나 제빙기 사진만 보내 주셔도 기종을 확인해 드립니다.</p>
-        </div>
-      </div>
-
       <!-- WHY -->
       <section id="why">
         <div class="wrap">
@@ -1731,25 +1826,57 @@
             <p>제빙기 내부는 물이 계속 닿고 어둡고 습해, 관리가 없으면 오염이 쌓이기 쉬운 구조입니다. 얼음에서 냄새가 나거나 맛이 달라졌다면 이미 신호가 온 것입니다.</p>
           </div>
           <div class="why-grid">
-            <article class="why-card reveal">
-              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></div>
-              <h3>곰팡이·세균 번식</h3>
-              <p>저수조와 급수 라인, 얼음 저장고는 세균과 곰팡이가 자라기 좋은 환경입니다. 눈에 보이는 얼음은 깨끗해도 경로는 오염될 수 있습니다.</p>
+            <article class="why-card reveal" tabindex="0">
+              <div class="why-base">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+                <h3>곰팡이·세균 번식</h3>
+                <p>저수조와 급수 라인, 얼음 저장고는 세균과 곰팡이가 자라기 좋은 환경입니다. 눈에 보이는 얼음은 깨끗해도 경로는 오염될 수 있습니다.</p>
+              </div>
+              <div class="xray" aria-hidden="true">
+                <span class="xray-tag">X-RAY · 오염 경로 추적</span>
+                <strong>저수조 → 급수 호스 → 얼음 저장고</strong>
+                <p>물이 고이고 지나가는 경로 전체가 오염 통로가 됩니다. 겉으로 보이는 얼음만 깨끗해서는 소용이 없습니다.</p>
+              </div>
+              <span class="xray-scan" aria-hidden="true"></span>
             </article>
-            <article class="why-card reveal">
-              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.2 6.5 7.6 6.5 11a6.5 6.5 0 1 1-13 0C5.5 10.6 8.5 7.2 12 3z"/></svg></div>
-              <h3>물때와 스케일</h3>
-              <p>수돗물의 미네랄이 제빙판과 노즐에 쌓이면 얼음이 잘 떨어지지 않고 생산량이 줄어, 기계에 무리가 가기 시작합니다.</p>
+            <article class="why-card reveal" tabindex="0">
+              <div class="why-base">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.2 6.5 7.6 6.5 11a6.5 6.5 0 1 1-13 0C5.5 10.6 8.5 7.2 12 3z"/></svg></div>
+                <h3>물때와 석회 스케일</h3>
+                <p>수돗물의 미네랄이 제빙판과 노즐에 쌓이면 얼음이 잘 떨어지지 않고 생산량이 줄어, 기계에 무리가 가기 시작합니다.</p>
+              </div>
+              <div class="xray" aria-hidden="true">
+                <span class="xray-tag">X-RAY · 스케일 축적 부위</span>
+                <strong>냉판 격자 → 노즐 → 물커튼</strong>
+                <p>굳은 석회는 물길을 좁히고 열을 막습니다. 얼음이 잘 떨어지지 않고 제빙 시간이 길어지는 첫 신호입니다.</p>
+              </div>
+              <span class="xray-scan" aria-hidden="true"></span>
             </article>
-            <article class="why-card reveal">
-              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 20 4M7 4h.01M12 5h.01M17 7h.01M5 10h.01M10 11h.01M15 12h.01M20 13h.01M8 16h.01M13 17h.01M18 19h.01"/></svg></div>
-              <h3>얼음의 냄새와 맛</h3>
-              <p>오염이 쌓이면 얼음이 흐려지고 모양도 고르지 않게 나오며, 쿰쿰한 냄새가 음료 본연의 맛을 해칩니다. 음료 맛에 대한 손님 불만은 대부분 얼음에서 시작됩니다.</p>
+            <article class="why-card reveal" tabindex="0">
+              <div class="why-base">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 20 4M7 4h.01M12 5h.01M17 7h.01M5 10h.01M10 11h.01M15 12h.01M20 13h.01M8 16h.01M13 17h.01M18 19h.01"/></svg></div>
+                <h3>얼음의 냄새와 맛</h3>
+                <p>오염이 쌓이면 얼음이 흐려지고 모양도 고르지 않게 나오며, 쿰쿰한 냄새가 음료 본연의 맛을 해칩니다. 음료 맛에 대한 손님 불만은 대부분 얼음에서 시작됩니다.</p>
+              </div>
+              <div class="xray" aria-hidden="true">
+                <span class="xray-tag">X-RAY · 최종 품질 신호</span>
+                <strong>흐린 얼음 · 잡내 · 고르지 않은 모양</strong>
+                <p>손님은 얼음에서 음료의 맛을 먼저 느낍니다. 얼음이 흐려지고 냄새가 나면 청소 시기를 넘겼다는 신호입니다.</p>
+              </div>
+              <span class="xray-scan" aria-hidden="true"></span>
             </article>
-            <article class="why-card reveal">
-              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></div>
-              <h3>고장 예방과 수명</h3>
-              <p>펌프·밸브·센서에 낀 이물질은 잔고장의 원인이 됩니다. 정기적인 분해 세척이 큰 수리비를 막는 가장 확실한 방법입니다.</p>
+            <article class="why-card reveal" tabindex="0">
+              <div class="why-base">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></div>
+                <h3>고장 예방과 수명 연장</h3>
+                <p>펌프·밸브·센서에 낀 이물질은 잔고장의 원인이 됩니다. 정기적인 분해 세척이 큰 수리비를 막는 가장 확실한 방법입니다.</p>
+              </div>
+              <div class="xray" aria-hidden="true">
+                <span class="xray-tag">X-RAY · 기계 부품 부담</span>
+                <strong>펌프 · 밸브 · 센서</strong>
+                <p>이물질과 석회가 끼면 펌프가 더 세게 돌고 밸브가 막힙니다. 잔고장의 시작은 늘 이런 작은 부품입니다.</p>
+              </div>
+              <span class="xray-scan" aria-hidden="true"></span>
             </article>
           </div>
         </div>
@@ -1795,16 +1922,6 @@
             <article class="step reveal"><span class="num">STEP 5</span><h3>스팀 고압세척·살균</h3><p>깊은 내부를 스팀 고압세척하고 헹궈 낸 뒤, 고온 스팀으로 곰팡이와 세균을 살균합니다.</p></article>
             <article class="step reveal"><span class="num">STEP 6</span><h3>조립·얼음 확인·정리</h3><p>재조립 후 전원을 연결해 새 얼음이 투명하게 잘 얼고 모양이 고르게 나오는지 확인하고, 주변까지 정리합니다.</p></article>
           </div>
-          <div class="consult reveal">
-            <h3>상담할 때, 이렇게 알려 주세요</h3>
-            <p>모델명을 몰라도 상담이 막히지 않습니다. 편한 방법으로 알려 주시면 아이스랩에서 기종을 확인합니다.</p>
-            <div class="consult-ways">
-              <div class="way"><strong>전화로 모델명 알려 주기</strong><span>기계에 적힌 모델명을 전화로 말씀해 주시면 바로 확인합니다.</span></div>
-              <div class="way"><strong>모델명 스티커 사진</strong><span>모델명이 적힌 스티커를 찍어 보내 주셔도 됩니다.</span></div>
-              <div class="way"><strong>제빙기 사진 한 장</strong><span>모델명을 모르면 제빙기 전체 사진을 찍어 보내 주세요. 사진으로 확인해 드립니다.</span></div>
-              <div class="way"><strong>증상이 있으면 함께</strong><span>얼음이 흐리다, 냄새가 난다, 얼음이 안 나온다 같은 증상이 있으면 같이 알려 주세요.</span></div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -1816,26 +1933,36 @@
             <h2>클린서비스</h2>
             <p>제빙기 청소를 중심으로, 매장 위생에 필요한 청소를 함께 진행합니다.</p>
           </div>
-          <div class="svc-grid">
+          <div class="svc-flex" id="svcFlex">
             <a class="svc-card reveal" href="#/svc-ice">
               <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 19 7.5v9L12 20.5 5 16.5v-9L12 3.5z"/><path d="M5 7.5l7 4 7-4M12 11.5v9"/></svg></div>
-              <div class="svc-txt"><h3>제빙기 청소</h3><p>완전 분해 세척 · 고온 스팀 살균</p></div>
+              <div class="svc-txt"><h3>제빙기 청소</h3><p class="svc-short">완전 분해 세척 · 스팀 살균</p>
+                <div class="svc-expand"><p>물과 얼음이 지나가는 모든 부품을 분해해 세척하고 120℃ 고온 스팀으로 살균합니다.</p><span class="svc-go">자세히 보기 →</span></div>
+              </div>
             </a>
             <a class="svc-card reveal" href="#/svc-grinder">
               <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h10l-1.2 4H8.2L7 3.5z"/><path d="M8.2 7.5h7.6V14a1.5 1.5 0 0 1-1.5 1.5H9.7A1.5 1.5 0 0 1 8.2 14V7.5z"/><path d="M12 15.5V18M8.5 20.5h7M12 18v2.5"/></svg></div>
-              <div class="svc-txt"><h3>그라인더 청소</h3><p>원두 기름때와 찌꺼기 분해 세척</p></div>
+              <div class="svc-txt"><h3>그라인더 청소</h3><p class="svc-short">기름때 · 찌꺼기 분해</p>
+                <div class="svc-expand"><p>원두 기름때와 찌꺼기를 분해 세척해 커피 맛과 위생을 함께 지킵니다.</p><span class="svc-go">자세히 보기 →</span></div>
+              </div>
             </a>
             <a class="svc-card reveal" href="#/svc-ac">
               <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="7" rx="2"/><path d="M6.5 9h11"/><path d="M7 15.5c1.2 1.2 1.2 2.3 0 3.5M12 15.5c1.2 1.2 1.2 2.3 0 3.5M17 15.5c1.2 1.2 1.2 2.3 0 3.5"/></svg></div>
-              <div class="svc-txt"><h3>에어컨 청소</h3><p>필터·내부 세척, 냄새와 곰팡이 제거</p></div>
+              <div class="svc-txt"><h3>에어컨 청소</h3><p class="svc-short">필터 · 내부 세척</p>
+                <div class="svc-expand"><p>필터와 내부를 세척해 냄새와 곰팡이를 제거합니다. 매장 공기까지 함께 관리합니다.</p><span class="svc-go">자세히 보기 →</span></div>
+              </div>
             </a>
             <a class="svc-card reveal" href="#/svc-frost">
               <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5L4.2 16.5"/><path d="M12 3l-2 2.2M12 3l2 2.2M12 21l-2-2.2M12 21l2-2.2"/></svg></div>
-              <div class="svc-txt"><h3>냉동고 성애제거</h3><p>두껍게 언 성에 제거와 내부 정리</p></div>
+              <div class="svc-txt"><h3>냉동고 성애제거</h3><p class="svc-short">성에 제거 · 내부 정리</p>
+                <div class="svc-expand"><p>두껍게 언 성에를 제거하고 내부를 정리해 냉동 성능과 위생을 회복합니다.</p><span class="svc-go">자세히 보기 →</span></div>
+              </div>
             </a>
             <a class="svc-card reveal" href="#/svc-store">
               <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 9.5 6 4h12l1.5 5.5"/><path d="M4.5 9.5a2.6 2.6 0 0 0 5 0 2.6 2.6 0 0 0 5 0 2.6 2.6 0 0 0 5 0"/><path d="M5.5 12.3V20h13v-7.7"/><path d="M9.8 20v-4.3h4.4V20"/></svg></div>
-              <div class="svc-txt"><h3>매장청소</h3><p>카페·매장 전체 위생 청소</p></div>
+              <div class="svc-txt"><h3>매장청소</h3><p class="svc-short">매장 전체 위생 청소</p>
+                <div class="svc-expand"><p>카운터와 홀, 주방까지 매장 전체를 위생적으로 청소합니다.</p><span class="svc-go">자세히 보기 →</span></div>
+              </div>
             </a>
           </div>
         </div>
@@ -2011,53 +2138,59 @@
 
           <!-- 포트폴리오 그리드 (6개 대표 카드 : 실제 사진 부품 형상 1:1 일치) -->
           <div class="pf-grid" id="pfGrid">
-            <div class="pf-card" data-cat="cafe">
-              <div class="pf-img-wrap"><img src="assets/cleaning2.jpg" alt="얼음 배출 슬라이드 부품 고온 스팀 살균 현장" loading="lazy" /><span class="pf-badge">프랜차이즈 카페</span></div>
+            <div class="pf-card" data-cat="cafe" tabindex="0">
+              <div class="pf-img-wrap"><img src="assets/cleaning2.jpg" alt="얼음 배출 슬라이드 부품 고온 스팀 살균 현장" loading="lazy" /><span class="pf-badge">프랜차이즈 카페</span>
+              </div>
               <div class="pf-body">
                 <div class="pf-brand">얼음 배출 가이드 부품 · 일산 카페</div>
                 <h4>얼음 슬라이드 탈거 부품 고온 스팀 살균</h4>
-                <p>매일 얼음이 닿으며 미끄러져 내려오는 투명 얼음 슬라이드 부품을 완전 탈거하여, 좁은 격자 틈새의 미세 물때와 곰팡이를 120℃ 고온 스팀 노즐로 박멸 세척했습니다.</p>
               </div>
+                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 01</span><strong class="pf-rt">얼음 슬라이드 탈거 부품 고온 스팀 살균</strong><p>매일 얼음이 닿으며 미끄러져 내려오는 투명 얼음 슬라이드 부품을 완전 탈거하여, 좁은 격자 틈새의 미세 물때와 곰팡이를 120℃ 고온 스팀 노즐로 박멸 세척했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
             </div>
-            <div class="pf-card" data-cat="bakery">
-              <div class="pf-img-wrap"><img src="assets/cleaning-open.jpg" alt="제빙기 하부 기계실 개방 및 배관 점검 현장" loading="lazy" /><span class="pf-badge">대형 베이커리</span></div>
+            <div class="pf-card" data-cat="bakery" tabindex="0">
+              <div class="pf-img-wrap"><img src="assets/cleaning-open.jpg" alt="제빙기 하부 기계실 개방 및 배관 점검 현장" loading="lazy" /><span class="pf-badge">대형 베이커리</span>
+              </div>
               <div class="pf-body">
                 <div class="pf-brand">하부 기계실 · 남양주 베이커리</div>
                 <h4>하부 패널 개방 및 핵심 냉매 배관 정밀 점검</h4>
-                <p>상단 대용량 저장고 아래 하부 전면 패널을 완전히 탈거하여 콤프레셔, 냉매 순환 구리 배관, 제어 기판 주변의 누수 및 진동 이음 부품을 정밀 점검했습니다.</p>
               </div>
+                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 02</span><strong class="pf-rt">하부 패널 개방 및 핵심 냉매 배관 정밀 점검</strong><p>상단 대용량 저장고 아래 하부 전면 패널을 완전히 탈거하여 콤프레셔, 냉매 순환 구리 배관, 제어 기판 주변의 누수 및 진동 이음 부품을 정밀 점검했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
             </div>
-            <div class="pf-card" data-cat="hotel">
-              <div class="pf-img-wrap"><img src="assets/deep-clean.jpg" alt="저수조 전용 세척제 투입 및 순환 세척" loading="lazy" /><span class="pf-badge">호텔 라운지</span></div>
+            <div class="pf-card" data-cat="hotel" tabindex="0">
+              <div class="pf-img-wrap"><img src="assets/deep-clean.jpg" alt="저수조 전용 세척제 투입 및 순환 세척" loading="lazy" /><span class="pf-badge">호텔 라운지</span>
+              </div>
               <div class="pf-body">
                 <div class="pf-brand">증발기 하부 저수조 · 광화문 호텔</div>
                 <h4>저수조 친환경 세정제 투입 및 냉판 순환 세척</h4>
-                <p>수직 제빙판 바로 아래 위치한 저수조 수조통에 친환경 규격 세정제를 정량 투입하고 워터펌프를 순환시켜 냉판 격자의 고착 석회질을 안전하게 용해 박리했습니다.</p>
               </div>
+                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 03</span><strong class="pf-rt">저수조 친환경 세정제 투입 및 냉판 순환 세척</strong><p>수직 제빙판 바로 아래 위치한 저수조 수조통에 친환경 규격 세정제를 정량 투입하고 워터펌프를 순환시켜 냉판 격자의 고착 석회질을 안전하게 용해 박리했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
             </div>
-            <div class="pf-card" data-cat="cafe">
-              <div class="pf-img-wrap"><img src="assets/field-record.jpg" alt="언더카운터 제빙기 상판 탈거 분해 현장" loading="lazy" /><span class="pf-badge">로스터리 카페</span></div>
+            <div class="pf-card" data-cat="cafe" tabindex="0">
+              <div class="pf-img-wrap"><img src="assets/field-record.jpg" alt="언더카운터 제빙기 상판 탈거 분해 현장" loading="lazy" /><span class="pf-badge">로스터리 카페</span>
+              </div>
               <div class="pf-body">
                 <div class="pf-brand">언더카운터 상판 탈거 · 성수 로스터리</div>
                 <h4>상판 분리 및 내부 증발기·냉각 라인 완전 노출</h4>
-                <p>카운터 아래 매립된 제빙기의 상판과 전면 커버를 모두 분해하여, 평소 접근이 불가능했던 내부 단열 프레임과 냉각 유로 배관 전체를 정밀 세척 가능한 상태로 개방했습니다.</p>
               </div>
+                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 04</span><strong class="pf-rt">상판 분리 및 내부 증발기·냉각 라인 완전 노출</strong><p>카운터 아래 매립된 제빙기의 상판과 전면 커버를 모두 분해하여, 평소 접근이 불가능했던 내부 단열 프레임과 냉각 유로 배관 전체를 정밀 세척 가능한 상태로 개방했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
             </div>
-            <div class="pf-card" data-cat="hotel">
-              <div class="pf-img-wrap"><img src="assets/visit.jpg" alt="제빙실 물커튼 패널 개방 및 내부 유로 세척" loading="lazy" /><span class="pf-badge">레스토랑 & 펍</span></div>
+            <div class="pf-card" data-cat="hotel" tabindex="0">
+              <div class="pf-img-wrap"><img src="assets/visit.jpg" alt="제빙실 물커튼 패널 개방 및 내부 유로 세척" loading="lazy" /><span class="pf-badge">레스토랑 & 펍</span>
+              </div>
               <div class="pf-body">
                 <div class="pf-brand">물커튼 도어 개방 · 강남 라운지</div>
                 <h4>물커튼 슬라이드 개방 및 제빙실 내부 유로 세척</h4>
-                <p>얼음이 생성되어 떨어지는 내부의 대형 물커튼(슬라이드 배플) 도어를 들어 올려, 안쪽 저수조와 물 흐름 유로 전반에 형성된 물때 침전물을 꼼꼼히 세척했습니다.</p>
               </div>
+                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 05</span><strong class="pf-rt">물커튼 슬라이드 개방 및 제빙실 내부 유로 세척</strong><p>얼음이 생성되어 떨어지는 내부의 대형 물커튼(슬라이드 배플) 도어를 들어 올려, 안쪽 저수조와 물 흐름 유로 전반에 형성된 물때 침전물을 꼼꼼히 세척했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
             </div>
-            <div class="pf-card" data-cat="bakery">
-              <div class="pf-img-wrap"><img src="assets/ice-cubes.jpg" alt="세척 후 최종 제빙된 깨끗한 각얼음 검증" loading="lazy" /><span class="pf-badge">디저트 카페</span></div>
+            <div class="pf-card" data-cat="bakery" tabindex="0">
+              <div class="pf-img-wrap"><img src="assets/ice-cubes.jpg" alt="세척 후 최종 제빙된 깨끗한 각얼음 검증" loading="lazy" /><span class="pf-badge">디저트 카페</span>
+              </div>
               <div class="pf-body">
                 <div class="pf-brand">최종 제빙 품질 · 의정부 디저트</div>
                 <h4>완전 조립 후 투명하고 단단한 각얼음 제빙 검증</h4>
-                <p>분해 세척과 고압 헹굼을 마친 후 현장에서 제빙기를 정상 재가동하여 기포나 이물질 없이 맑고 단단한 식용 각얼음이 만들어지는지 투명도와 모양을 최종 검수했습니다.</p>
               </div>
+                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 06</span><strong class="pf-rt">완전 조립 후 투명하고 단단한 각얼음 제빙 검증</strong><p>분해 세척과 고압 헹굼을 마친 후 현장에서 제빙기를 정상 재가동하여 기포나 이물질 없이 맑고 단단한 식용 각얼음이 만들어지는지 투명도와 모양을 최종 검수했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
             </div>
           </div>
 
@@ -2069,89 +2202,6 @@
         </div>
       </section>
 
-
-      <!-- KEYWORDS : 서비스·브랜드·정보·지역 4개 그룹 일렬 패널 (호버·탭 확장) → 허브·정보·지역 페이지 링크 -->
-      <section id="keywords">
-        <div class="wrap">
-          <div class="kw-strip reveal">
-            <article class="kw-panel" tabindex="0">
-              <figure><img src="assets/cleaning-open.jpg" alt="패널을 열어 제빙기 내부를 청소하는 모습" loading="lazy" /></figure>
-              <div class="kw-head" role="button" tabindex="-1" aria-expanded="false">
-                <h3>서비스</h3>
-                <span class="kw-plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-              </div>
-              <div class="kw-body"><div class="kw-clip">
-                <div class="kw-chips">
-                  <a href="#" data-lp="kw-cheongso">제빙기청소 <span class="arr">→</span></a>
-                  <a href="#" data-lp="kw-eopche">제빙기청소업체 <span class="arr">→</span></a>
-                  <a href="#" data-lp="kw-eopso">업소용 제빙기 청소 <span class="arr">→</span></a>
-                  <a href="#" data-lp="kw-gajeong">가정용 제빙기 청소 <span class="arr">→</span></a>
-                  <a href="#" data-lp="kw-cafe">카페제빙기청소 <span class="arr">→</span></a>
-                </div>
-              </div></div>
-            </article>
-            <article class="kw-panel" tabindex="0">
-              <figure><img src="assets/machine.jpg" alt="청소를 마친 스테인리스 업소용 제빙기" loading="lazy" /></figure>
-              <div class="kw-head" role="button" tabindex="-1" aria-expanded="false">
-                <h3>브랜드</h3>
-                <span class="kw-plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-              </div>
-              <div class="kw-body"><div class="kw-clip">
-                <div class="kw-chips">
-                  <a href="#" data-lp="kw-kaiser">카이저 제빙기 청소 <span class="arr">→</span></a>
-                  <a href="#" data-lp="kw-hoshizaki">호시자키 제빙기 청소 <span class="arr">→</span></a>
-                  <a href="#" data-lp="kw-icetro">아이스트로 제빙기 청소 <span class="arr">→</span></a>
-                  <a href="#" data-lp="kw-manitowoc">매니토웍 제빙기 청소 <span class="arr">→</span></a>
-                  <a href="#" data-lp="kw-neote">네오트 제빙기 청소 <span class="arr">→</span></a>
-                  <a href="#" data-lp="kw-shinil">신일 제빙기 청소 <span class="arr">→</span></a>
-                  <a href="#" data-lp="kw-aquaglory">아쿠아글로리 제빙기 청소 <span class="arr">→</span></a>
-                </div>
-              </div></div>
-            </article>
-            <article class="kw-panel" tabindex="0">
-              <figure><img src="assets/ice-cubes.jpg" alt="청소 후 만든 투명하고 깨끗한 얼음" loading="lazy" /></figure>
-              <div class="kw-head" role="button" tabindex="-1" aria-expanded="false">
-                <h3>정보</h3>
-                <span class="kw-plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-              </div>
-              <div class="kw-body"><div class="kw-clip">
-                <div class="kw-chips">
-                  <a href="#" data-lp="info-bangbeop">제빙기 청소방법 <span class="arr">→</span></a>
-                  <a href="#" data-lp="info-jugi">제빙기 청소 주기 <span class="arr">→</span></a>
-                  <a href="#" data-lp="info-biyong">제빙기 청소 비용 <span class="arr">→</span></a>
-                  <a href="#" data-lp="info-noice">제빙기 청소 후 얼음 안나옴 <span class="arr">→</span></a>
-                  <a href="#" data-lp="info-yakpum">제빙기 청소 약품 <span class="arr">→</span></a>
-                </div>
-              </div></div>
-            </article>
-            <article class="kw-panel" tabindex="0">
-              <figure><img src="assets/visit.jpg" alt="출장 방문해 제빙기 내부를 청소하는 모습" loading="lazy" /></figure>
-              <div class="kw-head" role="button" tabindex="-1" aria-expanded="false">
-                <h3>지역</h3>
-                <span class="kw-plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-              </div>
-              <div class="kw-body"><div class="kw-clip">
-                <div class="kw-chips">
-                  <a href="#" data-lp="yangju-cheongso">양주 <span class="arr">→</span></a>
-                  <a href="#" data-lp="uijeongbu-cheongso">의정부 <span class="arr">→</span></a>
-                  <a href="#" data-lp="dongducheon-cheongso">동두천 <span class="arr">→</span></a>
-                  <a href="#" data-lp="pocheon-cheongso">포천 <span class="arr">→</span></a>
-                  <a href="#" data-lp="namyangju-cheongso">남양주 <span class="arr">→</span></a>
-                  <a href="#" data-lp="guri-cheongso">구리 <span class="arr">→</span></a>
-                  <a href="#" data-lp="paju-cheongso">파주 <span class="arr">→</span></a>
-                  <a href="#" data-lp="goyang-cheongso">고양 <span class="arr">→</span></a>
-                  <a href="#" data-lp="yeoncheon-cheongso">연천 <span class="arr">→</span></a>
-                  <a href="#" data-lp="gangbuk-cheongso">강북 <span class="arr">→</span></a>
-                  <a href="#" data-lp="jungnang-cheongso">중랑 <span class="arr">→</span></a>
-                  <a href="#" data-lp="hanam-cheongso">하남 <span class="arr">→</span></a>
-                  <a href="#" data-lp="nowon-cheongso">노원 <span class="arr">→</span></a>
-                  <a href="#" data-lp="dobong-cheongso">도봉 <span class="arr">→</span></a>
-                </div>
-              </div></div>
-            </article>
-          </div>
-        </div>
-      </section>
 
       <!-- FAQ -->
       <section class="alt" id="faq">
@@ -2169,11 +2219,11 @@
               <button class="faq-q" aria-expanded="false">청소에 시간은 얼마나 걸리나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>일반적인 업소용 제빙기는 1시간에서 2시간 사이가 많고, 대형 기종이나 오염이 심한 경우 더 걸릴 수 있습니다. 상담 때 예상 소요 시간을 함께 안내해 드립니다.</p></div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item extra">
               <button class="faq-q" aria-expanded="false">정기 청소와 1회 청소는 뭐가 다른가요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>청소 내용은 같습니다. 분해 세척부터 스팀 살균까지 동일한 과정으로 진행되고, 차이는 방문 횟수뿐입니다. 방문 간격은 정해진 기준이 아니라 매장의 얼음 사용량과 기계 상태를 보고 고객과 상의해 정합니다.</p></div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item extra">
               <button class="faq-q" aria-expanded="false">영업 중에도 청소가 가능한가요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>가능합니다. 다만 작업 중에는 제빙기를 멈춰야 합니다. 얼음은 미리 비축해 두시거나 저희가 보관해 드립니다. 손님께 노출될 수 있기 때문에 보통 마감 후에 진행합니다. 일정은 고객님과 맞춰 진행합니다.</p></div>
             </div>
@@ -2181,11 +2231,12 @@
               <button class="faq-q" aria-expanded="false">제빙기 모델명을 모릅니다. 그래도 되나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>네, 괜찮습니다. 전화로 모델명을 알려 주셔도 되고, 모델명이 적힌 스티커 사진을 찍어 보내 주셔도 됩니다. 그것도 어려우면 제빙기 전체 사진을 보내 주세요. 사진을 보고 구분해 드립니다. 호시자키·카이저부터 매니토웍·스카치맨까지, 전 브랜드 모두 진행합니다.</p></div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item extra">
               <button class="faq-q" aria-expanded="false">출장이 안 되는 지역이면 어떻게 하나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>양주, 의정부, 동두천, 포천, 남양주, 구리, 파주, 고양, 연천, 강북, 중랑, 하남 등 근방 지역은 방문이 가능합니다. 권역 경계에 있는 지역은 일정에 따라 방문이 가능할 수 있으니, 전화 상담 때 지역을 알려 주시면 확인해 드립니다.</p></div>
             </div>
           </div>
+          <div class="faq-all-btn"><a href="#/faq">자주 묻는 질문 6가지 전체보기 →</a></div>
         </div>
       </section>
 
@@ -2363,30 +2414,6 @@
             item.classList.add('open');
             btn.setAttribute('aria-expanded', 'true');
           }
-        });
-
-        // keyword panels : 탭(클릭)으로 펼치고 접기 — 한 번에 하나만, 다시 누르면 접힘
-        var kwPanels = document.querySelectorAll('.kw-panel');
-        function kwSet(panel, on) {
-          panel.classList.toggle('kw-on', on);
-          panel.querySelector('.kw-head').setAttribute('aria-expanded', on ? 'true' : 'false');
-        }
-        kwPanels.forEach(function (panel) {
-          var head = panel.querySelector('.kw-head');
-          head.addEventListener('click', function () {
-            var willOpen = !panel.classList.contains('kw-on');
-            kwPanels.forEach(function (p) { kwSet(p, false); });
-            if (willOpen) kwSet(panel, true);
-          });
-          panel.addEventListener('keydown', function (e) {
-            if (e.target !== panel) return;
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              var willOpen = !panel.classList.contains('kw-on');
-              kwPanels.forEach(function (p) { kwSet(p, false); });
-              if (willOpen) kwSet(panel, true);
-            }
-          });
         });
 
         // reveal on scroll
@@ -2646,14 +2673,19 @@
         var N = {
           hero: q('.jhero'), menu: q('.menu-sec'),
           processLoop: byId('process-loop'), hygieneMark: byId('clean-zone'),
-          slider: q('.slider-sec'), brand: q('.brand-strip'),
+          slider: q('.slider-sec'),
           why: byId('why'), scope: byId('scope'), process: byId('process'), services: byId('services'),
           plans: byId('plans'), partners: byId('partners'), ba: byId('before-after'),
           portfolio: byId('portfolio'),
-          keywords: byId('keywords'), faq: byId('faq'), cta: q('.cta-sec')
+          faq: byId('faq'), cta: q('.cta-sec')
         };
         var home = page('home');
-        [N.hero, N.menu, N.processLoop, N.ba, N.portfolio, N.hygieneMark, N.partners, N.brand, N.why, N.scope, N.process, N.services, N.plans, N.keywords, N.faq, N.cta].forEach(function (n) { if (n) home.appendChild(n); });
+        /* 메인 9단계 설득 동선
+           히어로·타일 → 문제제기(WHY) → 4대 공정·ATP 증명 → 전후 비교 → 현장 갤러리
+           → 브랜드·B2B 안심존 → 클린서비스 슬림 바 → 핵심 FAQ 3선 → 전화상담 밴드 */
+        [N.hero, N.menu, N.why, N.processLoop, N.ba, N.portfolio, N.partners, N.hygieneMark, N.services, N.faq, N.cta].forEach(function (n) { if (n) home.appendChild(n); });
+        /* 메인에서 내린 청소 범위·청소 과정·이용 방식은 세부 페이지(#/scope #/process #/plans) 전용으로만 두고 DOM에서 제거한다 */
+        [N.scope, N.process, N.plans].forEach(function (n) { if (n && n.parentNode) n.parentNode.removeChild(n); });
         if (N.slider && N.slider.parentNode === main) {
           main.removeChild(N.slider);
         }
