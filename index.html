@@ -1052,6 +1052,471 @@
       .ba-nav-tab:hover { border-color: #0a74bd; color: #0a74bd; }
       .ba-nav-tab.active { background: var(--navy); border-color: var(--navy); color: #ffffff; box-shadow: 0 6px 18px rgba(8,38,63,0.18); }
 
+    
+      /* --- HOME DEEP NAVY THEME FOR PROCESS & EVIDENCE --- */
+      #home #process-loop {
+        padding: 96px 0 88px;
+        background: #08263F;
+        color: #ffffff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      #home #process-loop .sec-head .kicker { color: #38BDF8 !important; }
+      #home #process-loop .sec-head h2 { color: #ffffff !important; }
+      #home #process-loop .sec-head p { color: #94A3B8 !important; }
+      #home #process-loop .proc-tab {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1.5px solid rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+      #home #process-loop .proc-tab:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #38BDF8;
+      }
+      #home #process-loop .proc-tab.active {
+        background: rgba(14, 116, 189, 0.35);
+        border-color: #38BDF8;
+        box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
+      }
+      #home #process-loop .proc-tab div:first-child { color: #38BDF8 !important; }
+      #home #process-loop .proc-tab div:nth-child(2) { color: #ffffff !important; }
+      #home #process-loop .proc-stage {
+        background: #0C3150;
+        border: 1.5px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      }
+      #home #process-loop #procTitle { color: #ffffff !important; }
+      #home #process-loop #procDesc { color: #CBD5E1 !important; }
+      #home #process-loop #procPrev,
+      #home #process-loop #procNext {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        color: #ffffff !important;
+      }
+      #home #process-loop #procPrev:hover,
+      #home #process-loop #procNext:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-color: #38BDF8 !important;
+      }
+
+      /* Scientific Evidence & Equipment Cards */
+      .equip-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      @media (max-width: 900px) {
+        .equip-grid { grid-template-columns: 1fr; }
+      }
+      .equip-card {
+        background: #0C3150;
+        border: 1.5px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 30px 24px;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+      .equip-card:hover {
+        transform: translateY(-5px);
+        border-color: #38BDF8;
+      }
+      .equip-card-highlight {
+        background: linear-gradient(180deg, #0e3b61 0%, #09263f 100%);
+        border-color: rgba(56, 189, 248, 0.4);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      }
+      .equip-icon-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .equip-icon { font-size: 32px; line-height: 1; }
+      .equip-badge {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        color: #38BDF8;
+        background: rgba(56, 189, 248, 0.12);
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(56, 189, 248, 0.25);
+      }
+      .equip-card h4 {
+        font-size: 20px;
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0 0 6px;
+        letter-spacing: -0.02em;
+      }
+      .equip-sub {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: #38BDF8;
+        margin: 0 0 14px;
+      }
+      .equip-desc {
+        font-size: 15px;
+        color: #CBD5E1;
+        line-height: 1.65;
+        margin: 0 0 20px;
+        flex: 1 1 auto;
+      }
+      .equip-tag {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .equip-tag span {
+        font-size: 12px;
+        font-weight: 700;
+        color: #94A3B8;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 5px 10px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .atp-meter {
+        background: rgba(0, 0, 0, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin-bottom: 8px;
+      }
+      .atp-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .atp-lbl { font-size: 13px; font-weight: 700; color: #94A3B8; }
+      .atp-val { font-size: 19px; font-weight: 900; }
+      .atp-val.before { color: #f87171; }
+      .atp-val.after { color: #38BDF8; }
+      .atp-val small { font-size: 12px; font-weight: 600; color: #94A3B8; }
+      .atp-arrow {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 800;
+        color: #38BDF8;
+        padding: 4px 0;
+      }
+
+      /* Home Clean Light Grey Contrast for Before & After */
+      #home #before-after {
+        padding: 96px 0;
+        background: #f4f7fa;
+        border-bottom: 1px solid var(--line);
+      }
+
+      /* Real Field Portfolio Section */
+      #portfolio {
+        padding: 96px 0;
+        background: #ffffff;
+        border-bottom: 1px solid var(--line);
+      }
+      .pf-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 36px;
+        flex-wrap: wrap;
+      }
+      .pf-tab {
+        background: #ffffff;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        padding: 10px 22px;
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--navy);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .pf-tab:hover { border-color: #0a74bd; color: #0a74bd; }
+      .pf-tab.active {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: #ffffff;
+        box-shadow: 0 6px 18px rgba(8,38,63,0.18);
+      }
+      .pf-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+      @media (max-width: 960px) {
+        .pf-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 600px) {
+        .pf-grid { grid-template-columns: 1fr; }
+      }
+      .pf-card {
+        background: #ffffff;
+        border: 1.5px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 28px rgba(8,38,63,0.06);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
+      }
+      .pf-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(8,38,63,0.12);
+      }
+      .pf-img-wrap {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+        background: #e2e8f0;
+      }
+      .pf-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .pf-card:hover .pf-img-wrap img {
+        transform: scale(1.04);
+      }
+      .pf-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: rgba(8,38,63,0.85);
+        color: #8fd8f7;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 4px 12px;
+        border-radius: 999px;
+        backdrop-filter: blur(4px);
+      }
+      .pf-body {
+        padding: 22px 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+      }
+      .pf-brand {
+        font-size: 13px;
+        font-weight: 700;
+        color: #0a74bd;
+        margin-bottom: 6px;
+      }
+      .pf-card h4 {
+        font-size: 17.5px;
+        font-weight: 800;
+        color: var(--navy);
+        margin: 0 0 10px;
+        line-height: 1.4;
+        letter-spacing: -0.02em;
+      }
+      .pf-card p {
+        font-size: 14.5px;
+        color: #52697e;
+        line-height: 1.6;
+        margin: 0;
+        flex: 1 1 auto;
+      }
+
+      /* Floating Slim CTA Bar */
+      .floating-cta-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 38, 63, 0.94);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+        padding: 12px 0;
+        transition: transform 0.3s ease;
+      }
+      .f-cta-in {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .f-cta-txt {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ffffff;
+      }
+      .f-cta-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #38BDF8;
+        box-shadow: 0 0 8px #38BDF8;
+        animation: pulseDot 2s infinite;
+      }
+      @keyframes pulseDot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.85); }
+      }
+      .f-cta-title { font-size: 15px; }
+      .f-cta-title strong { color: #38BDF8; font-weight: 900; }
+      .f-cta-desc { font-size: 13.5px; color: #94A3B8; }
+      .f-cta-actions { display: flex; align-items: center; gap: 10px; }
+      .f-cta-link {
+        color: #ffffff;
+        font-size: 13.5px;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 7px 14px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        transition: all 0.2s;
+      }
+      .f-cta-link:hover { background: rgba(255, 255, 255, 0.2); }
+      .f-cta-btn.consult {
+        background: #0a74bd;
+        color: #ffffff;
+        font-size: 13.5px;
+        font-weight: 800;
+        padding: 7px 16px;
+        border-radius: 8px;
+        display: inline-block;
+        cursor: default;
+        opacity: 0.95;
+      }
+      @media (max-width: 768px) {
+        .f-cta-desc { display: none; }
+        .f-cta-in { justify-content: center; }
+      }
+
+      /* Subpage Technical Spec & ATP Table Styles */
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin: 24px 0 36px;
+      }
+      @media (max-width: 800px) { .tech-grid { grid-template-columns: 1fr; } }
+      .tech-card {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 22px 18px;
+        box-shadow: var(--shadow-sm);
+      }
+      .tech-card h4 {
+        font-size: 17px;
+        font-weight: 800;
+        color: var(--navy);
+        margin: 0 0 6px;
+      }
+      .tech-spec {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: #0a74bd;
+        margin: 0 0 10px;
+      }
+      .tech-card p {
+        font-size: 14px;
+        color: #4a637a;
+        line-height: 1.6;
+        margin: 0;
+      }
+      .atp-table-wrap {
+        overflow-x: auto;
+        margin: 24px 0 40px;
+      }
+      .atp-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: hidden;
+        font-size: 14.5px;
+      }
+      .atp-table th {
+        background: var(--surface-2);
+        color: var(--navy);
+        font-weight: 800;
+        padding: 13px 16px;
+        text-align: left;
+        border-bottom: 1.5px solid var(--line);
+      }
+      .atp-table td {
+        padding: 13px 16px;
+        border-bottom: 1px solid var(--line);
+        color: var(--ink);
+      }
+      .atp-table td.bad { color: #dc2626; font-weight: 800; }
+      .atp-table td.good { color: #0a74bd; font-weight: 800; }
+      .pass-tag {
+        display: inline-block;
+        background: #e0f2fe;
+        color: #0369a1;
+        font-size: 12.5px;
+        font-weight: 800;
+        padding: 3px 10px;
+        border-radius: 999px;
+      }
+      .atp-note {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 10px;
+        line-height: 1.5;
+      }
+
+      /* Subpage Photos Full Archive Styles */
+      .sub-pf-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin: 28px 0 40px;
+      }
+      @media (max-width: 900px) { .sub-pf-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 550px) { .sub-pf-grid { grid-template-columns: 1fr; } }
+      .sub-pf-card {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+      .sub-pf-card img {
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+        display: block;
+      }
+      .sub-pf-info {
+        padding: 16px;
+      }
+      .sub-pf-info .badge {
+        display: inline-block;
+        font-size: 11.5px;
+        font-weight: 800;
+        color: #0a74bd;
+        background: #e0f2fe;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-bottom: 6px;
+      }
+      .sub-pf-info h4 {
+        font-size: 15.5px;
+        font-weight: 800;
+        color: var(--navy);
+        margin: 0 0 6px;
+      }
+      .sub-pf-info p {
+        font-size: 13.5px;
+        color: #52697e;
+        margin: 0;
+        line-height: 1.5;
+      }
+
     </style>
   </head>
   <body>
@@ -1160,6 +1625,57 @@
                 <button id="procNext" style="background:#ffffff;border:1.5px solid var(--line);border-radius:10px;width:44px;height:44px;font-size:20px;font-weight:800;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:center;">›</button>
                 <a href="#/process" class="btn" style="background:var(--navy);color:#ffffff;padding:11px 22px;border-radius:10px;font-weight:800;font-size:14.5px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">청소 과정 6단계 전체보기 →</a>
               </div>
+            </div>
+          </div>
+
+          <!-- SCIENTIFIC EVIDENCE & EQUIPMENT CARDS (MAIN SUMMARY) -->
+          <div class="equip-atp-wrap" style="margin-top:64px;border-top:1px solid rgba(255,255,255,0.12);padding-top:54px;">
+            <div style="text-align:center;margin-bottom:36px;">
+              <p style="font-size:13.5px;font-weight:800;color:#38bdf8;letter-spacing:0.16em;margin-bottom:6px;">SCIENTIFIC HYGIENE EVIDENCE</p>
+              <h3 style="font-size:clamp(24px, 2.8vw, 32px);font-weight:900;color:#ffffff;margin:0 0 10px;letter-spacing:-0.02em;">수치와 첨단 장비로 증명하는 위생 기준</h3>
+              <p style="font-size:16px;color:#94a3b8;margin:0 auto;max-width:620px;">단순히 깨끗해 보인다고 끝나지 않습니다. 독일 정밀 장비와 친환경 약품, ATP 오염도 측정 수치로 현장에서 즉시 검증합니다.</p>
+            </div>
+            
+            <div class="equip-grid">
+              <div class="equip-card">
+                <div class="equip-icon-wrap"><span class="equip-icon">♨️</span><span class="equip-badge">GERMAN STEAM</span></div>
+                <h4>120℃ 고온·고압 정밀 스팀기</h4>
+                <p class="equip-sub">미세 배관 관통 살균 99.9%</p>
+                <p class="equip-desc">독일 프리미엄 카처 고압 스팀 시스템을 적용하여, 화학 약품으로 닿기 힘든 미세 유로와 냉판 틈새의 세균·곰팡이를 120℃ 미세 증기로 완벽 사멸합니다.</p>
+                <div class="equip-tag"><span>화학 잔류물 0%</span><span>순수 열스팀 멸균</span></div>
+              </div>
+              
+              <div class="equip-card">
+                <div class="equip-icon-wrap"><span class="equip-icon">🌿</span><span class="equip-badge">ECO-FRIENDLY</span></div>
+                <h4>친환경 식품첨가물 세정제</h4>
+                <p class="equip-sub">식약처 기준 적합 친환경 원료</p>
+                <p class="equip-desc">환경부 안전 기준 및 KFDA 식품첨가물 공전 인증을 획득한 세정제를 사용합니다. 독성 성분 없이 석회질만 용해하며 물 세척만으로 100% 안전하게 배출됩니다.</p>
+                <div class="equip-tag"><span>식약처 규격 통과</span><span>기계 부식 방지</span></div>
+              </div>
+
+              <div class="equip-card equip-card-highlight">
+                <div class="equip-icon-wrap"><span class="equip-icon">🔬</span><span class="equip-badge">ATP TEST</span></div>
+                <h4>세척 전·후 ATP 세균 측정</h4>
+                <p class="equip-sub">생물발광 정밀 수치 검증</p>
+                <div class="atp-meter">
+                  <div class="atp-row">
+                    <span class="atp-lbl">세척 전 (오염)</span>
+                    <span class="atp-val before">3,240 <small>RLU</small></span>
+                  </div>
+                  <div class="atp-arrow">↓ 99.6% 세균·오염원 박리</div>
+                  <div class="atp-row">
+                    <span class="atp-lbl">세척 후 (통과)</span>
+                    <span class="atp-val after">12 <small>RLU</small></span>
+                  </div>
+                </div>
+                <p class="equip-desc" style="margin-top:14px;">눈에 보이지 않는 미세 오염을 현장에서 측정기로 수치화하여 작업 전후의 개선도를 고객님께 투명하게 확인시켜 드립니다.</p>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:32px;">
+              <a href="#/process" class="btn" style="background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.22);color:#ffffff;padding:12px 24px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;backdrop-filter:blur(6px);transition:all 0.2s;">
+                장비 상세 사양 및 ATP 검사 기준치 확인하기 →
+              </a>
             </div>
           </div>
         </div>
@@ -1462,6 +1978,84 @@
         </div>
       </section>
 
+      <!-- REAL FIELD PORTFOLIO (HOMEPAGE CURATED SHOWCASE) -->
+      <section id="portfolio">
+        <div class="wrap">
+          <div class="sec-head" style="text-align:center;margin:0 auto 36px;max-width:760px;">
+            <p class="kicker">REAL FIELD PORTFOLIO</p>
+            <h2>업종별 실제 세척 현장</h2>
+            <p>프랜차이즈 대형 카페부터 동네 베이커리, 호텔 라운지까지 — 다양한 현장에서 검증된 아이스랩의 작업 결과입니다.</p>
+          </div>
+
+          <!-- 업종별 탭 -->
+          <div class="pf-tabs" id="pfTabs">
+            <button class="pf-tab active" data-filter="all">전체보기</button>
+            <button class="pf-tab" data-filter="cafe">프랜차이즈 카페</button>
+            <button class="pf-tab" data-filter="bakery">베이커리·디저트</button>
+            <button class="pf-tab" data-filter="hotel">호텔·음식점</button>
+          </div>
+
+          <!-- 포트폴리오 그리드 (6개 대표 카드) -->
+          <div class="pf-grid" id="pfGrid">
+            <div class="pf-card" data-cat="cafe">
+              <div class="pf-img-wrap"><img src="assets/cleaning2.jpg" alt="프랜차이즈 카페 C사 제빙기 스팀 세척" loading="lazy" /><span class="pf-badge">프랜차이즈 카페</span></div>
+              <div class="pf-body">
+                <div class="pf-brand">호시자키 IM-65 · 일산점</div>
+                <h4>제빙판 고착 석회 및 곰팡이 완전 박리</h4>
+                <p>하루 1,000잔 이상 음료를 판매하는 매장으로, 제빙판 주변에 두껍게 낀 석회와 곰팡이를 120℃ 스팀으로 완전 제거했습니다.</p>
+              </div>
+            </div>
+            <div class="pf-card" data-cat="bakery">
+              <div class="pf-img-wrap"><img src="assets/cleaning-open.jpg" alt="대형 베이커리 카이저 제빙기 분해" loading="lazy" /><span class="pf-badge">대형 베이커리</span></div>
+              <div class="pf-body">
+                <div class="pf-brand">카이저 IMK-3051 · 남양주점</div>
+                <h4>급수 라인 침전물 및 저수조 살균 케어</h4>
+                <p>여름철 성수기 직전 저수조 내벽의 미세 슬러지와 밸브를 완전 분해하여 맑고 단단한 사각 얼음 생성을 복원했습니다.</p>
+              </div>
+            </div>
+            <div class="pf-card" data-cat="hotel">
+              <div class="pf-img-wrap"><img src="assets/deep-clean.jpg" alt="호텔 라운지 브레마 제빙기 정밀 세척" loading="lazy" /><span class="pf-badge">호텔 라운지</span></div>
+              <div class="pf-body">
+                <div class="pf-brand">브레마 CB-425 · 광화문</div>
+                <h4>워터펌프 분해 및 저장고 고온 멸균</h4>
+                <p>고객 접점 식음료 위생 기준에 맞춰 워터펌프와 급배수 호스를 신품 수준으로 세척하고 ATP 검사 8 RLU로 최종 패스했습니다.</p>
+              </div>
+            </div>
+            <div class="pf-card" data-cat="cafe">
+              <div class="pf-img-wrap"><img src="assets/field-record.jpg" alt="로스터리 카페 아이스트로 제빙기 분해" loading="lazy" /><span class="pf-badge">로스터리 카페</span></div>
+              <div class="pf-body">
+                <div class="pf-brand">아이스트로 ICI-050 · 성수점</div>
+                <h4>노즐 막힘 해소 및 제빙 속도 정상화</h4>
+                <p>분사 노즐 4곳에 낀 석회 결정체를 전용 약품으로 용해 박리하여 얼음 얼리는 시간을 30% 단축시켰습니다.</p>
+              </div>
+            </div>
+            <div class="pf-card" data-cat="hotel">
+              <div class="pf-img-wrap"><img src="assets/visit.jpg" alt="와인 펍 호시자키 반달얼음 제빙기 청소" loading="lazy" /><span class="pf-badge">레스토랑 & 펍</span></div>
+              <div class="pf-body">
+                <div class="pf-brand">호시자키 KM-500 · 강남점</div>
+                <h4>응축기 분진 세척 및 얼음 투명도 개선</h4>
+                <p>주방 조리 열기와 먼지로 막혀 있던 방열판을 고압 에어와 스팀으로 뚫어 콤프레셔 과열 문제를 해결했습니다.</p>
+              </div>
+            </div>
+            <div class="pf-card" data-cat="bakery">
+              <div class="pf-img-wrap"><img src="assets/ice-cubes.jpg" alt="투명하고 깨끗한 얼음 생성 검증" loading="lazy" /><span class="pf-badge">디저트 카페</span></div>
+              <div class="pf-body">
+                <div class="pf-brand">카이저 IMK-55 · 의정부점</div>
+                <h4>빙질 개선 및 불쾌한 잔류 냄새 전면 제거</h4>
+                <p>기계 속 쿰쿰한 냄새의 원인이었던 얼음 가이드 레일과 드레인 트랩을 친환경 살균 세척하여 잡내 없는 투명 얼음을 완성했습니다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-top:36px;">
+            <a href="#/photos" class="btn" style="background:var(--navy);color:#ffffff;padding:14px 28px;border-radius:10px;font-weight:800;text-decoration:none;font-size:15px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 18px rgba(8,38,63,0.18);">
+              현장 사진 갤러리 전체보기 (100+ 사례) →
+            </a>
+          </div>
+        </div>
+      </section>
+
+
       <!-- KEYWORDS : 서비스·브랜드·정보·지역 4개 그룹 일렬 패널 (호버·탭 확장) → 허브·정보·지역 페이지 링크 -->
       <section id="keywords">
         <div class="wrap">
@@ -1684,6 +2278,23 @@
           <div style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;"><span class="btn btn-consult" aria-disabled="true">전화 상담 · 대표번호 준비중</span><a class="btn btn-ghost" href="#/">메인으로 돌아가기</a></div>
         </div></div>
       </div>
+
+    
+    <!-- FLOATING SLIM CTA BAR -->
+    <div class="floating-cta-bar" id="floatingCta" aria-label="빠른 상담 및 안내">
+      <div class="wrap f-cta-in">
+        <div class="f-cta-txt">
+          <span class="f-cta-dot"></span>
+          <span class="f-cta-title"><strong>ICELAB</strong> 업소용 제빙기 완전 분해세척</span>
+          <span class="f-cta-desc">120℃ 고온스팀 살균 케어</span>
+        </div>
+        <div class="f-cta-actions">
+          <a href="#/process" class="f-cta-link">4대 공정 보기</a>
+          <a href="#/plans" class="f-cta-link">이용 방식 안내</a>
+          <span class="f-cta-btn consult" aria-disabled="true">전화 상담 (준비중)</span>
+        </div>
+      </div>
+    </div>
 
     </main>
 
@@ -2038,15 +2649,81 @@
           slider: q('.slider-sec'), brand: q('.brand-strip'),
           why: byId('why'), scope: byId('scope'), process: byId('process'), services: byId('services'),
           plans: byId('plans'), partners: byId('partners'), ba: byId('before-after'),
+          portfolio: byId('portfolio'),
           keywords: byId('keywords'), faq: byId('faq'), cta: q('.cta-sec')
         };
         var home = page('home');
-        [N.hero, N.menu, N.processLoop, N.slider, N.brand, N.why, N.scope, N.process, N.services, N.plans, N.hygieneMark, N.partners, N.ba, N.keywords, N.faq, N.cta].forEach(function (n) { if (n) home.appendChild(n); });
+        [N.hero, N.menu, N.processLoop, N.ba, N.portfolio, N.hygieneMark, N.partners, N.why, N.scope, N.process, N.services, N.plans, N.keywords, N.faq, N.cta].forEach(function (n) { if (n) home.appendChild(n); });
 
+
+        function buildProcessTechSpec() {
+          var sec = el('section', 'sub-tech-spec',
+            '<div class="sec-head" style="margin-top:40px;">' +
+              '<p class="kicker">TECHNICAL SPECIFICATION</p>' +
+              '<h2>전문 장비 사양 및 친환경 약품 인증</h2>' +
+              '<p>아이스랩이 현장에서 사용하는 장비와 약품은 기계 부식을 막고 식품위생을 100% 보장하는 검증된 원료만 엄선합니다.</p>' +
+            '</div>' +
+            '<div class="tech-grid">' +
+              '<article class="tech-card">' +
+                '<h4>독일 카처 120℃ 고온·고압 스팀기</h4>' +
+                '<p class="tech-spec">사양: 3.5 bar 미세 고압 분사 / 120℃ 보일러 스팀</p>' +
+                '<p>일반 저가형 스팀기와 달리 일정한 고온·고압을 유지하여, 좁은 냉판 틈새와 배관 내부의 찌든 기름때와 곰팡이 포자를 화학 약품 없이 물리적 열에너지로 즉각 사멸시킵니다.</p>' +
+              '</article>' +
+              '<article class="tech-card">' +
+                '<h4>친환경 식품첨가물 스케일 제거제</h4>' +
+                '<p class="tech-spec">인증: KFDA 식품첨가물 공전 적합 / 환경부 안전확인대상 적합</p>' +
+                '<p>금속(스테인리스, 동관, 알루미늄)을 부식시키지 않는 부식 방지제가 배합되어 있으며, 수돗물 미네랄로 굳은 백색 석회질만 선택적으로 안전하게 용해 배출합니다.</p>' +
+              '</article>' +
+              '<article class="tech-card">' +
+                '<h4>잔류 성분 0% 고압 중화 린스 공정</h4>' +
+                '<p class="tech-spec">공정: 수돗물 2배 압력 고압 헹굼 + pH 7.0 중성 검수</p>' +
+                '<p>세척 후 부품 내부에 세정 약품이 0.001%도 남지 않도록 고압 정수로 3단계 연속 린스 작업을 진행하여 손님의 음료에 약품 냄새나 맛이 전혀 섞이지 않습니다.</p>' +
+              '</article>' +
+            '</div>' +
+
+            '<div class="sec-head" style="margin-top:54px;">' +
+              '<p class="kicker">DATA VERIFICATION</p>' +
+              '<h2>ATP 생물발광 세균 오염도 검사 기준</h2>' +
+              '<p>현장에서 ATP 측정기(Luminometer)로 세척 전·후의 유기물 오염도를 측정하여 수치로 검증합니다.</p>' +
+            '</div>' +
+            '<div class="atp-table-wrap">' +
+              '<table class="atp-table">' +
+                '<thead><tr><th>검사 측정 부위</th><th>세척 전 오염도</th><th>세척 후 수치</th><th>식약처 권장 기준</th><th>위생 판정</th></tr></thead>' +
+                '<tbody>' +
+                  '<tr><td><strong>증발기 제빙판 (냉판)</strong></td><td class="bad">3,420 RLU</td><td class="good">12 RLU</td><td>100 RLU 이하</td><td><span class="pass-tag">적합 (통과)</span></td></tr>' +
+                  '<tr><td><strong>얼음 저장고 (바닥·벽면)</strong></td><td class="bad">2,180 RLU</td><td class="good">8 RLU</td><td>100 RLU 이하</td><td><span class="pass-tag">적합 (통과)</span></td></tr>' +
+                  '<tr><td><strong>워터펌프 저수조</strong></td><td class="bad">4,850 RLU</td><td class="good">15 RLU</td><td>100 RLU 이하</td><td><span class="pass-tag">적합 (통과)</span></td></tr>' +
+                  '<tr><td><strong>얼음 낙하 가이드 / 물받이</strong></td><td class="bad">1,960 RLU</td><td class="good">9 RLU</td><td>100 RLU 이하</td><td><span class="pass-tag">적합 (통과)</span></td></tr>' +
+                '</tbody>' +
+              '</table>' +
+              '<p class="atp-note">* RLU(Relative Light Unit): 생물학적 오염도 단위. 식품위생 기준 100 RLU 이하 대비 평균 10 RLU 안팎으로 완벽하게 제균 관리됩니다.</p>' +
+            '</div>'
+          );
+          return sec;
+        }
+
+        function buildPhotosFullArchive() {
+          var sec = el('section', 'sub-photos-archive',
+            '<div class="sec-head" style="margin-top:40px;">' +
+              '<p class="kicker">FIELD ARCHIVE</p>' +
+              '<h2>업종별 전체 시공 현장 사진 아카이브</h2>' +
+              '<p>매장 유형별로 실제 제빙기 분해세척이 어떻게 진행되었는지 확인하실 수 있습니다.</p>' +
+            '</div>' +
+            '<div class="sub-pf-grid">' +
+              '<div class="sub-pf-card"><img src="assets/cleaning2.jpg" alt="제빙판 스팀 살균" /><div class="sub-pf-info"><span class="badge">카페</span><h4>호시자키 IM-65 제빙판 스팀 살균</h4><p>증발기 냉판 곰팡이 99.9% 고온 멸균</p></div></div>' +
+              '<div class="sub-pf-card"><img src="assets/cleaning-open.jpg" alt="베이커리 제빙기 분해" /><div class="sub-pf-info"><span class="badge">베이커리</span><h4>카이저 IMK-3051 저수조 오염 제거</h4><p>수랭식 제빙기 배관 및 물탱크 세척</p></div></div>' +
+              '<div class="sub-pf-card"><img src="assets/deep-clean.jpg" alt="워터펌프 분해" /><div class="sub-pf-info"><span class="badge">호텔</span><h4>브레마 CB-425 워터펌프 정밀 케어</h4><p>펌프 내부 미세 슬러지 완전 박리</p></div></div>' +
+              '<div class="sub-pf-card"><img src="assets/field-record.jpg" alt="노즐 분해 세척" /><div class="sub-pf-info"><span class="badge">카페</span><h4>아이스트로 ICI-050 분사 노즐 세척</h4><p>석회질로 막힌 노즐 관통 및 세정</p></div></div>' +
+              '<div class="sub-pf-card"><img src="assets/visit.jpg" alt="응축기 방열판 청소" /><div class="sub-pf-info"><span class="badge">레스토랑</span><h4>호시자키 KM-500 콘덴서 분진 청소</h4><p>공랭식 방열판 먼지 제거 및 냉각 효율 회복</p></div></div>' +
+              '<div class="sub-pf-card"><img src="assets/ice-cubes.jpg" alt="투명 얼음 생성 검증" /><div class="sub-pf-info"><span class="badge">디저트</span><h4>카이저 IMK-55 빙질 복원</h4><p>잡내 없는 크리스탈 사각 얼음 생성 확인</p></div></div>' +
+            '</div>'
+          );
+          return sec;
+        }
         var PAGES = { home: home };
-        PAGES.photos = buildSub('photos', [cloneForPage(N.slider), cloneForPage(N.ba)]);
+        PAGES.photos = buildSub('photos', [cloneForPage(N.slider), cloneForPage(N.ba), buildPhotosFullArchive()]);
         PAGES.scope = buildSub('scope', [cloneForPage(N.scope)]);
-        PAGES.process = buildSub('process', [cloneForPage(N.processLoop), cloneForPage(N.process)]);
+        PAGES.process = buildSub('process', [cloneForPage(N.processLoop), buildProcessTechSpec(), cloneForPage(N.process)]);
         PAGES.services = buildSub('services', [cloneForPage(N.services)]);
         PAGES.plans = buildSub('plans', [cloneForPage(N.plans), cloneForPage(N.hygieneMark)]);
         PAGES.faq = buildSub('faq', [cloneForPage(N.faq)]);
@@ -2498,11 +3175,38 @@
           render();
         }
 
+
+        // 4. Portfolio Filter Controller
+        function initPortfolioFilter() {
+          const tabs = document.querySelectorAll('#pfTabs .pf-tab');
+          const cards = document.querySelectorAll('#pfGrid .pf-card');
+          if (!tabs.length || !cards.length) return;
+
+          tabs.forEach(tab => {
+            tab.onclick = (e) => {
+              e.preventDefault();
+              tabs.forEach(t => t.classList.remove('active'));
+              tab.classList.add('active');
+
+              const filter = tab.getAttribute('data-filter');
+              cards.forEach(card => {
+                const cat = card.getAttribute('data-cat');
+                if (filter === 'all' || filter === cat) {
+                  card.style.display = 'flex';
+                } else {
+                  card.style.display = 'none';
+                }
+              });
+            };
+          });
+        }
+
         // Initialize All Showcases
         function initAll() {
           initProcShowcase();
           initBaSlider();
           initFallingIce();
+          initPortfolioFilter();
         }
 
         if (document.readyState === 'loading') {
