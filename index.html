@@ -632,16 +632,59 @@
       .svc-card p { font-size: 12.5px; line-height: 1.5; }
       .svc-card .main-tag { position: absolute; top: -11px; right: 14px; margin: 0; }
 
-      /* gradient spot 3 : consult (CTA) section, navy rectangle submit-style button */
-      .cta-sec { background: linear-gradient(180deg, #C5D9F2 0%, #DCE9FA 60%, #F6FAFE 100%); }
-      .cta-band { background: transparent; border: 0; box-shadow: none; border-radius: 0; padding: 8px 0; color: var(--ink); }
-      .cta-band h2 { color: var(--navy); }
-      .cta-band p { color: #33506e; }
-      .cta-band .btn-white { background: var(--navy); color: #ffffff; box-shadow: none; border-radius: 5px; }
-      .cta-band .btn-white:hover { background: var(--navy-2); color: #ffffff; }
-      .cta-band .btn-line { border-color: var(--navy); color: var(--navy); background: transparent; border-radius: 5px; }
-      .cta-band .btn-line:hover { border-color: var(--navy); background: rgba(255,255,255,.55); }
-      .cta-actions small { color: #52697e; }
+      /* ---------- 최종 CTA : 딥 네이비 프리미엄 배너 ---------- */
+      .cta-sec { background: radial-gradient(120% 150% at 82% 0%, #E8F3FC 0%, #F6FAFE 46%, #FFFFFF 100%); }
+      .cta-band {
+        position: relative; isolation: isolate; overflow: hidden;
+        background: linear-gradient(135deg, #08263F 0%, #0A2C4B 46%, #0B3252 100%);
+        border: 1px solid rgba(56, 189, 248, .18);
+        border-radius: 30px; padding: 58px 54px;
+        box-shadow: 0 34px 70px -30px rgba(8, 38, 63, .62), inset 0 1px 0 rgba(255, 255, 255, .07);
+        display: grid; grid-template-columns: 1.12fr .88fr; gap: 46px; align-items: center;
+        color: #d7e6f2;
+      }
+      .cta-band::before {
+        content: ""; position: absolute; z-index: -1; width: 560px; height: 560px; right: -150px; top: -240px;
+        background: radial-gradient(circle, rgba(56, 189, 248, .22) 0%, rgba(56, 189, 248, 0) 68%);
+      }
+      .cta-band::after {
+        content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none;
+        background: linear-gradient(180deg, rgba(255, 255, 255, .05) 0%, rgba(255, 255, 255, 0) 34%);
+      }
+      .cta-kicker { display: inline-flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 900; letter-spacing: .2em; color: #7FD4F7; margin: 0 0 18px; }
+      .cta-kicker::before { content: ""; width: 22px; height: 2px; border-radius: 2px; background: #38BDF8; }
+      .cta-band h2 { margin: 0 0 16px; color: #ffffff; font-size: clamp(27px, 3.3vw, 38px); font-weight: 900; letter-spacing: -.025em; line-height: 1.34; }
+      .cta-band h2 .accent { color: #38BDF8; }
+      .cta-band p.cta-desc { margin: 0; color: #A7C2D6; font-size: 16px; line-height: 1.72; max-width: 34em; }
+      .cta-points { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; padding: 0; }
+      .cta-points li { font-size: 13px; font-weight: 800; color: #CFE7F6; background: rgba(143, 216, 247, .10); border: 1px solid rgba(143, 216, 247, .20); border-radius: 999px; padding: 8px 15px; }
+      .cta-actions { display: flex; flex-direction: column; gap: 14px; }
+      .cta-actions .btn-call {
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+        width: 100%; padding: 21px 24px; border-radius: 16px; text-decoration: none;
+        background: linear-gradient(180deg, #ffffff 0%, #E6F5FF 100%); color: #08263F;
+        font-size: 19.5px; font-weight: 900; letter-spacing: -.01em; line-height: 1.25;
+        box-shadow: 0 16px 34px -12px rgba(0, 0, 0, .55), 0 0 0 1px rgba(56, 189, 248, .35);
+        transition: transform .18s ease, box-shadow .18s ease;
+      }
+      .cta-actions .btn-call:hover { transform: translateY(-2px); box-shadow: 0 20px 42px -12px rgba(0, 0, 0, .6), 0 0 0 1px rgba(56, 189, 248, .65); }
+      .cta-actions .btn-call small { font-size: 12.5px; font-weight: 700; color: #4A6A85; letter-spacing: .01em; }
+      .cta-sub { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .cta-sub a {
+        display: flex; align-items: center; justify-content: center; gap: 7px; padding: 13px 10px; border-radius: 12px;
+        text-decoration: none; border: 1px solid rgba(255, 255, 255, .22); color: #DBEAF6;
+        font-size: 13.5px; font-weight: 700; background: rgba(255, 255, 255, .03);
+        transition: border-color .18s ease, background .18s ease, color .18s ease;
+      }
+      .cta-sub a:hover { border-color: #38BDF8; color: #ffffff; background: rgba(56, 189, 248, .10); }
+      .cta-note { margin: 2px 0 0; text-align: center; color: #7C98AD; font-size: 12.5px; line-height: 1.6; }
+      @media (max-width: 900px) {
+        .cta-band { grid-template-columns: 1fr; gap: 30px; padding: 40px 26px; border-radius: 24px; }
+        .cta-band h2 { font-size: clamp(24px, 6vw, 30px); }
+        .cta-band p.cta-desc { font-size: 15px; }
+        .cta-sub { grid-template-columns: 1fr; }
+        .cta-actions .btn-call { font-size: 18px; padding: 18px 18px; }
+      }
 
       /* step numbers : flat navy outline, no gold text */
       .step .num { background: #ffffff; border-color: var(--navy); color: var(--navy); border-radius: 6px; }
@@ -1632,18 +1675,39 @@
         }
       }
 
-      /* ---------- FAQ : 홈에는 핵심 3선만 ---------- */
-      #page-home #faq .faq-item.extra { display: none; }
-      .faq-all-btn { display: flex; justify-content: center; margin-top: 30px; }
-      .faq-all-btn a {
-        display: inline-flex; align-items: center; gap: 8px;
-        background: var(--navy); color: #ffffff; text-decoration: none;
-        font-weight: 800; font-size: 15.5px; padding: 14px 26px; border-radius: 10px;
+      /* ---------- FAQ : 카테고리 뱃지 + 홈 인플레이스 펼치기 ---------- */
+      .faq-q { gap: 12px; }
+      .fq-tag {
+        flex: none; display: inline-flex; align-items: center; justify-content: center;
+        min-width: 48px; font-size: 11.5px; font-weight: 900; letter-spacing: .02em;
+        color: #0A74BD; background: var(--chip); border: 1px solid #D3E9F7;
+        border-radius: 7px; padding: 5px 9px;
+      }
+      .fq-qtext { flex: 1 1 auto; min-width: 0; }
+      .faq-item.open .fq-tag { background: #DCEFFB; border-color: #B9DDF2; }
+
+      .faq-toggle-wrap { display: flex; justify-content: center; margin-top: 30px; }
+      .faq-more-toggle {
+        display: inline-flex; align-items: center; gap: 9px; cursor: pointer;
+        background: var(--navy); color: #ffffff; border: 0; font: inherit;
+        font-weight: 800; font-size: 15.5px; padding: 14px 28px; border-radius: 999px;
         box-shadow: 0 8px 20px rgba(8, 38, 63, .18);
         transition: background .2s ease, transform .2s ease;
       }
-      .faq-all-btn a:hover { background: var(--navy-2); transform: translateY(-2px); }
-      #page-faq .faq-all-btn { display: none; }
+      .faq-more-toggle:hover { background: var(--navy-2); transform: translateY(-2px); }
+      .faq-more-toggle .ft-ico { display: inline-flex; transition: transform .3s ease; }
+      .faq-more-toggle[aria-expanded="true"] .ft-ico { transform: rotate(180deg); }
+
+      #page-home #faq .faq-item.extra {
+        max-height: 0; opacity: 0; margin-bottom: 0; border-width: 0; overflow: hidden;
+        transform: translateY(-8px);
+        transition: max-height .5s cubic-bezier(.22,.61,.36,1), opacity .34s ease,
+                    margin-bottom .34s ease, transform .4s ease;
+      }
+      #page-home #faq .faq.expanded .faq-item.extra {
+        opacity: 1; margin-bottom: 12px; border-width: 1px; transform: none;
+      }
+      #page-faq .faq-item.extra { max-height: none; opacity: 1; }
 
       /* ==================================================================
          v3 — 세부 페이지 시각화 · B&A 확장 · 공정 GIF 카드
@@ -1928,6 +1992,13 @@
         background: rgba(8,38,63,.66); border-radius: 999px; padding: 5px 11px; backdrop-filter: blur(6px);
       }
       .proc-live i { width: 6px; height: 6px; border-radius: 50%; background: #43e6a8; animation: pcPulse 1.8s infinite; }
+      .proc-note {
+        position: absolute; left: 14px; bottom: 14px; z-index: 2;
+        font-size: 11.5px; font-weight: 800; letter-spacing: .02em; color: #d8f6ff;
+        background: rgba(8,38,63,.62); border: 1px solid rgba(143,216,247,.28);
+        border-radius: 8px; padding: 7px 12px; backdrop-filter: blur(6px);
+      }
+      .proc-note[hidden] { display: none; }
       .proc-tag { display: inline-block; font-size: 12.5px; font-weight: 800; color: #0a74bd; background: var(--chip); padding: 5px 12px; border-radius: 8px; margin-bottom: 12px; }
       .proc-title { margin: 0 0 12px; font-size: clamp(22px, 2.4vw, 27px); font-weight: 900; color: var(--navy); letter-spacing: -.02em; line-height: 1.25; }
       .proc-desc { margin: 0; font-size: 16px; line-height: 1.75; color: var(--muted); }
@@ -2474,31 +2545,36 @@
           </div>
           <div class="faq reveal">
             <div class="faq-item">
-              <button class="faq-q" aria-expanded="false">청소 비용은 얼마인가요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+              <button class="faq-q" aria-expanded="false"><span class="fq-tag">비용</span><span class="fq-qtext">청소 비용은 얼마인가요?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>기종의 크기와 오염 상태에 따라 달라집니다. 전화로 모델명을 알려 주시거나 모델명·제빙기 사진을 보내 주시면 확인한 뒤 비용을 먼저 안내해 드리고, 현장에서 임의로 금액이 바뀌는 일은 없습니다. 증상이 있으면 함께 알려 주시면 안내가 더 정확합니다.</p></div>
             </div>
             <div class="faq-item">
-              <button class="faq-q" aria-expanded="false">청소에 시간은 얼마나 걸리나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+              <button class="faq-q" aria-expanded="false"><span class="fq-tag">시간</span><span class="fq-qtext">청소에 시간은 얼마나 걸리나요?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>일반적인 업소용 제빙기는 1시간에서 2시간 사이가 많고, 대형 기종이나 오염이 심한 경우 더 걸릴 수 있습니다. 상담 때 예상 소요 시간을 함께 안내해 드립니다.</p></div>
             </div>
             <div class="faq-item extra">
-              <button class="faq-q" aria-expanded="false">정기 청소와 1회 청소는 뭐가 다른가요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+              <button class="faq-q" aria-expanded="false"><span class="fq-tag">정기관리</span><span class="fq-qtext">정기 청소와 1회 청소는 뭐가 다른가요?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>청소 내용은 같습니다. 분해 세척부터 스팀 살균까지 동일한 과정으로 진행되고, 차이는 방문 횟수뿐입니다. 방문 간격은 정해진 기준이 아니라 매장의 얼음 사용량과 기계 상태를 보고 고객과 상의해 정합니다.</p></div>
             </div>
             <div class="faq-item extra">
-              <button class="faq-q" aria-expanded="false">영업 중에도 청소가 가능한가요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+              <button class="faq-q" aria-expanded="false"><span class="fq-tag">방문</span><span class="fq-qtext">영업 중에도 청소가 가능한가요?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>가능합니다. 다만 작업 중에는 제빙기를 멈춰야 합니다. 얼음은 미리 비축해 두시거나 저희가 보관해 드립니다. 손님께 노출될 수 있기 때문에 보통 마감 후에 진행합니다. 일정은 고객님과 맞춰 진행합니다.</p></div>
             </div>
             <div class="faq-item">
-              <button class="faq-q" aria-expanded="false">제빙기 모델명을 모릅니다. 그래도 되나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+              <button class="faq-q" aria-expanded="false"><span class="fq-tag">기종</span><span class="fq-qtext">제빙기 모델명을 모릅니다. 그래도 되나요?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>네, 괜찮습니다. 전화로 모델명을 알려 주셔도 되고, 모델명이 적힌 스티커 사진을 찍어 보내 주셔도 됩니다. 그것도 어려우면 제빙기 전체 사진을 보내 주세요. 사진을 보고 구분해 드립니다. 호시자키·카이저부터 매니토웍·스카치맨까지, 전 브랜드 모두 진행합니다.</p></div>
             </div>
             <div class="faq-item extra">
-              <button class="faq-q" aria-expanded="false">출장이 안 되는 지역이면 어떻게 하나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+              <button class="faq-q" aria-expanded="false"><span class="fq-tag">지역</span><span class="fq-qtext">출장이 안 되는 지역이면 어떻게 하나요?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <div class="faq-a"><p>서울, 경기, 인천, 수도권 지역은 방문이 가능합니다. 권역 경계에 있는 지역은 일정에 따라 방문이 가능할 수 있으니, 전화 상담 때 지역을 알려 주시면 확인해 드립니다.</p></div>
             </div>
           </div>
-          <div class="faq-all-btn"><a href="#/faq">자주 묻는 질문 6가지 전체보기 →</a></div>
+          <div class="faq-toggle-wrap">
+            <button type="button" class="faq-more-toggle" aria-expanded="false" aria-controls="faq">
+              <span class="ft-label">자주 묻는 질문 6가지 전체보기</span>
+              <span class="ft-ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -2506,15 +2582,23 @@
       <section class="cta-sec">
         <div class="wrap">
           <div class="cta-band reveal">
-            <div>
-              <h2>얼음 맛이 달라졌다면,<br />지금이 청소할 때입니다</h2>
-              <p>전화로 모델명을 알려 주시거나, 모델명 스티커나 제빙기 사진 한 장만 보내 주셔도 상담이 시작됩니다. 증상이 있으면 함께 알려 주세요.</p>
+            <div class="cta-copy">
+              <p class="cta-kicker">FINAL CHECK</p>
+              <h2>얼음 맛이 달라졌다면,<br />지금이 <span class="accent">청소할 때</span>입니다</h2>
+              <p class="cta-desc">전화로 모델명을 알려 주시거나, 모델명 스티커나 제빙기 사진 한 장만 보내 주셔도 상담이 시작됩니다. 증상이 있으면 함께 알려 주세요.</p>
+              <ul class="cta-points">
+                <li>모델명 · 사진 한 장이면 상담</li>
+                <li>방문 일정 조율</li>
+                <li>비용 먼저 안내</li>
+              </ul>
             </div>
             <div class="cta-actions">
-              <span class="btn btn-white" aria-disabled="true">전화 상담 · 대표번호 준비중</span>
-              <a class="btn btn-line" href="https://blog.naver.com/clean_magixon" target="_blank" rel="noopener">아이스랩 블로그 보기</a>
-              <a class="btn btn-line" href="https://www.youtube.com/channel/UCBtpPdt8wZtt5ZJCsIk8JZw" target="_blank" rel="noopener">유튜브 채널 보기</a>
-              <small>상담과 예약은 전화로만 받습니다. 대표번호는 준비 중이며, 정해지면 이곳에 표시됩니다.</small>
+              <span class="btn-call" aria-disabled="true">전화 상담 · 대표번호 준비중<small>모델명과 제빙기 사진 한 장이면 충분합니다</small></span>
+              <div class="cta-sub">
+                <a href="https://blog.naver.com/clean_magixon" target="_blank" rel="noopener">아이스랩 블로그 보기</a>
+                <a href="https://www.youtube.com/channel/UCBtpPdt8wZtt5ZJCsIk8JZw" target="_blank" rel="noopener">유튜브 채널 보기</a>
+              </div>
+              <p class="cta-note">상담과 예약은 전화로만 받습니다. 대표번호는 준비 중이며, 정해지면 이곳에 표시됩니다.</p>
             </div>
           </div>
         </div>
@@ -2586,6 +2670,41 @@
           if (!isOpen) {
             item.classList.add('open');
             btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // FAQ : 홈에서 '전체보기'를 누르면 세부페이지로 이동하지 않고 나머지 질문을 그 자리에서 펼친다
+        document.addEventListener('click', function (e) {
+          var btn = e.target && e.target.closest ? e.target.closest('.faq-more-toggle') : null;
+          if (!btn) return;
+          var sec = btn.closest('section');
+          var box = sec ? sec.querySelector('.faq') : null;
+          if (!box) return;
+          var items = box.querySelectorAll('.faq-item.extra');
+          var label = btn.querySelector('.ft-label');
+          var isOpen = box.classList.contains('expanded');
+          if (isOpen) {
+            items.forEach(function (it) { it.style.maxHeight = it.scrollHeight + 'px'; });
+            requestAnimationFrame(function () {
+              box.classList.remove('expanded');
+              items.forEach(function (it) { it.style.maxHeight = '0px'; });
+            });
+            btn.setAttribute('aria-expanded', 'false');
+            if (label) label.textContent = '자주 묻는 질문 6가지 전체보기';
+          } else {
+            box.classList.add('expanded');
+            items.forEach(function (it) { it.style.maxHeight = it.scrollHeight + 'px'; });
+            btn.setAttribute('aria-expanded', 'true');
+            if (label) label.textContent = '질문 접기';
+            window.setTimeout(function () {
+              if (box.classList.contains('expanded')) {
+                items.forEach(function (it) { it.style.maxHeight = 'none'; });
+              }
+            }, 560);
+            var y = btn.getBoundingClientRect().top;
+            if (y > window.innerHeight - 120) {
+              window.scrollBy({ top: Math.min(180, y - window.innerHeight + 160), behavior: 'smooth' });
+            }
           }
         });
 
@@ -2709,11 +2828,11 @@
           plans: { label: 'ONE-TIME · REGULAR', title: '이용 방식', desc: '한 번만 맡기셔도, 정기적으로 맡기셔도 됩니다.', img: 'assets/ice-cubes.jpg' },
           area: { label: 'SERVICE AREA', title: '출장 지역', desc: '서울·경기·인천 수도권 전 지역을 출장합니다.', img: 'assets/visit.jpg' },
           faq: { label: 'FAQ', title: '자주 묻는 질문', desc: '상담 전에 궁금한 점을 모았습니다.', img: '' },
-          'svc-ice': { label: 'CLEAN SERVICE', title: '제빙기 청소', desc: '완전 분해 세척 · 고온 스팀 살균', img: 'assets/machine.jpg' },
-          'svc-grinder': { label: 'CLEAN SERVICE', title: '그라인더 청소', desc: '원두 기름때와 찌꺼기 분해 세척', img: 'assets/cleaning-open.jpg' },
-          'svc-ac': { label: 'CLEAN SERVICE', title: '에어컨 청소', desc: '필터·내부 세척, 냄새와 곰팡이 제거', img: 'assets/ice-cubes.jpg' },
-          'svc-frost': { label: 'CLEAN SERVICE', title: '냉동고 성애제거', desc: '두껍게 언 성에 제거와 내부 정리', img: 'assets/deep-clean.jpg' },
-          'svc-store': { label: 'CLEAN SERVICE', title: '매장청소', desc: '카페·매장 전체 위생 청소', img: 'assets/field-record.jpg' }
+          'svc-ice': { label: 'CLEAN SERVICE', title: '제빙기 청소', desc: '완전 분해 세척 · 고온 스팀 살균', img: 'assets/machine.jpg', alt: '업소용 제빙기 외관' },
+          'svc-grinder': { label: 'CLEAN SERVICE', title: '그라인더 청소', desc: '원두 기름때와 찌꺼기 분해 세척', img: 'assets/svc-grinder.jpg', alt: '커피 그라인더 분쇄부와 원두 찌꺼기' },
+          'svc-ac': { label: 'CLEAN SERVICE', title: '에어컨 청소', desc: '필터·내부 세척, 냄새와 곰팡이 제거', img: 'assets/svc-ac.jpg', alt: '매장 벽걸이·시스템 에어컨 실내기' },
+          'svc-frost': { label: 'CLEAN SERVICE', title: '냉동고 성애제거', desc: '두껍게 언 성에 제거와 내부 정리', img: 'assets/svc-frost.jpg', alt: '성에가 두껍게 낀 업소용 냉동고 내부' },
+          'svc-store': { label: 'CLEAN SERVICE', title: '매장청소', desc: '카페·매장 전체 위생 청소', img: 'assets/svc-store.jpg', alt: '카페 카운터와 홀 위생 청소' }
         };
         var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
         var TOGETHER = '제빙기 청소를 중심으로 진행하는 클린서비스 중 하나로, 제빙기 청소와 함께 맡기실 수 있습니다. 상담은 전화로 받으며, 상태를 알려 주시면 일정을 맞춰 방문합니다.';
@@ -2829,7 +2948,7 @@
           }).join('') + '</div>';
           var meta = SUB[key];
           if (meta && meta.img) {
-            html += '<figure class="svc-photo"><img src="' + meta.img + '" alt="' + meta.title + ' 현장" loading="lazy" />' +
+            html += '<figure class="svc-photo"><img src="' + meta.img + '" alt="' + (meta.alt || meta.title) + '" loading="lazy" />' +
               '<figcaption><strong>' + meta.title + '</strong>' + meta.desc + '</figcaption></figure>';
           }
           return html;
@@ -2979,7 +3098,7 @@
           { no: 'STEP 05', title: '스팀 고압세척 · 살균', gif: 'gif-steam', alt: '120℃ 고온 스팀을 냉판에 분사하는 모습',
             desc: '깊은 내부를 스팀 고압세척하고 헹궈 낸 뒤, 120℃ 고온 스팀으로 곰팡이와 세균을 살균합니다. 헹굼까지 마쳐 약품 잔류를 남기지 않습니다.',
             tags: ['120℃ 고온 스팀', '잔류 세제 0%'] },
-          { no: 'STEP 06', title: '조립 · 얼음 확인 · 정리', img: 'assets/process-pure-ice.jpg', alt: '세척 후 맑고 투명한 각얼음',
+          { no: 'STEP 06', title: '조립 · 얼음 확인 · 정리', gif: 'gif-ice-drop', alt: '제빙기에서 얼음이 떨어져 저장고로 쏟아지는 현장 영상',
             desc: '재조립 후 전원을 연결해 새 얼음이 투명하게 잘 얼고 모양이 고르게 나오는지 확인하고, 작업한 주변까지 정리합니다.',
             tags: ['투명도 · 모양 검수', '주변 정리까지'] }
         ];
@@ -3013,13 +3132,14 @@
             gif: 'gif-rinse', alt: '고압 직수로 부품을 헹구는 모습' },
           { badge: 'STEP 04', tag: '현장 제빙 품질 확인', title: '크리스탈 얼음 제빙 검증',
             desc: '재조립 후 현장에서 기계를 다시 켜 얼음의 투명도와 모양, 잡내 유무를 점주님과 함께 확인합니다.',
-            img: 'assets/process-pure-ice.jpg', alt: '세척 후 맑고 투명한 각얼음' }
+            gif: 'gif-ice-drop', alt: '제빙기 격자에서 얼음이 떨어져 저장고로 쏟아지는 현장 영상', note: '실제 현장 촬영 · 제빙 투하' }
         ];
 
         function buildProcShowcase() {
           var tabs = V3_PROC.map(function (p, i) {
             return '<button class="proc-tab' + (i === 0 ? ' active' : '') + '" type="button" data-step="' + i + '"' +
               ' data-gif="' + (p.gif || '') + '" data-still="' + (p.img || '') + '" data-badge="' + p.badge + '" data-tag="' + p.tag + '"' +
+              ' data-note="' + (p.note || '') + '"' +
               ' data-title="' + p.title + '" data-desc="' + p.desc + '"' +
               ' aria-selected="' + (i === 0 ? 'true' : 'false') + '">' +
               '<span class="pt-badge">' + p.badge + '</span><span class="pt-title">' + p.title + '</span>' +
@@ -3033,7 +3153,7 @@
             '</div>' +
             '<div class="proc-inst" data-proc-inst><div class="proc-tabs" role="tablist">' + tabs + '</div>' +
             '<div class="proc-stage">' +
-            '<div class="proc-media"><img class="proc-img" src="assets/process-steam.jpg" alt="120℃ 고온 스팀 살균" /><span class="proc-live"><i></i>LIVE</span></div>' +
+            '<div class="proc-media"><img class="proc-img" src="assets/process-steam.jpg" alt="120℃ 고온 스팀 살균" /><span class="proc-live"><i></i>LIVE</span><span class="proc-note" hidden></span></div>' +
             '<div class="proc-copy">' +
             '<span class="proc-tag">' + V3_PROC[0].tag + '</span><h3 class="proc-title">' + V3_PROC[0].title + '</h3>' +
             '<p class="proc-desc">' + V3_PROC[0].desc + '</p>' +
@@ -3846,6 +3966,12 @@
           }
           var live = inst.querySelector('.proc-live');
           if (live) live.style.display = still ? 'none' : '';
+          var note = inst.querySelector('.proc-note');
+          if (note) {
+            var noteText = tab.getAttribute('data-note') || '';
+            note.textContent = noteText;
+            note.hidden = !noteText;
+          }
           var tag = inst.querySelector('.proc-tag');
           var title = inst.querySelector('.proc-title');
           var desc = inst.querySelector('.proc-desc');
