@@ -1645,6 +1645,283 @@
       .faq-all-btn a:hover { background: var(--navy-2); transform: translateY(-2px); }
       #page-faq .faq-all-btn { display: none; }
 
+      /* ==================================================================
+         v3 — 세부 페이지 시각화 · B&A 확장 · 공정 GIF 카드
+         ================================================================== */
+      :root {
+        --steel: linear-gradient(145deg, #ffffff 0%, #e4edf4 24%, #bccddb 46%, #f4f8fb 64%, #c8d7e4 82%, #eef4f9 100%);
+        --steel-ink: #12314d;
+      }
+
+      .v3-kicker {
+        display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 800;
+        letter-spacing: .16em; color: #0a74bd; background: var(--chip);
+        border-radius: 999px; padding: 6px 14px; margin-bottom: 14px;
+      }
+      .v3-sec-head { margin: 0 auto 34px; max-width: 800px; text-align: center; }
+      .v3-sec-head h2 { font-size: clamp(26px, 3.2vw, 36px); font-weight: 900; color: var(--navy); letter-spacing: -.02em; margin: 0 0 12px; line-height: 1.28; }
+      .v3-sec-head p { margin: 0; font-size: 16.5px; color: var(--muted); line-height: 1.65; }
+      .v3-band + .v3-band { margin-top: 72px; }
+
+      /* ---------- B&A 확장 ---------- */
+      .ba-slider-wrap { height: clamp(340px, 46vw, 520px); }
+      .ba-instance .ba-nav-tabs { gap: 8px; }
+      .ba-instance .ba-nav-tab { padding: 11px 18px; font-size: 14px; border-radius: 999px; letter-spacing: -.01em; }
+      .ba-cap { margin: 20px auto 0; max-width: 780px; text-align: center; font-size: 15.5px; color: var(--muted); line-height: 1.7; }
+      .ba-cap strong { display: block; margin-bottom: 6px; font-size: 17px; font-weight: 800; color: var(--navy); }
+      .ba-stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+      .ba-stat { font-size: 12.5px; font-weight: 800; border-radius: 999px; padding: 6px 13px; background: var(--surface); border: 1px solid var(--line); color: var(--blue-strong); }
+      .ba-stat.bad { color: #b83b3b; background: #fdf1f1; border-color: #f2d6d6; }
+      .ba-instance .ba-slider-handle { font-size: 13px; letter-spacing: .06em; }
+      @media (max-width: 700px) {
+        .ba-instance .ba-nav-tab { padding: 9px 13px; font-size: 12.5px; }
+        .ba-slider-wrap { height: 340px; }
+      }
+
+      /* ---------- 프리미엄 공정 카드 ---------- */
+      .pc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+      .pc-card {
+        position: relative; display: flex; flex-direction: column; overflow: hidden;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+        box-shadow: 0 10px 28px rgba(8, 38, 63, .06); transition: transform .3s ease, box-shadow .3s ease;
+      }
+      .pc-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+      .pc-media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #0b2540; }
+      .pc-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s cubic-bezier(.22,.61,.36,1); }
+      .pc-card:hover .pc-media img { transform: scale(1.05); }
+      .pc-media::after {
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background: linear-gradient(180deg, rgba(8,38,63,.42) 0%, rgba(8,38,63,0) 38%, rgba(8,38,63,.06) 100%);
+      }
+      .pc-num {
+        position: absolute; top: 14px; left: 14px; z-index: 2;
+        font-size: 11.5px; font-weight: 900; letter-spacing: .14em; color: #bfe8fb;
+        background: rgba(8, 38, 63, .72); border: 1px solid rgba(143, 216, 247, .35);
+        border-radius: 999px; padding: 5px 11px; backdrop-filter: blur(6px);
+      }
+      .pc-live {
+        position: absolute; top: 14px; right: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px;
+        font-size: 10.5px; font-weight: 900; letter-spacing: .12em; color: #d8f6ff;
+        background: rgba(8, 38, 63, .72); border-radius: 999px; padding: 5px 11px; backdrop-filter: blur(6px);
+      }
+      .pc-live i { width: 6px; height: 6px; border-radius: 50%; background: #43e6a8; box-shadow: 0 0 0 0 rgba(67,230,168,.7); animation: pcPulse 1.8s infinite; }
+      @keyframes pcPulse { 0% { box-shadow: 0 0 0 0 rgba(67,230,168,.65); } 70% { box-shadow: 0 0 0 7px rgba(67,230,168,0); } 100% { box-shadow: 0 0 0 0 rgba(67,230,168,0); } }
+      .pc-body { padding: 20px 21px 23px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+      .pc-body h3 { margin: 0; font-size: 18.5px; font-weight: 850; color: var(--navy); letter-spacing: -.015em; }
+      .pc-body p { margin: 0; font-size: 14.5px; line-height: 1.68; color: var(--muted); }
+      .pc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+      .pc-tags span { font-size: 12px; font-weight: 800; color: var(--blue-strong); background: var(--chip); border-radius: 8px; padding: 5px 10px; }
+      .pc-rail { height: 3px; background: linear-gradient(90deg, #0a74bd, #8fd8f7 55%, rgba(143,216,247,0)); }
+
+      /* ---------- 청소 범위 : 부품 카드 ---------- */
+      .sp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+      .sp-card {
+        position: relative; padding: 22px 20px 20px; border-radius: 18px; background: var(--surface);
+        border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(8,38,63,.05);
+        transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+      }
+      .sp-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: #b7d6ea; }
+      .sp-ico {
+        width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; margin-bottom: 14px;
+        background: linear-gradient(160deg, #eaf7ff 0%, #d4e9f7 100%); color: #0a74bd;
+        border: 1px solid #d5e8f6; box-shadow: inset 0 1px 0 #fff;
+      }
+      .sp-ico svg { width: 27px; height: 27px; }
+      .sp-no { position: absolute; top: 18px; right: 18px; font-size: 12px; font-weight: 900; letter-spacing: .1em; color: #b9d2e2; }
+      .sp-card h3 { margin: 0 0 6px; font-size: 17px; font-weight: 850; color: var(--navy); letter-spacing: -.01em; }
+      .sp-method { display: inline-block; font-size: 12px; font-weight: 800; color: #0a74bd; background: var(--chip); border-radius: 7px; padding: 4px 9px; margin-bottom: 9px; }
+      .sp-card p { margin: 0; font-size: 13.6px; line-height: 1.65; color: var(--muted); }
+      .sp-wide {
+        grid-column: span 2; display: grid; grid-template-columns: 1.05fr .95fr; gap: 0; padding: 0; overflow: hidden;
+      }
+      .sp-wide img { width: 100%; height: 100%; object-fit: cover; min-height: 210px; }
+      .sp-wide .sp-wide-body { padding: 22px 22px; }
+      .sp-wide h3 { margin: 0 0 8px; font-size: 17.5px; font-weight: 850; color: var(--navy); }
+      .sp-wide p { margin: 0 0 10px; font-size: 13.8px; color: var(--muted); line-height: 1.65; }
+
+      /* ---------- 제빙기 종류 : 메탈릭 뱃지 ---------- */
+      .tb-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+      .tb-card {
+        padding: 20px 18px 18px; border-radius: 18px; background: var(--surface);
+        border: 1px solid var(--line); box-shadow: 0 8px 22px rgba(8,38,63,.05);
+        transition: transform .28s ease, box-shadow .28s ease;
+      }
+      .tb-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+      .tb-badge {
+        width: 62px; height: 62px; border-radius: 17px; display: grid; place-items: center;
+        background: var(--steel); border: 1px solid #cfdde8; margin-bottom: 13px;
+        box-shadow: inset 0 1px 0 #fff, inset 0 -2px 6px rgba(20,50,80,.10), 0 6px 14px rgba(8,38,63,.10);
+        font-weight: 900; font-size: 17px; letter-spacing: -.03em; color: var(--steel-ink);
+      }
+      .tb-badge.sm { font-size: 13px; letter-spacing: -.02em; }
+      .tb-card h4 { margin: 0 0 2px; font-size: 16.5px; font-weight: 850; color: var(--navy); }
+      .tb-origin { font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #0a74bd; margin: 0 0 8px; }
+      .tb-card p { margin: 0; font-size: 13.6px; line-height: 1.62; color: var(--muted); }
+
+      .sh-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+      .sh-card {
+        text-align: center; padding: 20px 14px 18px; border-radius: 18px; border: 1px solid var(--line);
+        background: linear-gradient(180deg, var(--surface) 0%, #f2f9fe 100%);
+        transition: transform .28s ease, box-shadow .28s ease;
+      }
+      .sh-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+      .sh-card svg { width: 74px; height: 74px; margin: 0 auto 8px; display: block; filter: drop-shadow(0 6px 12px rgba(10,116,189,.16)); }
+      .sh-card h4 { margin: 0 0 6px; font-size: 16.5px; font-weight: 850; color: var(--navy); }
+      .sh-card p { margin: 0; font-size: 13.2px; line-height: 1.6; color: var(--muted); }
+      .sh-en { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .16em; color: #8fb3c9; margin-top: 8px; }
+
+      .spec-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .spec-card { padding: 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+      .spec-card h4 { margin: 0 0 4px; font-size: 16.5px; font-weight: 850; color: var(--navy); }
+      .spec-card .tag { font-size: 12px; font-weight: 800; color: #0a74bd; }
+      .spec-card p { margin: 8px 0 0; font-size: 13.8px; color: var(--muted); line-height: 1.65; }
+
+      /* ---------- 안심 스티커 목업 ---------- */
+      .zone-stage { display: grid; grid-template-columns: 1.02fr .98fr; gap: 26px; align-items: stretch; }
+      .mock { position: relative; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); background: #0d253c; }
+      .mock-door { min-height: 420px; }
+      .mock-door img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.85) brightness(.72) blur(1px); transform: scale(1.04); }
+      .mock-glass {
+        position: absolute; inset: 0;
+        background: linear-gradient(115deg, rgba(255,255,255,.30) 0%, rgba(255,255,255,.04) 26%, rgba(255,255,255,0) 46%, rgba(255,255,255,.14) 62%, rgba(255,255,255,.02) 100%);
+        backdrop-filter: blur(.5px);
+      }
+      .mock-plaque {
+        position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-1.2deg);
+        width: min(74%, 300px); padding: 26px 22px 22px; border-radius: 16px; text-align: center;
+        background: linear-gradient(150deg, rgba(255,255,255,.94), rgba(236,247,255,.88));
+        border: 1px solid rgba(255,255,255,.85);
+        box-shadow: 0 26px 50px rgba(3,20,36,.45), inset 0 1px 0 #fff;
+        backdrop-filter: blur(2px);
+      }
+      .mock-plaque .mp-top { font-size: 10.5px; font-weight: 900; letter-spacing: .28em; color: #0a74bd; }
+      .mock-plaque .mp-title { font-size: 21px; font-weight: 900; letter-spacing: -.02em; color: #08263f; margin: 8px 0 2px; line-height: 1.18; }
+      .mock-plaque .mp-sub { font-size: 12.5px; font-weight: 800; color: #0a74bd; letter-spacing: .06em; }
+      .mock-plaque .mp-line { height: 2px; width: 44px; background: #0a74bd; margin: 12px auto; border-radius: 2px; opacity: .55; }
+      .mock-plaque .mp-body { font-size: 11.5px; line-height: 1.6; color: #4a6478; }
+      .mock-plaque .mp-foot { margin-top: 12px; font-size: 9.5px; font-weight: 800; letter-spacing: .14em; color: #93a9b8; }
+      .mock-screw { position: absolute; width: 13px; height: 13px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffffff, #cdd9e3 45%, #93a7b7 100%); box-shadow: 0 2px 4px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.7); }
+      .mock-screw.tl { left: 12px; top: 12px; } .mock-screw.tr { right: 12px; top: 12px; }
+      .mock-screw.bl { left: 12px; bottom: 12px; } .mock-screw.br { right: 12px; bottom: 12px; }
+      .mock-tag { position: absolute; left: 20px; bottom: 18px; font-size: 11.5px; font-weight: 800; letter-spacing: .1em; color: #d7ecf9; background: rgba(8,38,63,.62); border-radius: 999px; padding: 6px 13px; backdrop-filter: blur(6px); }
+
+      .mock-stand { min-height: 420px; display: grid; place-items: center; background: radial-gradient(120% 90% at 50% 10%, #eef7fd 0%, #dfeefa 45%, #cfe4f4 100%); }
+      .stand-scene { position: relative; perspective: 900px; width: 100%; height: 100%; display: grid; place-items: center; padding: 40px 20px; }
+      .stand-shadow { position: absolute; left: 50%; bottom: 54px; transform: translateX(-50%); width: 62%; height: 26px; background: radial-gradient(ellipse at center, rgba(12,44,70,.30), rgba(12,44,70,0) 70%); filter: blur(3px); }
+      .stand {
+        position: relative; width: min(78%, 320px); transform: rotateY(-16deg) rotateX(6deg);
+        transform-style: preserve-3d; filter: drop-shadow(0 24px 30px rgba(12,44,70,.20));
+      }
+      .stand-face {
+        border-radius: 10px; padding: 22px 20px 20px; text-align: center;
+        background: linear-gradient(155deg, #ffffff 0%, #f4fbff 55%, #e7f4fd 100%);
+        border: 1px solid rgba(255,255,255,.9); box-shadow: inset 0 1px 0 #fff, inset 0 -8px 18px rgba(10,116,189,.06);
+      }
+      .stand-face .sf-top { font-size: 9.5px; font-weight: 900; letter-spacing: .26em; color: #0a74bd; }
+      .stand-face .sf-title { font-size: 18px; font-weight: 900; color: #08263f; letter-spacing: -.02em; margin: 7px 0 3px; }
+      .stand-face .sf-sub { font-size: 11.5px; font-weight: 800; color: #0a74bd; }
+      .stand-face .sf-dot { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 12px; }
+      .stand-face .sf-dot i { width: 5px; height: 5px; border-radius: 50%; background: #8fd8f7; }
+      .stand-base {
+        height: 14px; margin: 0 -10px; border-radius: 0 0 8px 8px;
+        background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(190,214,230,.75));
+        box-shadow: 0 8px 14px rgba(12,44,70,.18);
+      }
+      .mock-stand .mock-tag { color: #37627f; background: rgba(255,255,255,.8); border: 1px solid #d9e8f3; }
+
+      .benefit-list { list-style: none; margin: 26px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .benefit-list li { display: flex; gap: 10px; align-items: flex-start; padding: 15px 16px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); font-size: 13.6px; color: var(--muted); line-height: 1.55; }
+      .benefit-list b { display: block; color: var(--navy); font-size: 14.5px; margin-bottom: 3px; }
+      .benefit-list .bl-ico { flex: none; width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; background: var(--chip); color: #0a74bd; font-size: 13px; }
+
+      /* ---------- 출장 지역 인포그래픽 ---------- */
+      .area-stage { display: grid; grid-template-columns: .92fr 1.08fr; gap: 30px; align-items: center; }
+      .area-map { position: relative; border-radius: 22px; padding: 18px; background: radial-gradient(110% 90% at 30% 0%, #f4fbff 0%, #e6f2fb 55%, #dbeaf7 100%); border: 1px solid var(--line); box-shadow: 0 14px 36px rgba(8,38,63,.08); }
+      .area-map svg { width: 100%; height: auto; display: block; }
+      .area-legend { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 10px; font-size: 12.5px; font-weight: 800; color: #4c6b84; }
+      .area-legend span { display: inline-flex; align-items: center; gap: 6px; }
+      .area-legend i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+      .area-zone-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 26px; }
+      .area-zone { padding: 20px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 8px 22px rgba(8,38,63,.05); }
+      .area-zone h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 4px; font-size: 17.5px; font-weight: 850; color: var(--navy); }
+      .area-zone h3 i { width: 10px; height: 10px; border-radius: 3px; background: #0a74bd; display: inline-block; }
+      .area-zone .zc { font-size: 12.5px; font-weight: 800; color: #0a74bd; letter-spacing: .02em; margin: 0 0 12px; }
+      .area-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+      .area-chips span { font-size: 12.3px; font-weight: 700; color: var(--muted); background: var(--surface-2); border-radius: 7px; padding: 4px 9px; }
+      .area-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
+      .area-flow div { padding: 16px 18px; border-radius: 14px; background: linear-gradient(120deg, #08263f, #0b3d63); color: #d9edf9; font-size: 13.6px; line-height: 1.55; }
+      .area-flow b { display: block; color: #8fd8f7; font-size: 12px; letter-spacing: .14em; margin-bottom: 5px; }
+
+      /* ---------- 클린서비스 요약 카드 ---------- */
+      .svc-sum-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 26px 0 4px; }
+      .svc-sum { padding: 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 8px 22px rgba(8,38,63,.05); }
+      .svc-sum .ss-k { font-size: 11.5px; font-weight: 900; letter-spacing: .14em; color: #0a74bd; }
+      .svc-sum b { display: block; font-size: 15.5px; color: var(--navy); margin: 5px 0 6px; }
+      .svc-sum p { margin: 0; font-size: 12.8px; color: var(--muted); line-height: 1.55; }
+      .svc-photo { position: relative; margin-top: 20px; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+      .svc-photo img { width: 100%; height: clamp(220px, 34vw, 340px); object-fit: cover; display: block; }
+      .svc-photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 44px 24px 20px; color: #eaf6ff; font-size: 14.5px; background: linear-gradient(180deg, rgba(8,38,63,0), rgba(8,38,63,.82)); }
+      .svc-photo figcaption strong { display: block; font-size: 17px; margin-bottom: 4px; color: #fff; }
+
+      /* ---------- 반응형 ---------- */
+      @media (max-width: 1024px) {
+        .pc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .sp-grid, .tb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .sh-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .zone-stage, .area-stage { grid-template-columns: 1fr; }
+        .mock-door, .mock-stand { min-height: 360px; }
+        .benefit-list, .area-flow { grid-template-columns: 1fr; }
+        .area-zone-grid, .svc-sum-grid { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 720px) {
+        .pc-grid, .sp-grid, .tb-grid, .sh-grid, .area-zone-grid, .svc-sum-grid, .spec-card-grid { grid-template-columns: 1fr; }
+        .sp-wide { grid-column: span 1; grid-template-columns: 1fr; }
+        .pc-body { padding: 18px 18px 20px; }
+        .v3-band + .v3-band { margin-top: 52px; }
+        .mock-door, .mock-stand { min-height: 320px; }
+        .mock-plaque { width: 82%; padding: 20px 16px 18px; }
+        .mock-plaque .mp-title { font-size: 18px; }
+      }
+      @media (prefers-color-scheme: dark) {
+        .ba-stat.bad { background: #3a1b1b; border-color: #5c2b2b; color: #ffb3b3; }
+        .mock-stand { background: radial-gradient(120% 90% at 50% 10%, #0e2a46 0%, #0b2036 60%, #081a2c 100%); }
+        .stand-face { background: linear-gradient(155deg, #f7fbff 0%, #eaf6ff 60%, #dcecf8 100%); }
+        .sh-card { background: linear-gradient(180deg, var(--surface) 0%, #0e2a46 100%); }
+        .sp-ico { background: linear-gradient(160deg, #123453 0%, #0e2a46 100%); border-color: #1d3d5c; }
+        .tb-badge { border-color: #22456a; }
+      }
+
+      /* ---------- 4대 공정 쇼케이스 (세부페이지 인스턴스) ---------- */
+      .proc-inst .proc-tabs { margin-bottom: 26px; }
+      .proc-inst .pt-badge { display: block; font-size: 11.5px; font-weight: 800; letter-spacing: .04em; color: #0a74bd; margin-bottom: 5px; }
+      .proc-inst .pt-title { display: block; font-size: 15.5px; font-weight: 800; color: var(--navy); line-height: 1.35; letter-spacing: -.01em; }
+      .proc-media { position: relative; border-radius: 18px; overflow: hidden; background: #0b2540; box-shadow: 0 16px 38px rgba(8,38,63,.16); }
+      .proc-media::before { content: ""; display: block; padding-top: 68%; }
+      .proc-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .3s ease; }
+      .proc-live {
+        position: absolute; top: 14px; left: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px;
+        font-size: 10.5px; font-weight: 900; letter-spacing: .14em; color: #d8f6ff;
+        background: rgba(8,38,63,.66); border-radius: 999px; padding: 5px 11px; backdrop-filter: blur(6px);
+      }
+      .proc-live i { width: 6px; height: 6px; border-radius: 50%; background: #43e6a8; animation: pcPulse 1.8s infinite; }
+      .proc-tag { display: inline-block; font-size: 12.5px; font-weight: 800; color: #0a74bd; background: var(--chip); padding: 5px 12px; border-radius: 8px; margin-bottom: 12px; }
+      .proc-title { margin: 0 0 12px; font-size: clamp(22px, 2.4vw, 27px); font-weight: 900; color: var(--navy); letter-spacing: -.02em; line-height: 1.25; }
+      .proc-desc { margin: 0; font-size: 16px; line-height: 1.75; color: var(--muted); }
+      .proc-nav { display: flex; align-items: center; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
+      .proc-prev, .proc-next {
+        width: 44px; height: 44px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface);
+        color: var(--navy); font-size: 19px; font-weight: 800; cursor: pointer; display: grid; place-items: center; transition: all .2s;
+      }
+      .proc-prev:hover, .proc-next:hover { border-color: #0a74bd; color: #0a74bd; }
+      .proc-link {
+        margin-left: auto; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+        background: var(--navy); color: #fff; font-size: 14px; font-weight: 800; padding: 12px 20px; border-radius: 10px;
+      }
+      .proc-link:hover { background: #0b3d63; }
+      @media (max-width: 900px) {
+        .proc-inst .proc-tabs { grid-template-columns: 1fr 1fr; }
+        .proc-link { margin-left: 0; }
+      }
     </style>
   </head>
   <body>
@@ -2091,50 +2368,44 @@
             <p>가운데 바를 좌우로 드래그하면 내부 부품이 어떻게 깨끗해지는지 직접 체감하실 수 있습니다.</p>
           </div>
 
-          <!-- B&A 부품별 탭 선택 (실제 사진 부품 형상 1:1 일치) -->
-          <div class="ba-nav-tabs" id="baTabs">
-            <button class="ba-nav-tab active" data-ba="0">1. 증발기 제빙판·슈트</button>
-            <button class="ba-nav-tab" data-ba="1">2. 얼음 저장고 바닥</button>
-            <button class="ba-nav-tab" data-ba="2">3. 물커튼 (슬라이드 배플)</button>
-          </div>
-
-          <!-- 인터랙티브 스플릿 슬라이더 본체 -->
-          <div class="ba-slider-wrap" id="baSlider" style="--ba-pos: 50%;">
-            <div class="ba-badge ba-badge-before">BEFORE (청소 전)</div>
-            <div class="ba-badge ba-badge-after">AFTER (청소 후)</div>
-
-            <!-- 하단 : 청소 후 이미지 -->
-            <div class="ba-slider-img">
-              <img id="baAfterImg" src="assets/ba-interior-after.jpg" alt="청소 후 깨끗해진 제빙기 내부" />
+          <!-- B&A 부품별 탭 선택 (5개 부품 · 실제 부품 형상 1:1 일치) -->
+          <div class="ba-instance" id="baInstance">
+            <div class="ba-nav-tabs" id="baTabs">
+              <button class="ba-nav-tab active" data-ba="0">1. 증발기 제빙판·슈트</button>
+              <button class="ba-nav-tab" data-ba="1">2. 얼음 저장고 바닥</button>
+              <button class="ba-nav-tab" data-ba="2">3. 물커튼 (슬라이드 배플)</button>
+              <button class="ba-nav-tab" data-ba="3">4. 워터펌프 저수조</button>
+              <button class="ba-nav-tab" data-ba="4">5. 응축기 냉각핀</button>
             </div>
 
-            <!-- 상단 : 청소 전 이미지 (클리핑) -->
-            <div class="ba-slider-before" id="baClip">
-              <img id="baBeforeImg" src="assets/ba-interior-before.jpg" alt="청소 전 오염된 제빙기 내부" />
+            <!-- 인터랙티브 스플릿 슬라이더 본체 -->
+            <div class="ba-slider-wrap" id="baSlider" style="--ba-pos: 50%;">
+              <div class="ba-badge ba-badge-before">BEFORE (청소 전)</div>
+              <div class="ba-badge ba-badge-after">AFTER (청소 후)</div>
+
+              <!-- 하단 : 청소 후 이미지 -->
+              <div class="ba-slider-img">
+                <img class="ba-after" src="assets/ba-interior-after.jpg" alt="청소 후 깨끗해진 제빙기 내부" />
+              </div>
+
+              <!-- 상단 : 청소 전 이미지 (클리핑) -->
+              <div class="ba-slider-before" id="baClip">
+                <img class="ba-before" src="assets/ba-interior-before.jpg" alt="청소 전 오염된 제빙기 내부" />
+              </div>
+
+              <!-- 분할 드래그 핸들 -->
+              <div class="ba-slider-divider" id="baDivider">
+                <div class="ba-slider-handle">◀ ▶</div>
+              </div>
+
+              <!-- 유니버설 드래그/터치 레인지 오버레이 -->
+              <input type="range" min="0" max="100" value="50" class="ba-slider-range" id="baRange" aria-label="청소 전후 비교 슬라이더" />
             </div>
 
-            <!-- 분할 드래그 핸들 -->
-            <div class="ba-slider-divider" id="baDivider">
-              <div class="ba-slider-handle">◀ ▶</div>
+            <div class="ba-cap" id="baCaption">
+              <strong>수직 증발기 제빙판 격자 &amp; 얼음 슈트</strong>검은 곰팡이와 갈색 물때로 심각하게 오염되었던 증발기 냉판 격자와 얼음 슈트 주변이 완전 분해 세척 후 본래의 스테인리스 은백색으로 복원되었습니다.
+              <div class="ba-stats"><span class="ba-stat bad">청소 전 3,420 RLU</span><span class="ba-stat">청소 후 12 RLU</span></div>
             </div>
-
-            <!-- 유니버설 드래그/터치 레인지 오버레이 -->
-            <input type="range" min="0" max="100" value="50" class="ba-slider-range" id="baRange" aria-label="청소 전후 비교 슬라이더" />
-          </div>
-
-          <div style="text-align:center;margin-top:20px;font-size:15px;color:var(--muted);" id="baCaption">
-            <strong>수직 증발기 제빙판 격자 & 얼음 슈트</strong>: 검은 곰팡이와 갈색 물때로 심각하게 오염되었던 증발기 냉판 격자와 얼음 슈트 주변이 완전 분해 세척 후 본래의 스테인리스 은백색으로 복원되었습니다.
-          </div>
-        </div>
-      </section>
-
-      <!-- REAL FIELD PORTFOLIO (HOMEPAGE CURATED SHOWCASE) -->
-      <section id="portfolio">
-        <div class="wrap">
-          <div class="sec-head" style="text-align:center;margin:0 auto 36px;max-width:760px;">
-            <p class="kicker">REAL FIELD PORTFOLIO</p>
-            <h2>업종별 실제 세척 현장</h2>
-            <p>프랜차이즈 대형 카페부터 동네 베이커리, 호텔 라운지까지 — 다양한 현장에서 검증된 아이스랩의 작업 결과입니다.</p>
           </div>
 
           <!-- 업종별 탭 -->
@@ -2266,95 +2537,6 @@
           </div>
         </div>
       </section>
-      <!-- AREA DETAIL : click-to-open separate view (지역 목록은 여기서만 노출) -->
-      <div class="detail-overlay" id="areaDetail" role="dialog" aria-modal="true" aria-label="출장 지역 상세">
-        <div class="detail-backdrop" data-close-area></div>
-        <div class="detail-panel"><div class="wrap">
-          <div class="detail-top"><h2>출장 지역</h2><a class="detail-close" href="#/" aria-label="메인으로 돌아가기">✕</a></div>
-          <p style="color:var(--muted);margin:0 0 28px;">서울·경기·인천 수도권 전 지역을 출장합니다. 경계 지역은 전화 상담 때 알려 주시면 가능 여부를 바로 확인해 드립니다.</p>
-          <div class="area-grid">
-            <article class="area-card">
-              <h3>양주·의정부권</h3>
-              <p class="sub">중심 지역 · 가장 빠른 방문</p>
-              <div class="chips"><span>양주</span><span>의정부</span><span>동두천</span><span>포천</span><span>연천</span></div>
-            </article>
-            <article class="area-card">
-              <h3>경기 북부</h3>
-              <p class="sub">1시간 권역</p>
-              <div class="chips"><span>파주</span><span>고양</span><span>남양주</span><span>구리</span><span>하남</span><span>가평</span></div>
-            </article>
-            <article class="area-card">
-              <h3>서울 북부</h3>
-              <p class="sub">1시간 권역</p>
-              <div class="chips"><span>도봉</span><span>강북</span><span>노원</span><span>성북</span><span>은평</span><span>중랑</span></div>
-            </article>
-          </div>
-          <p class="area-note">이런 매장이 맡기십니다 — 카페와 커피 체인점, 호텔 체인점, 프랜차이즈 매장 등 얼음을 쓰는 업소.</p>
-          <div style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;"><span class="btn btn-consult" aria-disabled="true">전화 상담 · 대표번호 준비중</span><a class="btn btn-ghost" href="#/">메인으로 돌아가기</a></div>
-        </div></div>
-      </div>
-
-      <!-- TYPES DETAIL : click-to-open separate view -->
-      <div class="detail-overlay" id="typesDetail" role="dialog" aria-modal="true" aria-label="제빙기 종류와 브랜드 상세">
-        <div class="detail-backdrop" data-close-types></div>
-        <div class="detail-panel"><div class="wrap">
-          <div class="detail-top"><h2>제빙기 종류 · 브랜드</h2><a class="detail-close" href="#/" aria-label="메인으로 돌아가기">✕</a></div>
-          <p style="color:var(--muted);margin:0 0 28px;">브랜드마다 분해 구조가 다르고, 얼음 모양과 냉각 방식에 따라 세척 포인트도 다릅니다. 전 브랜드 진행합니다.</p>
-
-          <div class="sec-head reveal">
-          </div>
-
-          <div class="type-group reveal">
-            <h3>브랜드별 특징 <span class="gtag">전 브랜드 진행</span></h3>
-            <p class="gdesc">주로 다루는 브랜드의 특징입니다. 이 밖의 브랜드도 모두 진행합니다.</p>
-            <div class="brand-cards">
-              <article class="bcard"><h4>호시자키</h4><p class="origin">일본 · 고급형</p><p>투명하고 단단한 큐브·초승달 얼음. 분해 구조가 까다로워 전문 작업이 필요한 기종입니다.</p></article>
-              <article class="bcard"><h4>카이저</h4><p class="origin">카페 표준</p><p>카페에서 가장 많이 쓰는 브랜드. 사이즈와 언더카운터 선택 폭이 넓습니다.</p></article>
-              <article class="bcard"><h4>브레마</h4><p class="origin">이탈리아</p><p>단단한 얼음으로 유명하고, 수랭식 기종이 많습니다.</p></article>
-              <article class="bcard"><h4>아이스트로</h4><p class="origin">국산 보급형</p><p>안정적인 성능으로 매장에서 널리 쓰이는 브랜드입니다.</p></article>
-              <article class="bcard"><h4>라셀르</h4><p class="origin">국산</p><p>반달얼음이 특징. 언더카운터와 모듈형으로 많이 들어갑니다.</p></article>
-              <article class="bcard"><h4>한솔 · 네오트</h4><p class="origin">국산 보급형</p><p>합리적인 가격대의 국산 브랜드로 소형 매장에서 자주 만납니다.</p></article>
-              <article class="bcard"><h4>매니토웍 · 스카치맨 · 아이스오매틱</h4><p class="origin">글로벌 대형</p><p>대형·프랜차이즈 현장에서 쓰이는 글로벌 브랜드군입니다.</p></article>
-              <article class="bcard"><h4>그 외 브랜드</h4><p class="origin">전 브랜드</p><p>위에 없는 브랜드도 모두 진행합니다. 모델명을 알려 주시거나 사진을 보내 주시면 확인해 드립니다.</p></article>
-            </div>
-          </div>
-
-          <div class="type-group reveal">
-            <h3>얼음 모양으로 구분합니다</h3>
-            <p class="gdesc">얼음 모양마다 제빙 구조가 달라, 세척 포인트도 달라집니다.</p>
-            <div class="shape-cards">
-              <article class="bcard"><h4>큐브</h4><p>사각 얼음. 단단하고 천천히 녹아 음료의 표준으로 쓰입니다.</p></article>
-              <article class="bcard"><h4>반달 · 하프문</h4><p>서로 달라붙지 않아 퍼 쓰기 편한 얼음입니다.</p></article>
-              <article class="bcard"><h4>핑거 · 불렛</h4><p>가운데 구멍이 있어 빨리 식히고, 그만큼 빨리 녹습니다.</p></article>
-              <article class="bcard"><h4>플레이크 · 가루</h4><p>눈꽃 같은 얼음. 빨리 식히고 빨리 녹아 빙수와 진열에 쓰입니다.</p></article>
-              <article class="bcard"><h4>너겟</h4><p>씹히는 알갱이 얼음. 탄산음료와 스무디에 쓰입니다.</p></article>
-            </div>
-          </div>
-
-          <div class="type-group reveal">
-            <h3>냉각 방식으로 구분합니다</h3>
-            <div class="cool-grid">
-              <article class="bcard"><h4>공랭식</h4><p class="origin">팬 · 공기 순환</p><p>설치가 간편하고 수도요금이 적게 듭니다. 소음과 발열이 있고, 여름에는 효율이 떨어지기 쉬워 응축기 먼지 관리가 중요합니다.</p></article>
-              <article class="bcard"><h4>수랭식</h4><p class="origin">물 순환</p><p>조용하고 성능이 일정합니다. 수도요금이 많이 들고 배수가 필요해, 급·배수 라인 점검이 함께 필요합니다.</p></article>
-            </div>
-          </div>
-
-          <div class="type-group reveal">
-            <h3>형태와 용량</h3>
-            <div class="spec-rows">
-              <div class="spec-row"><strong>언더카운터</strong><span>카운터 아래에 들어가는 일체형. 소형부터 중형 매장까지 가장 흔한 형태입니다.</span></div>
-              <div class="spec-row"><strong>모듈형</strong><span>제빙 헤드와 얼음 저장통이 분리된 형태. 대형 매장과 프랜차이즈에서 씁니다.</span></div>
-              <div class="spec-row"><strong>카운터탑 · 디스펜서</strong><span>카운터 위에 올려 쓰거나, 얼음이 바로 나오는 디스펜서 형태입니다.</span></div>
-              <div class="spec-row"><strong>용량 25~500kg</strong><span>용량은 일일 생산량 기준입니다. 25kg 소형부터 50·100·200·300·500kg 대형까지 — kg 표기는 저장량이 아니라 하루에 만드는 얼음의 양입니다.</span></div>
-            </div>
-          </div>
-        
-          <div style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;"><span class="btn btn-consult" aria-disabled="true">전화 상담 · 대표번호 준비중</span><a class="btn btn-ghost" href="#/">메인으로 돌아가기</a></div>
-        </div></div>
-      </div>
-
-    
-
 
     </main>
 
@@ -2440,15 +2622,15 @@
 
         // types detail overlay (click structure)
         var detail = document.getElementById('typesDetail');
-        function openTypes(e) { if (e) e.preventDefault(); detail.classList.add('open'); document.body.classList.add('locked'); detail.querySelector('.detail-panel').scrollTop = 0; }
-        function closeTypes() { detail.classList.remove('open'); document.body.classList.remove('locked'); }
+        function openTypes(e) { if (e) e.preventDefault(); if (!detail) return; detail.classList.add('open'); document.body.classList.add('locked'); detail.querySelector('.detail-panel').scrollTop = 0; }
+        function closeTypes() { if (!detail) return; detail.classList.remove('open'); document.body.classList.remove('locked'); }
         document.querySelectorAll('[data-open-types]').forEach(function (el) { el.addEventListener('click', openTypes); });
         document.querySelectorAll('[data-close-types]').forEach(function (el) { el.addEventListener('click', closeTypes); });
 
         // area detail overlay (click structure — 지역 목록은 상세 화면에서만)
         var areaDetail = document.getElementById('areaDetail');
-        function openArea(e) { if (e) e.preventDefault(); areaDetail.classList.add('open'); document.body.classList.add('locked'); areaDetail.querySelector('.detail-panel').scrollTop = 0; }
-        function closeArea() { areaDetail.classList.remove('open'); document.body.classList.remove('locked'); }
+        function openArea(e) { if (e) e.preventDefault(); if (!areaDetail) return; areaDetail.classList.add('open'); document.body.classList.add('locked'); areaDetail.querySelector('.detail-panel').scrollTop = 0; }
+        function closeArea() { if (!areaDetail) return; areaDetail.classList.remove('open'); document.body.classList.remove('locked'); }
         document.querySelectorAll('[data-open-area]').forEach(function (el) { el.addEventListener('click', openArea); });
         document.querySelectorAll('[data-close-area]').forEach(function (el) { el.addEventListener('click', closeArea); });
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeTypes(); closeArea(); } });
@@ -2651,10 +2833,31 @@
           layout(p, nodes);
           return p;
         }
+        var SVC_SUM = {
+          'svc-ice': [['대상', '업소용 제빙기 25~500kg', '카페·호텔·음식점 등 얼음을 쓰는 매장'], ['방식', '완전 분해 + 120℃ 스팀', '부품을 분해해 약제 세척 후 고온 스팀으로 살균'], ['함께', '클린서비스 연계', '매장청소·에어컨 등과 함께 맡기실 수 있습니다']],
+          'svc-grinder': [['대상', '카페 그라인더', '원두 기름때와 찌꺼기가 쌓이는 부품'], ['방식', '분해 세척', '호퍼와 버·디스크를 분해해 씻습니다'], ['함께', '제빙기 청소와 함께', '매장 위생을 한 번에 정리']],
+          'svc-ac': [['대상', '매장 에어컨', '필터와 내부 열교환기'], ['방식', '필터 · 내부 세척', '냄새와 곰팡이를 함께 제거'], ['함께', '제빙기 청소와 함께', '같은 방문 일정에 함께 진행']],
+          'svc-frost': [['대상', '업소용 냉동고', '두껍게 언 성에'], ['방식', '성에 제거 + 내부 정리', '냉동 성능과 위생을 회복'], ['함께', '제빙기 청소와 함께', '주방 설비를 함께 관리']],
+          'svc-store': [['대상', '카페 · 매장 전체', '카운터와 홀, 주방'], ['방식', '위생 청소', '매장 동선에 맞춰 진행'], ['함께', '제빙기 청소와 함께', '얼음부터 매장까지']]
+        };
+        function svcSummary(key) {
+          var rows = SVC_SUM[key]; if (!rows) return '';
+          var html = '<div class="svc-sum-grid">' + rows.map(function (r) {
+            return '<div class="svc-sum"><span class="ss-k">' + r[0] + '</span><b>' + r[1] + '</b><p>' + r[2] + '</p></div>';
+          }).join('') + '</div>';
+          var meta = SUB[key];
+          if (meta && meta.img) {
+            html += '<figure class="svc-photo"><img src="' + meta.img + '" alt="' + meta.title + ' 현장" loading="lazy" />' +
+              '<figcaption><strong>' + meta.title + '</strong>' + meta.desc + '</figcaption></figure>';
+          }
+          return html;
+        }
+
         function svcSection(key) {
           var s = SVC[key]; var meta = SUB[key];
           var html = '<div class="sec-head svc-head"><p class="kicker">CLEAN SERVICE</p><h2>' + meta.title + '</h2><p>' + meta.desc + '</p></div>';
           s.lead.forEach(function (t) { html += '<p class="svc-lead">' + t + '</p>'; });
+          html += svcSummary(key);
           if (s.points) {
             html += '<ul class="scope-list svc-points">' + s.points.map(function (pt) {
               return '<li>' + CHECK + '<div><strong>' + pt[0] + '</strong><span>' + pt[1] + '</span></div></li>';
@@ -2764,12 +2967,329 @@
           );
           return sec;
         }
+        /* ================================================================
+           v3 : 세부 페이지 시각화 빌더
+           - 공정 카드(GIF), 청소 범위 부품 카드, 브랜드·얼음 형태,
+             안심 스티커 목업, 수도권 권역 인포그래픽, 클린서비스 요약
+           ================================================================ */
+        var V3_MEDIA = function (it) {
+          if (it.gif) {
+            return '<picture><source srcset="assets/' + it.gif + '.webp" type="image/webp" />' +
+              '<img src="assets/' + it.gif + '.gif" alt="' + it.alt + '" loading="lazy" decoding="async" /></picture>';
+          }
+          return '<img src="' + it.img + '" alt="' + it.alt + '" loading="lazy" decoding="async" />';
+        };
+        var V3_LIVE = '<span class="pc-live"><i></i>LIVE</span>';
+
+        var V3_STEPS = [
+          { no: 'STEP 01', title: '상담 · 기종 확인', img: 'assets/machine.jpg', alt: '업소용 제빙기 외관',
+            desc: '전화로 모델명을 알려 주시거나 모델명 스티커·제빙기 사진을 보내 주세요. 기종과 오염 상태를 확인해 청소 내용과 비용을 먼저 안내합니다.',
+            tags: ['모델명 스티커 사진', '기종별 분해 구조 확인'] },
+          { no: 'STEP 02', title: '일정 조율 · 방문', img: 'assets/visit.jpg', alt: '출장 방문해 제빙기를 여는 현장',
+            desc: '오픈 전, 영업 중, 마감 후 중 매장에 편한 시간으로 일정을 잡고 약속한 시간에 방문합니다. 작업 시간은 영업에 지장이 없도록 맞춥니다.',
+            tags: ['오픈 전 · 마감 후 가능', '약속 시간 방문'] },
+          { no: 'STEP 03', title: '완전 분해', img: 'assets/cleaning-open.jpg', alt: '제빙기 하부 패널을 열어 내부를 노출한 모습',
+            desc: '전원을 차단하고 주변을 보양한 뒤 상판과 커버를 들어내고, 물과 얼음이 지나가는 부품을 하나하나 분리합니다.',
+            tags: ['상판 · 커버 탈거', '물 닿는 부품 전부'] },
+          { no: 'STEP 04', title: '세척 · 석회 제거', gif: 'gif-descale', alt: '석회 스케일 위로 친환경 약제가 반응하는 모습',
+            desc: '워터펌프와 호스·노즐·파이프까지 친환경 세제로 분해 세척하고, 냉판에 단단히 굳은 석회와 물때를 약제로 불려 탈거합니다.',
+            tags: ['식품첨가물 등급 약제', '냉판 석회 박리'] },
+          { no: 'STEP 05', title: '스팀 고압세척 · 살균', gif: 'gif-steam', alt: '120℃ 고온 스팀을 냉판에 분사하는 모습',
+            desc: '깊은 내부를 스팀 고압세척하고 헹궈 낸 뒤, 120℃ 고온 스팀으로 곰팡이와 세균을 살균합니다. 헹굼까지 마쳐 약품 잔류를 남기지 않습니다.',
+            tags: ['120℃ 고온 스팀', '잔류 세제 0%'] },
+          { no: 'STEP 06', title: '조립 · 얼음 확인 · 정리', gif: 'gif-ice', alt: '세척 후 맑고 투명한 각얼음',
+            desc: '재조립 후 전원을 연결해 새 얼음이 투명하게 잘 얼고 모양이 고르게 나오는지 확인하고, 작업한 주변까지 정리합니다.',
+            tags: ['투명도 · 모양 검수', '주변 정리까지'] }
+        ];
+
+        function buildProcessSteps() {
+          var cards = V3_STEPS.map(function (s) {
+            return '<article class="pc-card reveal">' +
+              '<div class="pc-media">' + V3_MEDIA(s) + '<span class="pc-num">' + s.no + '</span>' + (s.gif ? V3_LIVE : '') + '</div>' +
+              '<div class="pc-body"><h3>' + s.title + '</h3><p>' + s.desc + '</p>' +
+              '<div class="pc-tags">' + s.tags.map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div></div>' +
+              '</article>';
+          }).join('');
+          return el('section', 'v3-band',
+            '<div class="wrap"><div class="sec-head v3-sec-head reveal">' +
+            '<span class="v3-kicker">STEP BY STEP</span>' +
+            '<h2>상담부터 얼음 확인까지,<br />6단계로 진행합니다</h2>' +
+            '<p>단계마다 하는 일이 다릅니다. 움직이는 화면으로 실제 작업 장면을 먼저 확인해 보세요.</p>' +
+            '</div><div class="pc-grid">' + cards + '</div></div>');
+        }
+
+        /* --- 4대 공정 쇼케이스 (세부페이지 전용 · 페이지마다 독립 동작) --- */
+        var V3_PROC = [
+          { badge: 'STEP 01', tag: '미세틈새 살균 99.9%', title: '120℃ 고온 스팀 살균',
+            desc: '기계 깊숙한 증발기 냉판과 좁은 유로 배관까지 미세 스팀을 침투시켜 보이지 않는 세균과 곰팡이를 사멸합니다.',
+            gif: 'gif-steam', alt: '120℃ 고온 스팀을 냉판에 분사하는 모습' },
+          { badge: 'STEP 02', tag: '식품안전 규격 약제 사용', title: '친환경 석회·스케일 박리',
+            desc: '식품첨가물 등급 약제로 부품 손상 없이 냉판에 굳은 칼슘·마그네슘 석회를 분해합니다.',
+            gif: 'gif-descale', alt: '석회 스케일 위로 약제가 반응하는 모습' },
+          { badge: 'STEP 03', tag: '화학 잔여물 배출 0%', title: '고압 헹굼 · 잔류세제 0%',
+            desc: '박리된 이물질과 세정제를 고압 직수로 남김없이 씻어내, 손님 입에 닿는 얼음에 약품이 남지 않게 합니다.',
+            gif: 'gif-rinse', alt: '고압 직수로 부품을 헹구는 모습' },
+          { badge: 'STEP 04', tag: '현장 제빙 품질 확인', title: '크리스탈 얼음 제빙 검증',
+            desc: '재조립 후 현장에서 기계를 다시 켜 얼음의 투명도와 모양, 잡내 유무를 점주님과 함께 확인합니다.',
+            gif: 'gif-ice', alt: '세척 후 맑고 투명한 각얼음' }
+        ];
+
+        function buildProcShowcase() {
+          var tabs = V3_PROC.map(function (p, i) {
+            return '<button class="proc-tab' + (i === 0 ? ' active' : '') + '" type="button" data-step="' + i + '"' +
+              ' data-gif="' + p.gif + '" data-badge="' + p.badge + '" data-tag="' + p.tag + '"' +
+              ' data-title="' + p.title + '" data-desc="' + p.desc + '"' +
+              ' aria-selected="' + (i === 0 ? 'true' : 'false') + '">' +
+              '<span class="pt-badge">' + p.badge + '</span><span class="pt-title">' + p.title + '</span>' +
+              '<span class="proc-tab-bar"></span></button>';
+          }).join('');
+          return el('section', 'v3-band proc-band',
+            '<div class="wrap"><div class="sec-head v3-sec-head reveal">' +
+            '<span class="v3-kicker">PREMIUM HYGIENE PROCESS</span>' +
+            '<h2>아이스랩 4대 핵심 분해세척 공정</h2>' +
+            '<p>표면 청소를 넘어, 제빙 구조 전반의 오염원과 석회를 근본적으로 박리하는 과정입니다. 탭을 눌러 움직이는 장면을 보세요.</p>' +
+            '</div>' +
+            '<div class="proc-inst" data-proc-inst><div class="proc-tabs" role="tablist">' + tabs + '</div>' +
+            '<div class="proc-stage">' +
+            '<div class="proc-media"><img class="proc-img" src="assets/process-steam.jpg" alt="120℃ 고온 스팀 살균" /><span class="proc-live"><i></i>LIVE</span></div>' +
+            '<div class="proc-copy">' +
+            '<span class="proc-tag">' + V3_PROC[0].tag + '</span><h3 class="proc-title">' + V3_PROC[0].title + '</h3>' +
+            '<p class="proc-desc">' + V3_PROC[0].desc + '</p>' +
+            '<div class="proc-nav"><button type="button" class="proc-prev" aria-label="이전 공정">‹</button>' +
+            '<button type="button" class="proc-next" aria-label="다음 공정">›</button>' +
+            '<a class="proc-link" href="#/scope">분해 범위 보기 →</a></div>' +
+            '</div></div></div></div>');
+        }
+
+        /* --- 청소 범위 : 부품 카드 --- */
+        var V3_ICON = {
+          panel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="5" width="17.6" height="14" rx="2.2"/><path d="M3.2 9.4h17.6M7 5v4.4"/></svg>',
+          plate: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.8"/><path d="M4 9.3h16M4 14.6h16M9.3 4v16M14.6 4v16"/></svg>',
+          pump: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="11" height="11" rx="2.4"/><circle cx="9.5" cy="12.5" r="2.4"/><path d="M15 10h3.2v5H15M18.2 12.5h2.3"/></svg>',
+          hose: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 17c3.6 0 3.6-10 7.2-10s3.2 8.5 6.4 8.5H21"/><circle cx="21" cy="15.5" r="1.6"/><path d="M3.5 20h4"/></svg>',
+          wall: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M7 15c1.2-1.6 2.2-1.6 3.4 0 1.2 1.6 2.2 1.6 3.4 0 1.2-1.6 2.2-1.6 3.2 0"/><path d="M7 10.4h10"/></svg>',
+          tray: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 8.2h16.8l-1.6 9.2a2 2 0 0 1-2 1.6H7.2a2 2 0 0 1-2-1.6L3.6 8.2Z"/><path d="M3.2 8.2h17.6"/><path d="M9 12.2v3.2M12 12.2v3.2M15 12.2v3.2"/></svg>',
+          steam: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20V9.5a2.6 2.6 0 0 1 5.2 0V20"/><path d="M12.2 20V11a2.4 2.4 0 0 1 4.8 0v9"/><path d="M3.8 20h16.4"/><path d="M15.8 6.4c1-1 1-2 0-3"/></svg>',
+          check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4 19 7v6.2c0 3.6-2.8 6-7 7.4-4.2-1.4-7-3.8-7-7.4V7l7-3.6Z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg>'
+        };
+        var V3_SCOPE = [
+          { ico: 'panel', name: '상판 · 커버 분리', method: '탈거 후 세척', note: '내부를 완전히 열어 작업합니다. 힌지와 개스킷 틈에 낀 물때까지 함께 봅니다.' },
+          { ico: 'plate', name: '냉판(제빙판)', method: '약제 + 스팀', note: '얼음이 만들어지는 판입니다. 격자 틈새에 굳은 석회와 물때를 불려 탈거합니다.' },
+          { ico: 'pump', name: '워터펌프', method: '분해 세척', note: '물을 끌어올리는 펌프입니다. 임펠러와 필터를 분리해 친환경 세제로 씻습니다.' },
+          { ico: 'hose', name: '호스 · 노즐 · 파이프', method: '탈거 세척', note: '물이 지나가는 길입니다. 떼어 내 유로 안쪽까지 씻어 물 흐름을 되찾습니다.' },
+          { ico: 'wall', name: '내부 벽면', method: '스팀 세척', note: '눈에 보이지 않는 곰팡이 포자가 붙는 곳입니다. 스팀으로 벽면까지 닦아 냅니다.' },
+          { ico: 'tray', name: '물받이 받침대', method: '집중 세척', note: '물이 고여 침전물이 가장 많이 쌓이는 곳입니다. 바닥과 모서리를 집중해서 씻습니다.' },
+          { ico: 'steam', name: '깊은 내부', method: '고압 스팀', note: '손이 닿지 않는 안쪽입니다. 고압 스팀으로 밀어낸 뒤 깨끗한 물로 헹굽니다.' },
+          { ico: 'check', name: '조립 · 최종 확인', method: '검수', note: '재조립 후 얼음이 투명하게 얼고 모양이 고른지 확인하고 주변까지 정리합니다.' }
+        ];
+
+        function buildScopeCards() {
+          var cards = V3_SCOPE.map(function (s, i) {
+            return '<article class="sp-card reveal"><span class="sp-no">0' + (i + 1) + '</span>' +
+              '<div class="sp-ico">' + V3_ICON[s.ico] + '</div>' +
+              '<h3>' + s.name + '</h3><span class="sp-method">' + s.method + '</span>' +
+              '<p>' + s.note + '</p></article>';
+          }).join('');
+          var wide = '<article class="sp-card sp-wide reveal">' +
+            '<img src="assets/deep-clean.jpg" alt="열린 제빙기 내부의 냉판과 워터펌프를 세척하는 모습" loading="lazy" />' +
+            '<div class="sp-wide-body"><span class="sp-method">분해 세척 원칙</span>' +
+            '<h3>표면만 닦는 청소와 다릅니다</h3>' +
+            '<p>물과 얼음이 지나가는 부품은 하나도 건너뛰지 않고 분해해서 씻습니다. 보이지 않는 유로 안쪽까지 씻어야 얼음 냄새가 다시 돌아오지 않습니다.</p>' +
+            '<p>부품마다 맞는 방법이 달라, 약제로 불리는 부품과 스팀으로 살균하는 부품을 구분해 작업합니다.</p></div></article>';
+          return el('section', 'v3-band',
+            '<div class="wrap"><div class="sec-head v3-sec-head reveal">' +
+            '<span class="v3-kicker">SERVICE SCOPE</span>' +
+            '<h2>손이 닿지 않는 곳까지,<br />분해해서 닦습니다</h2>' +
+            '<p>물과 얼음이 지나가는 8개 부품을 하나씩 분해해, 부품에 맞는 방법으로 세척합니다.</p>' +
+            '</div><div class="sp-grid">' + wide + cards + '</div></div>');
+        }
+
+        /* --- 제빙기 종류 : 메탈릭 브랜드 뱃지 + 얼음 형태 --- */
+        var V3_BRANDS = [
+          { mark: 'HZ', name: '호시자키', origin: '일본 · 고급형', note: '투명하고 단단한 큐브와 초승달 얼음. 분해 구조가 까다로워 전문 작업이 필요한 기종입니다.' },
+          { mark: 'KZ', name: '카이저', origin: '카페 표준', note: '카페에서 가장 많이 쓰는 브랜드. 사이즈와 언더카운터 선택 폭이 넓습니다.' },
+          { mark: 'BR', name: '브레마', origin: '이탈리아', note: '단단한 얼음으로 알려진 브랜드. 수랭식 기종이 많아 배수 라인 점검을 함께 봅니다.' },
+          { mark: 'IT', name: '아이스트로', origin: '국산 보급형', note: '안정적인 성능으로 매장에서 널리 쓰이는 국산 브랜드입니다.' },
+          { mark: 'LC', name: '라셀르', origin: '국산', note: '반달 얼음이 특징입니다. 언더카운터와 모듈형으로 많이 설치됩니다.' },
+          { mark: 'HS', name: '한솔 · 네오트', origin: '국산 보급형', note: '합리적인 가격대의 국산 브랜드로 소형 매장에서 자주 만납니다.' },
+          { mark: 'MT', name: '매니토웍 · 스카치맨', origin: '글로벌 대형', note: '대형 매장과 프랜차이즈 현장에서 쓰이는 글로벌 브랜드군입니다.' },
+          { mark: '+', name: '그 외 브랜드', origin: '전 브랜드 진행', note: '위에 없는 브랜드도 모두 진행합니다. 모델명이나 사진을 보내 주시면 확인해 드립니다.' }
+        ];
+
+        function iceSvg(kind) {
+          var g = '<defs><linearGradient id="icg-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d6eefc"/></linearGradient>' +
+            '<linearGradient id="icg-l" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bfe6fb"/><stop offset="1" stop-color="#8ecdf0"/></linearGradient>' +
+            '<linearGradient id="icg-r" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a9dcf6"/><stop offset="1" stop-color="#6fbfe8"/></linearGradient></defs>';
+          if (kind === 'cube') {
+            return '<svg viewBox="0 0 100 100">' + g +
+              '<polygon points="50,18 82,34 50,50 18,34" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1.4"/>' +
+              '<polygon points="18,34 50,50 50,84 18,68" fill="url(#icg-l)" stroke="#ffffff" stroke-width="1.2"/>' +
+              '<polygon points="50,50 82,34 82,68 50,84" fill="url(#icg-r)" stroke="#ffffff" stroke-width="1.2"/>' +
+              '<path d="M26 42l14 7M26 52l14 7" stroke="#ffffff" stroke-width="1" opacity=".6"/></svg>';
+          }
+          if (kind === 'moon') {
+            return '<svg viewBox="0 0 100 100">' + g +
+              '<path d="M16 62a34 34 0 0 1 68 0z" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1.5"/>' +
+              '<path d="M16 62a34 34 0 0 0 68 0z" fill="url(#icg-r)" stroke="#ffffff" stroke-width="1.2" opacity=".9"/>' +
+              '<path d="M24 62a26 26 0 0 1 52 0" fill="none" stroke="#ffffff" stroke-width="1.1" opacity=".7"/></svg>';
+          }
+          if (kind === 'finger') {
+            return '<svg viewBox="0 0 100 100">' + g +
+              '<rect x="36" y="20" width="28" height="60" rx="14" fill="url(#icg-l)" stroke="#ffffff" stroke-width="1.3"/>' +
+              '<ellipse cx="50" cy="20" rx="14" ry="5" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1.1"/>' +
+              '<rect x="47" y="34" width="6" height="34" rx="3" fill="#ffffff" opacity=".55"/>' +
+              '<path d="M40 44v22" stroke="#ffffff" stroke-width="1" opacity=".55"/></svg>';
+          }
+          if (kind === 'flake') {
+            return '<svg viewBox="0 0 100 100">' + g +
+              '<circle cx="38" cy="42" r="15" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1.2"/>' +
+              '<circle cx="61" cy="37" r="10" fill="url(#icg-l)" stroke="#ffffff" stroke-width="1.1"/>' +
+              '<circle cx="56" cy="58" r="14" fill="url(#icg-r)" stroke="#ffffff" stroke-width="1.1"/>' +
+              '<circle cx="34" cy="63" r="9" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1"/>' +
+              '<circle cx="72" cy="62" r="7" fill="url(#icg-l)" stroke="#ffffff" stroke-width="1"/></svg>';
+          }
+          return '<svg viewBox="0 0 100 100">' + g +
+            '<path d="M28 46l8-10 10 8-7 11z" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1"/>' +
+            '<path d="M52 34l11-5 7 12-12 5z" fill="url(#icg-l)" stroke="#ffffff" stroke-width="1"/>' +
+            '<path d="M40 62l13-4 6 12-14 4z" fill="url(#icg-r)" stroke="#ffffff" stroke-width="1"/>' +
+            '<path d="M66 55l9 2-1 11-10-2z" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1"/></svg>';
+        }
+
+        var V3_SHAPES = [
+          { kind: 'cube', name: '큐브', en: 'CUBE', note: '사각 얼음. 단단하고 천천히 녹아 음료의 표준으로 쓰입니다.' },
+          { kind: 'moon', name: '반달 · 하프문', en: 'HALF MOON', note: '서로 달라붙지 않아 퍼 쓰기 편한 얼음입니다.' },
+          { kind: 'finger', name: '핑거 · 불렛', en: 'FINGER', note: '가운데 구멍이 있어 빨리 식히고, 그만큼 빨리 녹습니다.' },
+          { kind: 'flake', name: '플레이크 · 가루', en: 'FLAKE', note: '눈꽃 같은 얼음. 빨리 식히고 빨리 녹아 빙수·진열에 쓰입니다.' },
+          { kind: 'nugget', name: '너겟', en: 'NUGGET', note: '씹히는 알갱이 얼음. 탄산음료와 스무디에 쓰입니다.' }
+        ];
+
+        function buildTypesShowcase() {
+          var brands = V3_BRANDS.map(function (b) {
+            return '<article class="tb-card reveal"><div class="tb-badge' + (b.mark.length > 2 || b.mark === '+' ? ' sm' : '') + '">' + b.mark + '</div>' +
+              '<h4>' + b.name + '</h4><p class="tb-origin">' + b.origin + '</p><p>' + b.note + '</p></article>';
+          }).join('');
+          var shapes = V3_SHAPES.map(function (s) {
+            return '<article class="sh-card reveal">' + iceSvg(s.kind) +
+              '<h4>' + s.name + '</h4><p>' + s.note + '</p><span class="sh-en">' + s.en + '</span></article>';
+          }).join('');
+          return el('section', 'v3-band',
+            '<div class="wrap">' +
+            '<div class="sec-head v3-sec-head reveal"><span class="v3-kicker">BRANDS</span>' +
+            '<h2>브랜드마다 분해 구조가 다릅니다</h2>' +
+            '<p>주로 다루는 브랜드입니다. 이 밖의 브랜드도 모두 진행하며, 모델명을 알려 주시면 확인해 드립니다.</p></div>' +
+            '<div class="tb-grid">' + brands + '</div>' +
+            '<div class="sec-head v3-sec-head reveal" style="margin-top:64px;"><span class="v3-kicker">ICE SHAPES</span>' +
+            '<h2>얼음 모양으로도 구분합니다</h2>' +
+            '<p>얼음 모양마다 제빙 구조가 달라, 세척 포인트도 달라집니다. 매장에서 쓰는 얼음이 어느 쪽인지 확인해 보세요.</p></div>' +
+            '<div class="sh-grid">' + shapes + '</div>' +
+            '<div class="sec-head v3-sec-head reveal" style="margin-top:64px;"><span class="v3-kicker">COOLING · FORM</span>' +
+            '<h2>냉각 방식과 형태</h2>' +
+            '<p>같은 브랜드라도 냉각 방식과 설치 형태에 따라 관리 포인트가 달라집니다.</p></div>' +
+            '<div class="spec-card-grid">' +
+            '<article class="spec-card reveal"><h4>공랭식</h4><span class="tag">팬 · 공기 순환</span>' +
+            '<p>설치가 간편하고 수도요금이 적게 듭니다. 대신 소음과 발열이 있고, 여름에는 응축기 냉각핀에 먼지가 쌓여 효율이 떨어지기 쉬워 응축기 관리가 중요합니다.</p></article>' +
+            '<article class="spec-card reveal"><h4>수랭식</h4><span class="tag">물 순환</span>' +
+            '<p>조용하고 성능이 일정합니다. 수도요금이 많이 들고 배수가 필요해, 급·배수 라인과 저수조 점검이 함께 필요합니다.</p></article>' +
+            '<article class="spec-card reveal"><h4>형태 · 용량</h4><span class="tag">언더카운터 · 모듈형 · 카운터탑</span>' +
+            '<p>카운터 아래 일체형, 제빙 헤드와 저장통이 분리된 모듈형, 카운터 위 디스펜서형이 있습니다. 용량 표기는 저장량이 아니라 하루에 만드는 얼음의 양(kg)입니다.</p></article>' +
+            '<article class="spec-card reveal"><h4>어떤 기종이든 진행합니다</h4><span class="tag">25kg ~ 500kg</span>' +
+            '<p>소형 25kg부터 대형 500kg까지, 구조만 확인되면 분해 세척이 가능합니다. 기종을 몰라도 사진 한 장이면 확인해 드립니다.</p></article>' +
+            '</div></div>');
+        }
+
+        /* --- 이용 방식 : 안심 스티커 실물 목업 --- */
+        function buildStickerShowcase() {
+          var plaque = '<div class="mock mock-door reveal">' +
+            '<img src="assets/visit.jpg" alt="카페 출입문 너머 매장" loading="lazy" />' +
+            '<div class="mock-glass"></div>' +
+            '<div class="mock-plaque">' +
+            '<span class="mock-screw tl"></span><span class="mock-screw tr"></span><span class="mock-screw bl"></span><span class="mock-screw br"></span>' +
+            '<div class="mp-top">ICELAB CLEAN ZONE</div>' +
+            '<div class="mp-title">얼음 위생<br />안심 매장</div>' +
+            '<div class="mp-sub">정기 위생 관리 인증</div>' +
+            '<div class="mp-line"></div>' +
+            '<div class="mp-body">본 매장의 제빙기는<br />아이스랩의 분해세척·고온스팀 살균 관리를<br />정기적으로 받고 있습니다.</div>' +
+            '<div class="mp-foot">FOOD HYGIENE · ICELAB</div>' +
+            '</div><span class="mock-tag">출입문 부착용 아크릴 마크</span></div>';
+          var stand = '<div class="mock mock-stand reveal">' +
+            '<div class="stand-scene"><div class="stand-shadow"></div>' +
+            '<div class="stand"><div class="stand-face">' +
+            '<div class="sf-top">ICELAB CLEAN ZONE</div>' +
+            '<div class="sf-title">얼음 위생 안심 매장</div>' +
+            '<div class="sf-sub">정기 관리 · 고온스팀 살균</div>' +
+            '<div class="sf-dot"><i></i><i></i><i></i></div>' +
+            '</div><div class="stand-base"></div></div></div>' +
+            '<span class="mock-tag">카운터 비치용 미니 스탠드</span></div>';
+          return el('section', 'v3-band',
+            '<div class="wrap"><div class="sec-head v3-sec-head reveal"><span class="v3-kicker">B2B TRUST MARK</span>' +
+            '<h2>손님이 먼저 확인하는<br />안심 스티커를 드립니다</h2>' +
+            '<p>정기 관리를 받는 매장에는 출입문에 붙이는 아크릴 마크와 카운터에 세우는 미니 스탠드를 함께 보내 드립니다.</p></div>' +
+            '<div class="zone-stage">' + plaque + stand + '</div>' +
+            '<ul class="benefit-list">' +
+            '<li><span class="bl-ico">✔</span><span><b>출입문 부착용 아크릴 마크</b>글래스 도어에 고정하는 아크릴 판. 손님이 들어오기 전에 매장 위생을 먼저 봅니다.</span></li>' +
+            '<li><span class="bl-ico">✔</span><span><b>카운터 비치용 미니 스탠드</b>주문대에 세워 두는 작은 안내판. 얼음 위생을 말로 설명하지 않아도 됩니다.</span></li>' +
+            '<li><span class="bl-ico">✔</span><span><b>위생 점검 리포트</b>작업 전·후 ATP 오염도 수치를 적어 드립니다. 위생 점검 때 그대로 보여 주시면 됩니다.</span></li>' +
+            '</ul></div>');
+        }
+
+        /* --- 출장 지역 : 수도권 권역 인포그래픽 --- */
+        function buildAreaInfographic() {
+          var svg = '<svg viewBox="0 0 520 380" role="img" aria-label="수도권 권역 출장 네트워크">' +
+            '<defs><radialGradient id="areaGlow" cx="50%" cy="50%" r="50%">' +
+            '<stop offset="0" stop-color="#0a74bd" stop-opacity=".20"/><stop offset="1" stop-color="#0a74bd" stop-opacity="0"/></radialGradient></defs>' +
+            '<circle cx="260" cy="190" r="168" fill="url(#areaGlow)"/>' +
+            '<circle cx="260" cy="190" r="150" fill="none" stroke="#b9d8ec" stroke-width="1.4" stroke-dasharray="5 7"/>' +
+            '<circle cx="260" cy="190" r="106" fill="none" stroke="#8fc4e3" stroke-width="1.4" stroke-dasharray="5 6"/>' +
+            '<circle cx="260" cy="190" r="62" fill="none" stroke="#0a74bd" stroke-width="1.6" stroke-opacity=".55"/>' +
+            '<circle cx="260" cy="190" r="34" fill="#08263f"/>' +
+            '<text x="260" y="186" text-anchor="middle" font-size="12.5" font-weight="800" fill="#8fd8f7" font-family="inherit">ICELAB</text>' +
+            '<text x="260" y="202" text-anchor="middle" font-size="10.5" font-weight="700" fill="#cfe9f8" font-family="inherit">당일 방문</text>' +
+            '<g fill="#0a74bd">' +
+            '<circle cx="260" cy="128" r="4.6"/><circle cx="322" cy="150" r="4.6"/><circle cx="322" cy="232" r="4.6"/>' +
+            '<circle cx="260" cy="254" r="4.6"/><circle cx="198" cy="232" r="4.6"/><circle cx="198" cy="150" r="4.6"/></g>' +
+            '<g fill="#2f9ddb">' +
+            '<circle cx="260" cy="84" r="5"/><circle cx="368" cy="108" r="5"/><circle cx="404" cy="190" r="5"/>' +
+            '<circle cx="368" cy="272" r="5"/><circle cx="260" cy="296" r="5"/><circle cx="152" cy="272" r="5"/>' +
+            '<circle cx="116" cy="190" r="5"/><circle cx="152" cy="108" r="5"/></g>' +
+            '<g fill="#7fc6e8">' +
+            '<circle cx="260" cy="40" r="4.2"/><circle cx="400" cy="62" r="4.2"/><circle cx="466" cy="140" r="4.2"/>' +
+            '<circle cx="466" cy="238" r="4.2"/><circle cx="400" cy="316" r="4.2"/><circle cx="260" cy="340" r="4.2"/>' +
+            '<circle cx="120" cy="316" r="4.2"/><circle cx="54" cy="238" r="4.2"/><circle cx="54" cy="140" r="4.2"/>' +
+            '<circle cx="120" cy="62" r="4.2"/></g>' +
+            '<text x="260" y="22" text-anchor="middle" font-size="11" font-weight="800" fill="#4c6b84" font-family="inherit">서울 북부 · 동부</text>' +
+            '<text x="260" y="370" text-anchor="middle" font-size="11" font-weight="800" fill="#4c6b84" font-family="inherit">경기 남부 · 동부</text>' +
+            '<text x="22" y="194" font-size="11" font-weight="800" fill="#4c6b84" font-family="inherit">인천</text>' +
+            '<text x="498" y="194" text-anchor="end" font-size="11" font-weight="800" fill="#4c6b84" font-family="inherit">경기 동부</text>' +
+            '</svg>';
+          var seoul = ['강남', '강동', '강북', '강서', '관악', '광진', '구로', '금천', '노원', '도봉', '동대문', '동작', '마포', '서대문', '서초', '성동', '성북', '송파', '양천', '영등포', '용산', '은평', '종로', '중랑', '중구'];
+          var gyeonggi = ['수원', '성남', '고양', '용인', '부천', '안산', '안양', '남양주', '화성', '평택', '의정부', '파주', '시흥', '광명', '김포', '구리', '하남', '양주', '동두천', '포천', '가평', '연천', '오산', '군포', '이천', '광주', '여주'];
+          var incheon = ['중구', '동구', '미추홀', '연수', '남동', '부평', '계양', '서구', '강화', '옹진'];
+          function chips(arr) { return '<div class="area-chips">' + arr.map(function (a) { return '<span>' + a + '</span>'; }).join('') + '</div>'; }
+          return el('section', 'v3-band',
+            '<div class="wrap"><div class="sec-head v3-sec-head reveal"><span class="v3-kicker">SERVICE AREA</span>' +
+            '<h2>서울 · 경기 · 인천<br />수도권 전역 당일 방문</h2>' +
+            '<p>권역별로 배차해 같은 날 방문합니다. 경계 지역은 전화 상담 때 알려 주시면 가능 여부를 바로 확인해 드립니다.</p></div>' +
+            '<div class="area-stage"><div class="area-map reveal">' + svg +
+            '<div class="area-legend"><span><i style="background:#0a74bd"></i>중심 권역 · 가장 빠른 방문</span>' +
+            '<span><i style="background:#2f9ddb"></i>서울 · 인천 전역</span><span><i style="background:#7fc6e8"></i>경기 전역</span></div></div>' +
+            '<div class="area-flow">' +
+            '<div><b>STEP 1</b>전화로 지역과 기종을 알려 주세요.</div>' +
+            '<div><b>STEP 2</b>권역 배차로 방문 시간을 확정합니다.</div>' +
+            '<div><b>STEP 3</b>약속한 시간에 방문해 작업합니다.</div>' +
+            '</div></div>' +
+            '<div class="area-zone-grid">' +
+            '<article class="area-zone reveal"><h3><i></i>서울</h3><p class="zc">25개 자치구 전역</p>' + chips(seoul) + '</article>' +
+            '<article class="area-zone reveal"><h3><i style="background:#2f9ddb"></i>경기</h3><p class="zc">주요 시 · 군 전역</p>' + chips(gyeonggi) + '</article>' +
+            '<article class="area-zone reveal"><h3><i style="background:#7fc6e8"></i>인천</h3><p class="zc">10개 군 · 구 전역</p>' + chips(incheon) + '</article>' +
+            '</div></div>');
+        }
+
         var PAGES = { home: home };
         PAGES.photos = buildSub('photos', [cloneForPage(N.slider), cloneForPage(N.ba), buildPhotosFullArchive()]);
-        PAGES.scope = buildSub('scope', [cloneForPage(N.scope)]);
-        PAGES.process = buildSub('process', [cloneForPage(N.processLoop), buildProcessTechSpec(), cloneForPage(N.process)]);
+        PAGES.scope = buildSub('scope', [buildScopeCards()]);
+        PAGES.process = buildSub('process', [buildProcShowcase(), buildProcessSteps(), buildProcessTechSpec()]);
         PAGES.services = buildSub('services', [cloneForPage(N.services)]);
-        PAGES.plans = buildSub('plans', [cloneForPage(N.plans), cloneForPage(N.hygieneMark)]);
+        PAGES.plans = buildSub('plans', [cloneForPage(N.plans), buildStickerShowcase()]);
         PAGES.faq = buildSub('faq', [cloneForPage(N.faq)]);
         ['svc-ice', 'svc-grinder', 'svc-ac', 'svc-frost', 'svc-store'].forEach(function (k) { PAGES[k] = buildSub(k, [svcSection(k)]); });
 
@@ -2788,8 +3308,8 @@
           }
           return buildSub(key, nodes);
         }
-        try { PAGES.types = unwrap('typesDetail', 'types'); } catch (e) { PAGES.types = buildSub('types', []); }
-        try { PAGES.area = unwrap('areaDetail', 'area'); } catch (e) { PAGES.area = buildSub('area', []); }
+        PAGES.types = buildSub('types', [buildTypesShowcase()]);
+        PAGES.area = buildSub('area', [buildAreaInfographic()]);
 
         var lpContent = byId('lpContent');
         try {
@@ -2900,28 +3420,28 @@
             tag: "미세틈새 살균 99.9%",
             title: "120℃ 고온 스팀 살균",
             desc: "기계 깊숙한 증발기 냉판과 좁은 유로 배관까지 미세 스팀을 침투시켜 보이지 않는 세균·바이러스를 99.9% 사멸합니다. 화학 약품으로 닿기 어려운 구석까지 완벽히 박멸합니다.",
-            img: "assets/process-steam.jpg"
+            clip: "gif-steam"
           },
           {
             badge: "● STEP 02",
             tag: "식품안전 규격 약제 사용",
             title: "친환경 석회·스케일 박리",
             desc: "식품첨가물 등급 전용 약제로 부품 손상 없이 냉판에 단단하게 굳은 칼슘·마그네슘 석회 스케일을 완벽 분해합니다. 생산량 저하와 기계 잔고장을 막는 핵심 공정입니다.",
-            img: "assets/process-descale.jpg"
+            clip: "gif-descale"
           },
           {
             badge: "● STEP 03",
             tag: "화학 잔여물 배출 0%",
             title: "고압 헹굼 · 잔류세제 0%",
             desc: "수압 제어 직수 노즐로 박리된 이물질과 세정제를 남김없이 씻어내 화학 잔여물 배출 가능성을 원천 차단합니다. 손님 입에 닿는 얼음이므로 헹굼에 가장 긴 시간을 투자합니다.",
-            img: "assets/process-rinse.jpg"
+            clip: "gif-rinse"
           },
           {
             badge: "● STEP 04",
             tag: "현장 제빙 품질 합격 확인",
             title: "크리스탈 얼음 제빙 검증",
             desc: "부품 재조립 후 현장에서 직접 기계를 재가동하여 생성된 얼음의 투명도, 결빙 강도, 냄새 유무를 최종 점검합니다. 점주님께서 직접 눈으로 합격 확인을 하실 때까지 철수하지 않습니다.",
-            img: "assets/process-pure-ice.jpg"
+            clip: "gif-ice"
           }
         ];
 
@@ -2947,7 +3467,7 @@
           if (img) {
             img.style.opacity = '0.35';
             setTimeout(() => {
-              img.src = data.img;
+              img.src = (window.ICELAB_CLIP_SRC ? window.ICELAB_CLIP_SRC(data.clip) : 'assets/' + data.clip + '.webp');
               img.style.opacity = '1';
             }, 100);
           }
@@ -2989,89 +3509,108 @@
         }
 
         // 2. Interactive B&A Split Slider Controller
+        //    인스턴스 단위(.ba-instance) 초기화 — 홈 원본과 #/photos 복제본이 각각 독립 동작한다
         const BA_ITEMS = [
           {
             title: "수직 증발기 제빙판 격자 & 얼음 슈트",
             desc: "검은 곰팡이와 갈색 물때로 심각하게 오염되었던 증발기 냉판 격자와 얼음 슈트 주변이 완전 분해 세척 후 본래의 스테인리스 은백색으로 복원되었습니다.",
             before: "assets/ba-interior-before.jpg",
-            after: "assets/ba-interior-after.jpg"
+            after: "assets/ba-interior-after.jpg",
+            stat: ["3,420 RLU", "12 RLU"]
           },
           {
             title: "얼음 저장고 (아이스 빈 바닥)",
             desc: "얼음이 직접 담기는 저장고 바닥의 묵은 물때와 흑곰팡이 침전물이 120℃ 고온 스팀 멸균 후 위생적으로 완벽히 청결해졌습니다.",
             before: "assets/ba-bin-before.jpg",
-            after: "assets/ba-bin-after.jpg"
+            after: "assets/ba-bin-after.jpg",
+            stat: ["2,180 RLU", "8 RLU"]
           },
           {
             title: "제빙실 물커튼 (슬라이드 배플)",
             desc: "수돗물 미네랄로 인해 누렇게 굳어 있던 물커튼 부품의 두꺼운 석회 스케일이 친환경 용해 세척 후 순백색 새 부품처럼 복원되었습니다.",
             before: "assets/ba-tray-before.jpg",
-            after: "assets/ba-tray-after.jpg"
+            after: "assets/ba-tray-after.jpg",
+            stat: ["두꺼운 석회 스케일", "순백색 복원"]
+          },
+          {
+            title: "워터펌프 저수조 (물 순환조)",
+            desc: "물을 끌어올리는 펌프 주변 저수조 바닥에 가라앉은 미세 침전물과 벽면에 붙은 석회 스케일을 친환경 약제로 불려 긁어내고, 고압 헹굼으로 헹궈 낸 뒤의 모습입니다. 물이 고이는 곳이라 가장 먼저 오염이 시작되는 부위입니다.",
+            before: "assets/ba-pump-before.jpg",
+            after: "assets/ba-pump-after.jpg",
+            stat: ["4,850 RLU", "15 RLU"]
+          },
+          {
+            title: "기계실 응축기 냉각핀",
+            desc: "공랭식 제빙기 뒤쪽에 먼지와 기름때가 두껍게 엉겨 붙어 냉각 효율을 떨어뜨리던 응축기 냉각핀을 에어와 스팀으로 한 줄씩 불어내, 은빛 알루미늄 핀이 제 색을 되찾았습니다.",
+            before: "assets/ba-condenser-before.jpg",
+            after: "assets/ba-condenser-after.jpg",
+            stat: ["분진 · 기름때 고착", "은빛 냉각핀 복원"]
           }
         ];
 
-        let curBa = 0;
-        function setBaItem(idx) {
-          curBa = idx;
-          const tabs = document.querySelectorAll('#baTabs .ba-nav-tab');
-          tabs.forEach((t, i) => t.classList.toggle('active', i === curBa));
-
-          const item = BA_ITEMS[curBa];
-          const bImg = document.getElementById('baBeforeImg');
-          const aImg = document.getElementById('baAfterImg');
-          const cap = document.getElementById('baCaption');
-
-          if (bImg) bImg.src = item.before;
-          if (aImg) aImg.src = item.after;
-          if (cap) cap.innerHTML = '<strong>' + item.title + '</strong>: ' + item.desc;
+        function baRender(inst, idx) {
+          const item = BA_ITEMS[idx];
+          if (!item) return;
+          const tabs = inst.querySelectorAll('.ba-nav-tab');
+          tabs.forEach(function (t, i) { t.classList.toggle('active', i === idx); });
+          const b = inst.querySelector('.ba-before');
+          const a = inst.querySelector('.ba-after');
+          const cap = inst.querySelector('.ba-cap');
+          if (b) { b.src = item.before; b.alt = item.title + ' 청소 전'; }
+          if (a) { a.src = item.after; a.alt = item.title + ' 청소 후'; }
+          if (cap) {
+            cap.innerHTML = '<strong>' + item.title + '</strong>' + item.desc +
+              (item.stat ? '<div class="ba-stats"><span class="ba-stat bad">청소 전 ' + item.stat[0] +
+                '</span><span class="ba-stat">청소 후 ' + item.stat[1] + '</span></div>' : '');
+          }
         }
 
-        function initBaSlider() {
-          const baTabs = document.querySelectorAll('#baTabs .ba-nav-tab');
-          baTabs.forEach((tab, idx) => {
-            tab.onclick = (e) => {
-              e.preventDefault();
-              setBaItem(idx);
-            };
+        function initBaInstances() {
+          document.querySelectorAll('.ba-instance').forEach(function (inst) {
+            if (inst.getAttribute('data-ba-init')) return;
+            inst.setAttribute('data-ba-init', '1');
+
+            const tabs = inst.querySelectorAll('.ba-nav-tab');
+            tabs.forEach(function (tab) {
+              tab.onclick = function (e) {
+                e.preventDefault();
+                baRender(inst, parseInt(tab.getAttribute('data-ba'), 10) || 0);
+              };
+            });
+
+            const slider = inst.querySelector('.ba-slider-wrap');
+            const range = inst.querySelector('.ba-slider-range');
+            if (!slider) return;
+
+            function setPos(posPercent) {
+              posPercent = Math.max(0, Math.min(100, posPercent));
+              slider.style.setProperty('--ba-pos', posPercent + '%');
+              if (range && Math.abs(parseFloat(range.value) - posPercent) > 0.5) range.value = posPercent;
+            }
+
+            if (range) {
+              range.oninput = function (e) { setPos(parseFloat(e.target.value)); };
+              range.onchange = function (e) { setPos(parseFloat(e.target.value)); };
+            }
+
+            let isDragging = false;
+            function moveTo(clientX) {
+              const rect = slider.getBoundingClientRect();
+              if (!rect.width) return;
+              setPos(((clientX - rect.left) / rect.width) * 100);
+            }
+            slider.addEventListener('pointerdown', function (e) {
+              isDragging = true;
+              try { slider.setPointerCapture(e.pointerId); } catch (_) {}
+              moveTo(e.clientX);
+            });
+            slider.addEventListener('pointermove', function (e) { if (isDragging) moveTo(e.clientX); });
+            slider.addEventListener('pointerup', function (e) {
+              isDragging = false;
+              try { slider.releasePointerCapture(e.pointerId); } catch (_) {}
+            });
+            slider.addEventListener('pointercancel', function () { isDragging = false; });
           });
-
-          const slider = document.getElementById('baSlider');
-          const range = document.getElementById('baRange');
-          if (!slider) return;
-
-          function setPos(posPercent) {
-            posPercent = Math.max(0, Math.min(100, posPercent));
-            slider.style.setProperty('--ba-pos', posPercent + '%');
-            if (range && range.value != posPercent) range.value = posPercent;
-          }
-
-          if (range) {
-            range.oninput = (e) => setPos(e.target.value);
-            range.onchange = (e) => setPos(e.target.value);
-          }
-
-          let isDragging = false;
-          function onPointerMove(clientX) {
-            const rect = slider.getBoundingClientRect();
-            if (!rect.width) return;
-            const p = ((clientX - rect.left) / rect.width) * 100;
-            setPos(p);
-          }
-
-          slider.onpointerdown = (e) => {
-            isDragging = true;
-            try { slider.setPointerCapture(e.pointerId); } catch (_) {}
-            onPointerMove(e.clientX);
-          };
-          slider.onpointermove = (e) => {
-            if (!isDragging) return;
-            onPointerMove(e.clientX);
-          };
-          slider.onpointerup = (e) => {
-            isDragging = false;
-            try { slider.releasePointerCapture(e.pointerId); } catch (_) {}
-          };
-          slider.onpointercancel = () => { isDragging = false; };
         }
 
         // 3. Falling Ice Crystals Canvas Simulation
@@ -3248,7 +3787,7 @@
         // Initialize All Showcases
         function initAll() {
           initProcShowcase();
-          initBaSlider();
+          initBaInstances();
           initFallingIce();
           initPortfolioFilter();
         }
@@ -3278,5 +3817,73 @@
         </div>
       </div>
     </div>
+    <script>
+      /* v3 : 세부페이지 4대 공정 쇼케이스 (인스턴스 독립 동작) + 클립 소스 선택 */
+      (function () {
+        var supportsWebp = (function () {
+          try { var c = document.createElement('canvas'); return c.toDataURL('image/webp').indexOf('data:image/webp') === 0; }
+          catch (e) { return false; }
+        })();
+        function clipSrc(stem) { return 'assets/' + stem + (supportsWebp ? '.webp' : '.gif'); }
+        window.ICELAB_CLIP_SRC = clipSrc;
+
+        function setStep(inst, idx) {
+          var tabs = inst.querySelectorAll('.proc-tab');
+          if (!tabs.length) return;
+          idx = ((idx % tabs.length) + tabs.length) % tabs.length;
+          var tab = tabs[idx];
+          tabs.forEach(function (t, i) {
+            t.classList.toggle('active', i === idx);
+            t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+          });
+          var img = inst.querySelector('.proc-img');
+          if (img) {
+            img.style.opacity = '0';
+            setTimeout(function () {
+              img.src = clipSrc(tab.getAttribute('data-gif'));
+              img.alt = tab.getAttribute('data-title');
+              img.style.opacity = '1';
+            }, 120);
+          }
+          var tag = inst.querySelector('.proc-tag');
+          var title = inst.querySelector('.proc-title');
+          var desc = inst.querySelector('.proc-desc');
+          if (tag) tag.textContent = tab.getAttribute('data-tag');
+          if (title) title.textContent = tab.getAttribute('data-title');
+          if (desc) desc.textContent = tab.getAttribute('data-desc');
+
+          clearTimeout(inst._v3timer);
+          inst._v3timer = setTimeout(function () { setStep(inst, idx + 1); }, 6500);
+        }
+
+        function initProcInstances() {
+          document.querySelectorAll('[data-proc-inst]').forEach(function (inst) {
+            if (inst.getAttribute('data-init')) return;
+            inst.setAttribute('data-init', '1');
+            inst.querySelectorAll('.proc-tab').forEach(function (tab, i) {
+              tab.onclick = function (e) { e.preventDefault(); setStep(inst, i); };
+            });
+            var prev = inst.querySelector('.proc-prev');
+            var next = inst.querySelector('.proc-next');
+            var cur = function () {
+              var t = inst.querySelectorAll('.proc-tab');
+              for (var i = 0; i < t.length; i++) { if (t[i].classList.contains('active')) return i; }
+              return 0;
+            };
+            if (prev) prev.onclick = function (e) { e.preventDefault(); setStep(inst, cur() - 1); };
+            if (next) next.onclick = function (e) { e.preventDefault(); setStep(inst, cur() + 1); };
+            inst.addEventListener('mouseenter', function () { clearTimeout(inst._v3timer); });
+            inst.addEventListener('mouseleave', function () { setStep(inst, cur()); });
+            var first = inst.querySelector('.proc-img');
+            if (first) first.src = clipSrc(inst.querySelector('.proc-tab').getAttribute('data-gif'));
+            setStep(inst, 0);
+          });
+        }
+
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initProcInstances);
+        else initProcInstances();
+        window.addEventListener('hashchange', function () { setTimeout(initProcInstances, 60); });
+      })();
+    </script>
   </body>
 </html>
