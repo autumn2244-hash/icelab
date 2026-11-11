@@ -1367,7 +1367,7 @@
         .f-cta-txt { display: none; }
         .f-cta-in { justify-content: center; }
         .f-cta-actions { width: 100%; justify-content: center; }
-        .f-cta-link, .f-cta-btn-call { flex: 1 1 0; text-align: center; padding: 10px 8px; font-size: 12.5px; }
+        .f-cta-link, .f-cta-btn-call { flex: 1 1 0; text-align: center; padding: 10px 8px; font-size: 12.5px; white-space: nowrap; }
       }
 
       /* Subpage Technical Spec & ATP Table Styles */
@@ -1676,7 +1676,8 @@
       }
 
       /* ---------- FAQ : 카테고리 뱃지 + 홈 인플레이스 펼치기 ---------- */
-      .faq-q { gap: 12px; }
+      .faq-q { gap: 12px; align-items: flex-start; }
+      .faq-q > svg { margin-top: 2px; }
       .fq-tag {
         flex: none; display: inline-flex; align-items: center; justify-content: center;
         min-width: 48px; font-size: 11.5px; font-weight: 900; letter-spacing: .02em;
@@ -1708,6 +1709,7 @@
         opacity: 1; margin-bottom: 12px; border-width: 1px; transform: none;
       }
       #page-faq .faq-item.extra { max-height: none; opacity: 1; }
+      #page-faq .faq-toggle-wrap { display: none; }
 
       /* ==================================================================
          v3 — 세부 페이지 시각화 · B&A 확장 · 공정 GIF 카드
