@@ -3004,14 +3004,14 @@
 
         function buildProcessSteps() {
           var cards = V3_STEPS.map(function (s) {
-            return '<article class="pc-card reveal">' +
+            return '<article class="pc-card">' +
               '<div class="pc-media">' + V3_MEDIA(s) + '<span class="pc-num">' + s.no + '</span>' + (s.gif ? V3_LIVE : '') + '</div>' +
               '<div class="pc-body"><h3>' + s.title + '</h3><p>' + s.desc + '</p>' +
               '<div class="pc-tags">' + s.tags.map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div></div>' +
               '</article>';
           }).join('');
           return el('section', 'v3-band',
-            '<div class="wrap"><div class="sec-head v3-sec-head reveal">' +
+            '<div class="wrap"><div class="sec-head v3-sec-head">' +
             '<span class="v3-kicker">STEP BY STEP</span>' +
             '<h2>상담부터 얼음 확인까지,<br />6단계로 진행합니다</h2>' +
             '<p>단계마다 하는 일이 다릅니다. 움직이는 화면으로 실제 작업 장면을 먼저 확인해 보세요.</p>' +
@@ -3044,7 +3044,7 @@
               '<span class="proc-tab-bar"></span></button>';
           }).join('');
           return el('section', 'v3-band proc-band',
-            '<div class="wrap"><div class="sec-head v3-sec-head reveal">' +
+            '<div class="wrap"><div class="sec-head v3-sec-head">' +
             '<span class="v3-kicker">PREMIUM HYGIENE PROCESS</span>' +
             '<h2>아이스랩 4대 핵심 분해세척 공정</h2>' +
             '<p>표면 청소를 넘어, 제빙 구조 전반의 오염원과 석회를 근본적으로 박리하는 과정입니다. 탭을 눌러 움직이는 장면을 보세요.</p>' +
@@ -3085,19 +3085,19 @@
 
         function buildScopeCards() {
           var cards = V3_SCOPE.map(function (s, i) {
-            return '<article class="sp-card reveal"><span class="sp-no">0' + (i + 1) + '</span>' +
+            return '<article class="sp-card"><span class="sp-no">0' + (i + 1) + '</span>' +
               '<div class="sp-ico">' + V3_ICON[s.ico] + '</div>' +
               '<h3>' + s.name + '</h3><span class="sp-method">' + s.method + '</span>' +
               '<p>' + s.note + '</p></article>';
           }).join('');
-          var wide = '<article class="sp-card sp-wide reveal">' +
+          var wide = '<article class="sp-card sp-wide">' +
             '<img src="assets/deep-clean.jpg" alt="열린 제빙기 내부의 냉판과 워터펌프를 세척하는 모습" loading="lazy" />' +
             '<div class="sp-wide-body"><span class="sp-method">분해 세척 원칙</span>' +
             '<h3>표면만 닦는 청소와 다릅니다</h3>' +
             '<p>물과 얼음이 지나가는 부품은 하나도 건너뛰지 않고 분해해서 씻습니다. 보이지 않는 유로 안쪽까지 씻어야 얼음 냄새가 다시 돌아오지 않습니다.</p>' +
             '<p>부품마다 맞는 방법이 달라, 약제로 불리는 부품과 스팀으로 살균하는 부품을 구분해 작업합니다.</p></div></article>';
           return el('section', 'v3-band',
-            '<div class="wrap"><div class="sec-head v3-sec-head reveal">' +
+            '<div class="wrap"><div class="sec-head v3-sec-head">' +
             '<span class="v3-kicker">SERVICE SCOPE</span>' +
             '<h2>손이 닿지 않는 곳까지,<br />분해해서 닦습니다</h2>' +
             '<p>물과 얼음이 지나가는 8개 부품을 하나씩 분해해, 부품에 맞는 방법으로 세척합니다.</p>' +
@@ -3165,41 +3165,41 @@
 
         function buildTypesShowcase() {
           var brands = V3_BRANDS.map(function (b) {
-            return '<article class="tb-card reveal"><div class="tb-badge' + (b.mark.length > 2 || b.mark === '+' ? ' sm' : '') + '">' + b.mark + '</div>' +
+            return '<article class="tb-card"><div class="tb-badge' + (b.mark.length > 2 || b.mark === '+' ? ' sm' : '') + '">' + b.mark + '</div>' +
               '<h4>' + b.name + '</h4><p class="tb-origin">' + b.origin + '</p><p>' + b.note + '</p></article>';
           }).join('');
           var shapes = V3_SHAPES.map(function (s) {
-            return '<article class="sh-card reveal">' + iceSvg(s.kind) +
+            return '<article class="sh-card">' + iceSvg(s.kind) +
               '<h4>' + s.name + '</h4><p>' + s.note + '</p><span class="sh-en">' + s.en + '</span></article>';
           }).join('');
           return el('section', 'v3-band',
             '<div class="wrap">' +
-            '<div class="sec-head v3-sec-head reveal"><span class="v3-kicker">BRANDS</span>' +
+            '<div class="sec-head v3-sec-head"><span class="v3-kicker">BRANDS</span>' +
             '<h2>브랜드마다 분해 구조가 다릅니다</h2>' +
             '<p>주로 다루는 브랜드입니다. 이 밖의 브랜드도 모두 진행하며, 모델명을 알려 주시면 확인해 드립니다.</p></div>' +
             '<div class="tb-grid">' + brands + '</div>' +
-            '<div class="sec-head v3-sec-head reveal" style="margin-top:64px;"><span class="v3-kicker">ICE SHAPES</span>' +
+            '<div class="sec-head v3-sec-head" style="margin-top:64px;"><span class="v3-kicker">ICE SHAPES</span>' +
             '<h2>얼음 모양으로도 구분합니다</h2>' +
             '<p>얼음 모양마다 제빙 구조가 달라, 세척 포인트도 달라집니다. 매장에서 쓰는 얼음이 어느 쪽인지 확인해 보세요.</p></div>' +
             '<div class="sh-grid">' + shapes + '</div>' +
-            '<div class="sec-head v3-sec-head reveal" style="margin-top:64px;"><span class="v3-kicker">COOLING · FORM</span>' +
+            '<div class="sec-head v3-sec-head" style="margin-top:64px;"><span class="v3-kicker">COOLING · FORM</span>' +
             '<h2>냉각 방식과 형태</h2>' +
             '<p>같은 브랜드라도 냉각 방식과 설치 형태에 따라 관리 포인트가 달라집니다.</p></div>' +
             '<div class="spec-card-grid">' +
-            '<article class="spec-card reveal"><h4>공랭식</h4><span class="tag">팬 · 공기 순환</span>' +
+            '<article class="spec-card"><h4>공랭식</h4><span class="tag">팬 · 공기 순환</span>' +
             '<p>설치가 간편하고 수도요금이 적게 듭니다. 대신 소음과 발열이 있고, 여름에는 응축기 냉각핀에 먼지가 쌓여 효율이 떨어지기 쉬워 응축기 관리가 중요합니다.</p></article>' +
-            '<article class="spec-card reveal"><h4>수랭식</h4><span class="tag">물 순환</span>' +
+            '<article class="spec-card"><h4>수랭식</h4><span class="tag">물 순환</span>' +
             '<p>조용하고 성능이 일정합니다. 수도요금이 많이 들고 배수가 필요해, 급·배수 라인과 저수조 점검이 함께 필요합니다.</p></article>' +
-            '<article class="spec-card reveal"><h4>형태 · 용량</h4><span class="tag">언더카운터 · 모듈형 · 카운터탑</span>' +
+            '<article class="spec-card"><h4>형태 · 용량</h4><span class="tag">언더카운터 · 모듈형 · 카운터탑</span>' +
             '<p>카운터 아래 일체형, 제빙 헤드와 저장통이 분리된 모듈형, 카운터 위 디스펜서형이 있습니다. 용량 표기는 저장량이 아니라 하루에 만드는 얼음의 양(kg)입니다.</p></article>' +
-            '<article class="spec-card reveal"><h4>어떤 기종이든 진행합니다</h4><span class="tag">25kg ~ 500kg</span>' +
+            '<article class="spec-card"><h4>어떤 기종이든 진행합니다</h4><span class="tag">25kg ~ 500kg</span>' +
             '<p>소형 25kg부터 대형 500kg까지, 구조만 확인되면 분해 세척이 가능합니다. 기종을 몰라도 사진 한 장이면 확인해 드립니다.</p></article>' +
             '</div></div>');
         }
 
         /* --- 이용 방식 : 안심 스티커 실물 목업 --- */
         function buildStickerShowcase() {
-          var plaque = '<div class="mock mock-door reveal">' +
+          var plaque = '<div class="mock mock-door">' +
             '<img src="assets/visit.jpg" alt="카페 출입문 너머 매장" loading="lazy" />' +
             '<div class="mock-glass"></div>' +
             '<div class="mock-plaque">' +
@@ -3211,7 +3211,7 @@
             '<div class="mp-body">본 매장의 제빙기는<br />아이스랩의 분해세척·고온스팀 살균 관리를<br />정기적으로 받고 있습니다.</div>' +
             '<div class="mp-foot">FOOD HYGIENE · ICELAB</div>' +
             '</div><span class="mock-tag">출입문 부착용 아크릴 마크</span></div>';
-          var stand = '<div class="mock mock-stand reveal">' +
+          var stand = '<div class="mock mock-stand">' +
             '<div class="stand-scene"><div class="stand-shadow"></div>' +
             '<div class="stand"><div class="stand-face">' +
             '<div class="sf-top">ICELAB CLEAN ZONE</div>' +
@@ -3221,7 +3221,7 @@
             '</div><div class="stand-base"></div></div></div>' +
             '<span class="mock-tag">카운터 비치용 미니 스탠드</span></div>';
           return el('section', 'v3-band',
-            '<div class="wrap"><div class="sec-head v3-sec-head reveal"><span class="v3-kicker">B2B TRUST MARK</span>' +
+            '<div class="wrap"><div class="sec-head v3-sec-head"><span class="v3-kicker">B2B TRUST MARK</span>' +
             '<h2>손님이 먼저 확인하는<br />안심 스티커를 드립니다</h2>' +
             '<p>정기 관리를 받는 매장에는 출입문에 붙이는 아크릴 마크와 카운터에 세우는 미니 스탠드를 함께 보내 드립니다.</p></div>' +
             '<div class="zone-stage">' + plaque + stand + '</div>' +
@@ -3266,10 +3266,10 @@
           var incheon = ['중구', '동구', '미추홀', '연수', '남동', '부평', '계양', '서구', '강화', '옹진'];
           function chips(arr) { return '<div class="area-chips">' + arr.map(function (a) { return '<span>' + a + '</span>'; }).join('') + '</div>'; }
           return el('section', 'v3-band',
-            '<div class="wrap"><div class="sec-head v3-sec-head reveal"><span class="v3-kicker">SERVICE AREA</span>' +
+            '<div class="wrap"><div class="sec-head v3-sec-head"><span class="v3-kicker">SERVICE AREA</span>' +
             '<h2>서울 · 경기 · 인천<br />수도권 전역 당일 방문</h2>' +
             '<p>권역별로 배차해 같은 날 방문합니다. 경계 지역은 전화 상담 때 알려 주시면 가능 여부를 바로 확인해 드립니다.</p></div>' +
-            '<div class="area-stage"><div class="area-map reveal">' + svg +
+            '<div class="area-stage"><div class="area-map">' + svg +
             '<div class="area-legend"><span><i style="background:#0a74bd"></i>중심 권역 · 가장 빠른 방문</span>' +
             '<span><i style="background:#2f9ddb"></i>서울 · 인천 전역</span><span><i style="background:#7fc6e8"></i>경기 전역</span></div></div>' +
             '<div class="area-flow">' +
@@ -3278,9 +3278,9 @@
             '<div><b>STEP 3</b>약속한 시간에 방문해 작업합니다.</div>' +
             '</div></div>' +
             '<div class="area-zone-grid">' +
-            '<article class="area-zone reveal"><h3><i></i>서울</h3><p class="zc">25개 자치구 전역</p>' + chips(seoul) + '</article>' +
-            '<article class="area-zone reveal"><h3><i style="background:#2f9ddb"></i>경기</h3><p class="zc">주요 시 · 군 전역</p>' + chips(gyeonggi) + '</article>' +
-            '<article class="area-zone reveal"><h3><i style="background:#7fc6e8"></i>인천</h3><p class="zc">10개 군 · 구 전역</p>' + chips(incheon) + '</article>' +
+            '<article class="area-zone"><h3><i></i>서울</h3><p class="zc">25개 자치구 전역</p>' + chips(seoul) + '</article>' +
+            '<article class="area-zone"><h3><i style="background:#2f9ddb"></i>경기</h3><p class="zc">주요 시 · 군 전역</p>' + chips(gyeonggi) + '</article>' +
+            '<article class="area-zone"><h3><i style="background:#7fc6e8"></i>인천</h3><p class="zc">10개 군 · 구 전역</p>' + chips(incheon) + '</article>' +
             '</div></div>');
         }
 
@@ -3468,6 +3468,7 @@
             img.style.opacity = '0.35';
             setTimeout(() => {
               img.src = (window.ICELAB_CLIP_SRC ? window.ICELAB_CLIP_SRC(data.clip) : 'assets/' + data.clip + '.webp');
+              img.alt = data.title;
               img.style.opacity = '1';
             }, 100);
           }
