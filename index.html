@@ -1755,8 +1755,10 @@
       }
       .pc-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
       .pc-media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #0b2540; }
-      .pc-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s cubic-bezier(.22,.61,.36,1); }
-      .pc-card:hover .pc-media img { transform: scale(1.05); }
+      .pc-media img, .pc-media video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s cubic-bezier(.22,.61,.36,1); }
+      /* 720p 원본 클립이 브라우저 보간으로 흐려지지 않도록 GPU 승격 */
+      .pc-media video { transform: translateZ(0); backface-visibility: hidden; }
+      .pc-card:hover .pc-media img, .pc-card:hover .pc-media video { transform: scale(1.05); }
       .pc-media::after {
         content: ""; position: absolute; inset: 0; pointer-events: none;
         background: linear-gradient(180deg, rgba(8,38,63,.42) 0%, rgba(8,38,63,0) 38%, rgba(8,38,63,.06) 100%);
@@ -1990,7 +1992,8 @@
       .proc-inst .pt-title { display: block; font-size: 15.5px; font-weight: 800; color: var(--navy); line-height: 1.35; letter-spacing: -.01em; }
       .proc-media { position: relative; border-radius: 18px; overflow: hidden; background: #0b2540; box-shadow: 0 16px 38px rgba(8,38,63,.16); }
       .proc-media::before { content: ""; display: block; padding-top: 68%; }
-      .proc-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .3s ease; }
+      .proc-media img, .proc-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .3s ease; }
+      .proc-media video { transform: translateZ(0); backface-visibility: hidden; }
       .proc-live {
         position: absolute; top: 14px; left: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px;
         font-size: 10.5px; font-weight: 900; letter-spacing: .14em; color: #d8f6ff;
@@ -2118,7 +2121,7 @@
           <!-- 시네마틱 쇼케이스 스테이지 -->
           <div class="proc-stage" id="procStage">
             <div style="position:relative;height:380px;border-radius:18px;overflow:hidden;box-shadow:0 12px 32px rgba(8,38,63,0.12);">
-              <img id="procImg" src="assets/process-steam.jpg" alt="120℃ 고온 스팀 살균" style="width:100%;height:100%;object-fit:cover;transition:opacity 0.4s ease;" />
+              <video id="procImg" autoplay muted loop playsinline preload="metadata" poster="assets/gif-steam.jpg" aria-label="120℃ 고온 스팀 살균" style="width:100%;height:100%;object-fit:cover;transition:opacity 0.4s ease;transform:translateZ(0);"><source src="assets/gif-steam.webm" type="video/webm" /><source src="assets/gif-steam.mp4" type="video/mp4" /></video>
               <div style="position:absolute;top:16px;left:16px;background:rgba(8,38,63,0.88);color:#8fd8f7;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:800;backdrop-filter:blur(4px);" id="procBadge">● STEP 01</div>
             </div>
             <div style="display:flex;flex-direction:column;justify-content:center;">
@@ -2429,11 +2432,11 @@
           <!-- B&A 부품별 탭 선택 (5개 부품 · 실제 부품 형상 1:1 일치) -->
           <div class="ba-instance" id="baInstance">
             <div class="ba-nav-tabs" id="baTabs">
-              <button class="ba-nav-tab active" data-ba="0">1. 증발기 제빙판·슈트</button>
-              <button class="ba-nav-tab" data-ba="1">2. 얼음 저장고 바닥</button>
-              <button class="ba-nav-tab" data-ba="2">3. 물커튼 (슬라이드 배플)</button>
-              <button class="ba-nav-tab" data-ba="3">4. 워터펌프 · 스트레이너</button>
-              <button class="ba-nav-tab" data-ba="4">5. 급수 노즐 · 분사 파이프</button>
+              <button class="ba-nav-tab active" data-ba="0">1. 증발기 (제빙 냉판)</button>
+              <button class="ba-nav-tab" data-ba="1">2. 얼음 저장고 (아이스 빈)</button>
+              <button class="ba-nav-tab" data-ba="2">3. 물커튼 · 슬라이드 가이드</button>
+              <button class="ba-nav-tab" data-ba="3">4. 순환 워터펌프 · 저수조</button>
+              <button class="ba-nav-tab" data-ba="4">5. 물 분배기 · 분사 노즐 파이프</button>
             </div>
 
             <!-- 인터랙티브 스플릿 슬라이더 본체 -->
@@ -2443,12 +2446,12 @@
 
               <!-- 하단 : 청소 후 이미지 -->
               <div class="ba-slider-img">
-                <img class="ba-after" src="assets/ba-interior-after.jpg" alt="청소 후 깨끗해진 제빙기 내부" />
+                <img class="ba-after" src="assets/ba-interior-after.jpg" alt="청소 후 석회가 사라진 증발기 냉판 격자" />
               </div>
 
               <!-- 상단 : 청소 전 이미지 (클리핑) -->
               <div class="ba-slider-before" id="baClip">
-                <img class="ba-before" src="assets/ba-interior-before.jpg" alt="청소 전 오염된 제빙기 내부" />
+                <img class="ba-before" src="assets/ba-interior-before.jpg" alt="청소 전 물때와 석회가 고착된 증발기 냉판 격자" />
               </div>
 
               <!-- 분할 드래그 핸들 -->
@@ -2461,8 +2464,8 @@
             </div>
 
             <div class="ba-cap" id="baCaption">
-              <strong>수직 증발기 제빙판 격자 &amp; 얼음 슈트</strong>검은 곰팡이와 갈색 물때로 심각하게 오염되었던 증발기 냉판 격자와 얼음 슈트 주변이 완전 분해 세척 후 본래의 스테인리스 은백색으로 복원되었습니다.
-              <div class="ba-stats"><span class="ba-stat bad">청소 전 3,420 RLU</span><span class="ba-stat">청소 후 12 RLU</span></div>
+              <strong>증발기 · 제빙 냉판 격자</strong>얼음이 얼어붙는 냉판 위 격자(제빙 셀)입니다. 수돗물의 칼슘·마그네슘이 물방울마다 마르며 격자 틈에 하얗게 굳고, 그 위로 물때와 녹물이 눌러앉아 얼음이 잘 떨어지지 않습니다. 약제로 석회를 불려 탈거한 뒤 고압 스팀으로 틈새까지 밀어내면 사진처럼 스테인리스 은백색 격자가 그대로 드러납니다.
+              <div class="ba-stats"><span class="ba-stat bad">석회 · 물때 두껍게 고착</span><span class="ba-stat">은백색 격자 복원</span></div>
             </div>
           </div>
 
@@ -3085,8 +3088,11 @@
            ================================================================ */
         var V3_MEDIA = function (it) {
           if (it.gif) {
-            return '<picture><source srcset="assets/' + it.gif + '.webp" type="image/webp" />' +
-              '<img src="assets/' + it.gif + '.gif" alt="' + it.alt + '" loading="lazy" decoding="async" /></picture>';
+            // 720p 원본을 H.264/VP9 로 인코딩한 클립 (GIF/WebP 대비 선명도·용량 모두 개선)
+            return '<video class="pc-video" autoplay muted loop playsinline preload="metadata"' +
+              ' poster="assets/' + it.gif + '.jpg" aria-label="' + it.alt + '">' +
+              '<source src="assets/' + it.gif + '.webm" type="video/webm" />' +
+              '<source src="assets/' + it.gif + '.mp4" type="video/mp4" /></video>';
           }
           return '<img src="' + it.img + '" alt="' + it.alt + '" loading="lazy" decoding="async" />';
         };
@@ -3163,7 +3169,7 @@
             '</div>' +
             '<div class="proc-inst" data-proc-inst><div class="proc-tabs" role="tablist">' + tabs + '</div>' +
             '<div class="proc-stage">' +
-            '<div class="proc-media"><img class="proc-img" src="assets/process-steam.jpg" alt="120℃ 고온 스팀 살균" /><span class="proc-live"><i></i>LIVE</span><span class="proc-note" hidden></span></div>' +
+            '<div class="proc-media"><video class="proc-img" autoplay muted loop playsinline preload="metadata" poster="assets/process-steam.jpg" aria-label="120℃ 고온 스팀 살균"><source src="assets/gif-steam.webm" type="video/webm" /><source src="assets/gif-steam.mp4" type="video/mp4" /></video><span class="proc-live"><i></i>LIVE</span><span class="proc-note" hidden></span></div>' +
             '<div class="proc-copy">' +
             '<span class="proc-tag">' + V3_PROC[0].tag + '</span><h3 class="proc-title">' + V3_PROC[0].title + '</h3>' +
             '<p class="proc-desc">' + V3_PROC[0].desc + '</p>' +
@@ -3594,8 +3600,18 @@
           if (img) {
             img.style.opacity = '0.35';
             setTimeout(() => {
-              img.src = data.still ? data.still : (window.ICELAB_CLIP_SRC ? window.ICELAB_CLIP_SRC(data.clip) : 'assets/' + data.clip + '.webp');
-              img.alt = data.title;
+              if (img.tagName === 'VIDEO') {
+                const stem = 'assets/' + data.clip;
+                const srcs = img.querySelectorAll('source');
+                srcs[0].src = stem + '.webm';
+                if (srcs[1]) srcs[1].src = stem + '.mp4';
+                img.poster = stem + '.jpg';
+                try { img.load(); img.play(); } catch (e) {}
+                img.setAttribute('aria-label', data.title);
+              } else {
+                img.src = data.still ? data.still : (window.ICELAB_CLIP_SRC ? window.ICELAB_CLIP_SRC(data.clip) : 'assets/' + data.clip + '.mp4');
+                img.alt = data.title;
+              }
               img.style.opacity = '1';
             }, 100);
           }
@@ -3640,39 +3656,39 @@
         //    인스턴스 단위(.ba-instance) 초기화 — 홈 원본과 #/photos 복제본이 각각 독립 동작한다
         const BA_ITEMS = [
           {
-            title: "수직 증발기 제빙판 격자 & 얼음 슈트",
-            desc: "검은 곰팡이와 갈색 물때로 심각하게 오염되었던 증발기 냉판 격자와 얼음 슈트 주변이 완전 분해 세척 후 본래의 스테인리스 은백색으로 복원되었습니다.",
+            title: "증발기 · 제빙 냉판 격자",
+            desc: "얼음이 얼어붙는 냉판 위 격자(제빙 셀)입니다. 수돗물의 칼슘·마그네슘이 물방울마다 마르며 격자 틈에 하얗게 굳고, 그 위로 물때와 녹물이 눌러앉아 얼음이 잘 떨어지지 않습니다. 약제로 석회를 불려 탈거한 뒤 고압 스팀으로 틈새까지 밀어내면 사진처럼 스테인리스 은백색 격자가 그대로 드러납니다.",
             before: "assets/ba-interior-before.jpg",
             after: "assets/ba-interior-after.jpg",
-            stat: ["3,420 RLU", "12 RLU"]
+            stat: ["석회 · 물때 두껍게 고착", "은백색 격자 복원"]
           },
           {
-            title: "얼음 저장고 (아이스 빈 바닥)",
-            desc: "얼음이 직접 담기는 저장고 바닥의 묵은 물때와 흑곰팡이 침전물이 120℃ 고온 스팀 멸균 후 위생적으로 완벽히 청결해졌습니다.",
+            title: "얼음 저장고 · 아이스 빈 내부",
+            desc: "떨어진 얼음이 바로 담기는 저장고입니다. 바닥과 모서리에 물이 고이면서 검은 곰팡이와 누런 물때가 판때기처럼 눌어붙고, 그 위로 얼음이 쌓여 손님 얼음에 그대로 닿습니다. 스팀 살균과 약제 세척을 마치면 사진처럼 원래의 백색 패널이 드러납니다.",
             before: "assets/ba-bin-before.jpg",
             after: "assets/ba-bin-after.jpg",
-            stat: ["2,180 RLU", "8 RLU"]
+            stat: ["흑곰팡이 · 물때 고착", "백색 패널 복원"]
           },
           {
-            title: "제빙실 물커튼 (슬라이드 배플)",
-            desc: "수돗물 미네랄로 인해 누렇게 굳어 있던 물커튼 부품의 두꺼운 석회 스케일이 친환경 용해 세척 후 순백색 새 부품처럼 복원되었습니다.",
+            title: "물커튼 · 슬라이드 가이드",
+            desc: "제빙된 얼음이 물커튼을 타고 저장고로 미끄러지는 통로입니다. 미세한 홈과 틈마다 물때가 누렇게 배어 슬라임처럼 굳고, 그 위로 곰팡이가 번집니다. 탈거해 홈 하나하나를 약제로 불려 닦고 스팀으로 마무리하면 맑은 반투명 상태로 돌아옵니다.",
             before: "assets/ba-tray-before.jpg",
             after: "assets/ba-tray-after.jpg",
-            stat: ["두꺼운 석회 스케일", "순백색 복원"]
+            stat: ["홈마다 누런 슬라임", "반투명 복원"]
           },
           {
-            title: "워터펌프 · 스트레이너 (이물 걸름망)",
-            desc: "물을 끌어올리는 워터펌프 입구의 스트레이너 뚜껑입니다. 검게 굳은 물때와 녹물을 약제로 불려 닦아내고 고압 헹굼까지 마쳐, 물이 지나가는 통로가 원래의 흰색을 되찾았습니다. 이 망이 막히면 물순환이 약해져 얼음 생산량이 떨어집니다.",
+            title: "순환 워터펌프 · 저수조 스트레이너",
+            desc: "저수조 물을 냉판 위로 끌어올리는 펌프의 흡입구(스트레이너)입니다. 녹물과 물때가 뭉쳐 구멍을 막으면 물순환이 약해져 얼음 생산량이 떨어지고, 막힌 물이 고여 냄새가 납니다. 분해 세척 후에는 사진처럼 원래의 흰색과 스테인리스 색을 되찾습니다.",
             before: "assets/ba-strainer-before.jpg",
             after: "assets/ba-strainer-after.jpg",
-            stat: ["물때 · 녹물 고착", "원래 색 복원"]
+            stat: ["흡입구 물때 막힘", "물순환 정상화"]
           },
           {
-            title: "급수 노즐 · 분사 파이프",
-            desc: "제빙판에 물을 뿌리는 분사 노즐 파이프입니다. 노즐 구멍마다 끼어 있던 물때와 석회를 약제로 불려 제거하고 구멍 하나하나를 헹궈, 물이 제빙판 전체에 고르게 뿌려지도록 되살렸습니다.",
+            title: "물 분배기 · 분사 노즐 파이프",
+            desc: "제빙판 위로 물을 고르게 뿌리는 분사 노즐 파이프입니다. 구멍마다 석회와 갈색 이물질이 끼어 막히면 물이 한쪽으로만 뿌려져 얼음이 기형으로 얼고 생산량도 줄어듭니다. 약제로 불려 구멍을 하나씩 뚫고 헹구면 다시 물이 고르게 퍼집니다.",
             before: "assets/ba-nozzle-before.jpg",
             after: "assets/ba-nozzle-after.jpg",
-            stat: ["노즐 구멍 물때 막힘", "분사 구멍 복원"]
+            stat: ["노즐 구멍 막힘", "분사 구멍 복원"]
           }
         ];
 
@@ -3952,8 +3968,34 @@
           try { var c = document.createElement('canvas'); return c.toDataURL('image/webp').indexOf('data:image/webp') === 0; }
           catch (e) { return false; }
         })();
-        function clipSrc(stem) { return 'assets/' + stem + (supportsWebp ? '.webp' : '.gif'); }
+        function clipSrc(stem) { return 'assets/' + stem + '.mp4'; }
         window.ICELAB_CLIP_SRC = clipSrc;
+
+        /* 4대 공정 클립: mp4/webm 두 소스를 같은 <video>에 갈아끼워 720p 원본을 그대로 재생 */
+        function setClip(video, stem, still, alt) {
+          if (!video) return;
+          if (still) {
+            video.poster = still;
+            var srcs = video.querySelectorAll('source');
+            if (srcs.length) {
+              srcs[0].src = 'assets/' + stem + '.webm';
+              srcs[1] && (srcs[1].src = 'assets/' + stem + '.mp4');
+              try { video.load(); } catch (e) {}
+              try { video.play(); } catch (e) {}
+              if (alt) video.setAttribute('aria-label', alt);
+            }
+            return;
+          }
+          video.poster = 'assets/' + stem + '.jpg';
+          var s = video.querySelectorAll('source');
+          if (s.length) {
+            s[0].src = 'assets/' + stem + '.webm';
+            s[1] && (s[1].src = 'assets/' + stem + '.mp4');
+            try { video.load(); } catch (e) {}
+            try { video.play(); } catch (e) {}
+            if (alt) video.setAttribute('aria-label', alt);
+          }
+        }
 
         function setStep(inst, idx) {
           var tabs = inst.querySelectorAll('.proc-tab');
@@ -3964,14 +4006,18 @@
             t.classList.toggle('active', i === idx);
             t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
           });
-          var img = inst.querySelector('.proc-img');
+          var media = inst.querySelector('.proc-img');
           var still = tab.getAttribute('data-still');
-          if (img) {
-            img.style.opacity = '0';
+          if (media) {
+            media.style.opacity = '0';
             setTimeout(function () {
-              img.src = still ? still : clipSrc(tab.getAttribute('data-gif'));
-              img.alt = tab.getAttribute('data-title');
-              img.style.opacity = '1';
+              if (media.tagName === 'VIDEO') {
+                setClip(media, tab.getAttribute('data-gif'), still, tab.getAttribute('data-title'));
+              } else {
+                media.src = still ? still : clipSrc(tab.getAttribute('data-gif'));
+                media.alt = tab.getAttribute('data-title');
+              }
+              media.style.opacity = '1';
             }, 120);
           }
           var live = inst.querySelector('.proc-live');
@@ -4013,7 +4059,9 @@
             inst.addEventListener('mouseleave', function () { setStep(inst, cur()); });
             var firstTab = inst.querySelector('.proc-tab');
             var first = inst.querySelector('.proc-img');
-            if (first) first.src = firstTab.getAttribute('data-still') || clipSrc(firstTab.getAttribute('data-gif'));
+            if (first && first.tagName !== 'VIDEO') {
+              first.src = firstTab.getAttribute('data-still') || clipSrc(firstTab.getAttribute('data-gif'));
+            }
             setStep(inst, 0);
           });
         }
