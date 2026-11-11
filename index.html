@@ -2841,6 +2841,7 @@
         var TOGETHER = '제빙기 청소를 중심으로 진행하는 클린서비스 중 하나로, 제빙기 청소와 함께 맡기실 수 있습니다. 상담은 전화로 받으며, 상태를 알려 주시면 일정을 맞춰 방문합니다.';
         var SVC = {
           'svc-ice': {
+            head: '물과 얼음이 지나가는 모든 부품을, 분해해서',
             lead: [
               '아이스랩의 중심 서비스입니다. 물과 얼음이 지나가는 모든 부품을 분해해 세척하고, 고온 스팀으로 살균해 속까지 깨끗한 얼음을 만듭니다.',
               '분해해서 닦는 범위와 진행 과정은 청소 범위·청소 과정 페이지에서 자세히 확인하실 수 있습니다.'
@@ -2857,6 +2858,7 @@
             ]
           },
           'svc-grinder': {
+            head: '원두 기름때와 찌꺼기까지, 분해 세척',
             lead: ['그라인더 내부에 쌓이는 원두 기름때와 찌꺼기를 분해 세척하는 서비스입니다.', TOGETHER],
             links: [
               ['#/svc-ice', '제빙기 청소', '완전 분해 세척 · 고온 스팀 살균'], ['#/svc-ac', '에어컨 청소', '필터·내부 세척, 냄새와 곰팡이 제거'],
@@ -2865,6 +2867,7 @@
             ]
           },
           'svc-ac': {
+            head: '냄새의 원인까지, 필터와 내부 세척',
             lead: ['에어컨 필터와 내부를 세척해 냄새와 곰팡이를 제거하는 서비스입니다.', TOGETHER],
             links: [
               ['#/svc-ice', '제빙기 청소', '완전 분해 세척 · 고온 스팀 살균'], ['#/svc-grinder', '그라인더 청소', '원두 기름때와 찌꺼기 분해 세척'],
@@ -2873,6 +2876,7 @@
             ]
           },
           'svc-frost': {
+            head: '두껍게 언 성에, 성능 회복까지',
             lead: ['냉동고에 두껍게 언 성에를 제거하고 내부를 정리하는 서비스입니다.', TOGETHER],
             links: [
               ['#/svc-ice', '제빙기 청소', '완전 분해 세척 · 고온 스팀 살균'], ['#/svc-grinder', '그라인더 청소', '원두 기름때와 찌꺼기 분해 세척'],
@@ -2881,6 +2885,7 @@
             ]
           },
           'svc-store': {
+            head: '카운터·홀·주방까지, 매장 동선에 맞춰',
             lead: ['카페와 매장 전체를 위생적으로 청소하는 서비스입니다.', TOGETHER],
             links: [
               ['#/svc-ice', '제빙기 청소', '완전 분해 세척 · 고온 스팀 살균'], ['#/svc-grinder', '그라인더 청소', '원두 기름때와 찌꺼기 분해 세척'],
@@ -2959,7 +2964,7 @@
 
         function svcSection(key) {
           var s = SVC[key]; var meta = SUB[key];
-          var html = '<div class="sec-head svc-head"><p class="kicker">CLEAN SERVICE</p><h2>' + meta.title + '</h2><p>' + meta.desc + '</p></div>';
+          var html = '<div class="sec-head svc-head"><p class="kicker">CLEAN SERVICE</p><h2>' + (s.head || meta.title) + '</h2><p>' + meta.desc + '</p></div>';
           s.lead.forEach(function (t) { html += '<p class="svc-lead">' + t + '</p>'; });
           html += svcSummary(key);
           if (s.points) {
