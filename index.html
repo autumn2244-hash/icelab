@@ -1945,7 +1945,8 @@
       .svc-sum b { display: block; font-size: 15.5px; color: var(--navy); margin: 5px 0 6px; }
       .svc-sum p { margin: 0; font-size: 12.8px; color: var(--muted); line-height: 1.55; }
       .svc-photo { position: relative; margin-top: 20px; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
-      .svc-photo img { width: 100%; height: clamp(220px, 34vw, 340px); object-fit: cover; display: block; }
+      .svc-photo img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+      @media (max-width: 640px) { .svc-photo img { aspect-ratio: 4 / 3; } }
       .svc-photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 44px 24px 20px; color: #eaf6ff; font-size: 14.5px; background: linear-gradient(180deg, rgba(8,38,63,0), rgba(8,38,63,.82)); }
       .svc-photo figcaption strong { display: block; font-size: 17px; margin-bottom: 4px; color: #fff; }
 
