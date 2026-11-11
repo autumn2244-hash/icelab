@@ -2356,8 +2356,8 @@
               <button class="ba-nav-tab active" data-ba="0">1. 증발기 제빙판·슈트</button>
               <button class="ba-nav-tab" data-ba="1">2. 얼음 저장고 바닥</button>
               <button class="ba-nav-tab" data-ba="2">3. 물커튼 (슬라이드 배플)</button>
-              <button class="ba-nav-tab" data-ba="3">4. 워터펌프 저수조</button>
-              <button class="ba-nav-tab" data-ba="4">5. 응축기 냉각핀</button>
+              <button class="ba-nav-tab" data-ba="3">4. 워터펌프 · 스트레이너</button>
+              <button class="ba-nav-tab" data-ba="4">5. 급수 노즐 · 분사 파이프</button>
             </div>
 
             <!-- 인터랙티브 스플릿 슬라이더 본체 -->
@@ -2973,13 +2973,13 @@
           { no: 'STEP 03', title: '완전 분해', img: 'assets/cleaning-open.jpg', alt: '제빙기 하부 패널을 열어 내부를 노출한 모습',
             desc: '전원을 차단하고 주변을 보양한 뒤 상판과 커버를 들어내고, 물과 얼음이 지나가는 부품을 하나하나 분리합니다.',
             tags: ['상판 · 커버 탈거', '물 닿는 부품 전부'] },
-          { no: 'STEP 04', title: '세척 · 석회 제거', gif: 'gif-descale', alt: '석회 스케일 위로 친환경 약제가 반응하는 모습',
+          { no: 'STEP 04', title: '세척 · 석회 제거', gif: 'gif-wash', alt: '거품 세척제를 뿌린 부품에 고압수를 쏘아 헹구는 현장',
             desc: '워터펌프와 호스·노즐·파이프까지 친환경 세제로 분해 세척하고, 냉판에 단단히 굳은 석회와 물때를 약제로 불려 탈거합니다.',
             tags: ['식품첨가물 등급 약제', '냉판 석회 박리'] },
           { no: 'STEP 05', title: '스팀 고압세척 · 살균', gif: 'gif-steam', alt: '120℃ 고온 스팀을 냉판에 분사하는 모습',
             desc: '깊은 내부를 스팀 고압세척하고 헹궈 낸 뒤, 120℃ 고온 스팀으로 곰팡이와 세균을 살균합니다. 헹굼까지 마쳐 약품 잔류를 남기지 않습니다.',
             tags: ['120℃ 고온 스팀', '잔류 세제 0%'] },
-          { no: 'STEP 06', title: '조립 · 얼음 확인 · 정리', gif: 'gif-ice', alt: '세척 후 맑고 투명한 각얼음',
+          { no: 'STEP 06', title: '조립 · 얼음 확인 · 정리', img: 'assets/process-pure-ice.jpg', alt: '세척 후 맑고 투명한 각얼음',
             desc: '재조립 후 전원을 연결해 새 얼음이 투명하게 잘 얼고 모양이 고르게 나오는지 확인하고, 작업한 주변까지 정리합니다.',
             tags: ['투명도 · 모양 검수', '주변 정리까지'] }
         ];
@@ -3013,13 +3013,13 @@
             gif: 'gif-rinse', alt: '고압 직수로 부품을 헹구는 모습' },
           { badge: 'STEP 04', tag: '현장 제빙 품질 확인', title: '크리스탈 얼음 제빙 검증',
             desc: '재조립 후 현장에서 기계를 다시 켜 얼음의 투명도와 모양, 잡내 유무를 점주님과 함께 확인합니다.',
-            gif: 'gif-ice', alt: '세척 후 맑고 투명한 각얼음' }
+            img: 'assets/process-pure-ice.jpg', alt: '세척 후 맑고 투명한 각얼음' }
         ];
 
         function buildProcShowcase() {
           var tabs = V3_PROC.map(function (p, i) {
             return '<button class="proc-tab' + (i === 0 ? ' active' : '') + '" type="button" data-step="' + i + '"' +
-              ' data-gif="' + p.gif + '" data-badge="' + p.badge + '" data-tag="' + p.tag + '"' +
+              ' data-gif="' + (p.gif || '') + '" data-still="' + (p.img || '') + '" data-badge="' + p.badge + '" data-tag="' + p.tag + '"' +
               ' data-title="' + p.title + '" data-desc="' + p.desc + '"' +
               ' aria-selected="' + (i === 0 ? 'true' : 'false') + '">' +
               '<span class="pt-badge">' + p.badge + '</span><span class="pt-title">' + p.title + '</span>' +
@@ -3438,7 +3438,7 @@
             tag: "현장 제빙 품질 합격 확인",
             title: "크리스탈 얼음 제빙 검증",
             desc: "부품 재조립 후 현장에서 직접 기계를 재가동하여 생성된 얼음의 투명도, 결빙 강도, 냄새 유무를 최종 점검합니다. 점주님께서 직접 눈으로 합격 확인을 하실 때까지 철수하지 않습니다.",
-            clip: "gif-ice"
+            still: "assets/process-pure-ice.jpg"
           }
         ];
 
@@ -3464,7 +3464,7 @@
           if (img) {
             img.style.opacity = '0.35';
             setTimeout(() => {
-              img.src = (window.ICELAB_CLIP_SRC ? window.ICELAB_CLIP_SRC(data.clip) : 'assets/' + data.clip + '.webp');
+              img.src = data.still ? data.still : (window.ICELAB_CLIP_SRC ? window.ICELAB_CLIP_SRC(data.clip) : 'assets/' + data.clip + '.webp');
               img.alt = data.title;
               img.style.opacity = '1';
             }, 100);
@@ -3503,7 +3503,7 @@
             stage.onmouseenter = () => { if (procTimer) clearInterval(procTimer); };
             stage.onmouseleave = () => startProcTimer();
           }
-          startProcTimer();
+          setProcStep(0);
         }
 
         // 2. Interactive B&A Split Slider Controller
@@ -3531,18 +3531,18 @@
             stat: ["두꺼운 석회 스케일", "순백색 복원"]
           },
           {
-            title: "워터펌프 저수조 (물 순환조)",
-            desc: "물을 끌어올리는 펌프 주변 저수조 바닥에 가라앉은 미세 침전물과 벽면에 붙은 석회 스케일을 친환경 약제로 불려 긁어내고, 고압 헹굼으로 헹궈 낸 뒤의 모습입니다. 물이 고이는 곳이라 가장 먼저 오염이 시작되는 부위입니다.",
-            before: "assets/ba-pump-before.jpg",
-            after: "assets/ba-pump-after.jpg",
-            stat: ["4,850 RLU", "15 RLU"]
+            title: "워터펌프 · 스트레이너 (이물 걸름망)",
+            desc: "물을 끌어올리는 워터펌프 입구의 스트레이너 뚜껑입니다. 검게 굳은 물때와 녹물을 약제로 불려 닦아내고 고압 헹굼까지 마쳐, 물이 지나가는 통로가 원래의 흰색을 되찾았습니다. 이 망이 막히면 물순환이 약해져 얼음 생산량이 떨어집니다.",
+            before: "assets/ba-strainer-before.jpg",
+            after: "assets/ba-strainer-after.jpg",
+            stat: ["물때 · 녹물 고착", "원래 색 복원"]
           },
           {
-            title: "기계실 응축기 냉각핀",
-            desc: "공랭식 제빙기 뒤쪽에 먼지와 기름때가 두껍게 엉겨 붙어 냉각 효율을 떨어뜨리던 응축기 냉각핀을 에어와 스팀으로 한 줄씩 불어내, 은빛 알루미늄 핀이 제 색을 되찾았습니다.",
-            before: "assets/ba-condenser-before.jpg",
-            after: "assets/ba-condenser-after.jpg",
-            stat: ["분진 · 기름때 고착", "은빛 냉각핀 복원"]
+            title: "급수 노즐 · 분사 파이프",
+            desc: "제빙판에 물을 뿌리는 분사 노즐 파이프입니다. 노즐 구멍마다 끼어 있던 물때와 석회를 약제로 불려 제거하고 구멍 하나하나를 헹궈, 물이 제빙판 전체에 고르게 뿌려지도록 되살렸습니다.",
+            before: "assets/ba-nozzle-before.jpg",
+            after: "assets/ba-nozzle-after.jpg",
+            stat: ["노즐 구멍 물때 막힘", "분사 구멍 복원"]
           }
         ];
 
@@ -3835,14 +3835,17 @@
             t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
           });
           var img = inst.querySelector('.proc-img');
+          var still = tab.getAttribute('data-still');
           if (img) {
             img.style.opacity = '0';
             setTimeout(function () {
-              img.src = clipSrc(tab.getAttribute('data-gif'));
+              img.src = still ? still : clipSrc(tab.getAttribute('data-gif'));
               img.alt = tab.getAttribute('data-title');
               img.style.opacity = '1';
             }, 120);
           }
+          var live = inst.querySelector('.proc-live');
+          if (live) live.style.display = still ? 'none' : '';
           var tag = inst.querySelector('.proc-tag');
           var title = inst.querySelector('.proc-title');
           var desc = inst.querySelector('.proc-desc');
@@ -3872,8 +3875,9 @@
             if (next) next.onclick = function (e) { e.preventDefault(); setStep(inst, cur() + 1); };
             inst.addEventListener('mouseenter', function () { clearTimeout(inst._v3timer); });
             inst.addEventListener('mouseleave', function () { setStep(inst, cur()); });
+            var firstTab = inst.querySelector('.proc-tab');
             var first = inst.querySelector('.proc-img');
-            if (first) first.src = clipSrc(inst.querySelector('.proc-tab').getAttribute('data-gif'));
+            if (first) first.src = firstTab.getAttribute('data-still') || clipSrc(firstTab.getAttribute('data-gif'));
             setStep(inst, 0);
           });
         }
