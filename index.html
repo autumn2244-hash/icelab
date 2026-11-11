@@ -1732,12 +1732,13 @@
       .sp-method { display: inline-block; font-size: 12px; font-weight: 800; color: #0a74bd; background: var(--chip); border-radius: 7px; padding: 4px 9px; margin-bottom: 9px; }
       .sp-card p { margin: 0; font-size: 13.6px; line-height: 1.65; color: var(--muted); }
       .sp-wide {
-        grid-column: span 2; display: grid; grid-template-columns: 1.05fr .95fr; gap: 0; padding: 0; overflow: hidden;
+        display: grid; grid-template-columns: 1.02fr 1fr; gap: 0; padding: 0; overflow: hidden; margin-bottom: 18px;
       }
-      .sp-wide img { width: 100%; height: 100%; object-fit: cover; min-height: 210px; }
-      .sp-wide .sp-wide-body { padding: 22px 22px; }
-      .sp-wide h3 { margin: 0 0 8px; font-size: 17.5px; font-weight: 850; color: var(--navy); }
-      .sp-wide p { margin: 0 0 10px; font-size: 13.8px; color: var(--muted); line-height: 1.65; }
+      .sp-wide img { width: 100%; height: 100%; object-fit: cover; min-height: 250px; }
+      .sp-wide .sp-wide-body { padding: 30px 34px; display: flex; flex-direction: column; justify-content: center; }
+      .sp-wide h3 { margin: 0 0 10px; font-size: 21px; font-weight: 850; color: var(--navy); letter-spacing: -.02em; }
+      .sp-wide p { margin: 0 0 10px; font-size: 14.5px; color: var(--muted); line-height: 1.7; }
+      .sp-wide p:last-child { margin-bottom: 0; }
 
       /* ---------- 제빙기 종류 : 메탈릭 뱃지 ---------- */
       .tb-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
@@ -1765,7 +1766,7 @@
         transition: transform .28s ease, box-shadow .28s ease;
       }
       .sh-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-      .sh-card svg { width: 74px; height: 74px; margin: 0 auto 8px; display: block; filter: drop-shadow(0 6px 12px rgba(10,116,189,.16)); }
+      .sh-card svg { width: 84px; height: 84px; margin: 0 auto 8px; display: block; filter: drop-shadow(0 6px 12px rgba(10,116,189,.16)); }
       .sh-card h4 { margin: 0 0 6px; font-size: 16.5px; font-weight: 850; color: var(--navy); }
       .sh-card p { margin: 0; font-size: 13.2px; line-height: 1.6; color: var(--muted); }
       .sh-en { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .16em; color: #8fb3c9; margin-top: 8px; }
@@ -1805,27 +1806,48 @@
       .mock-screw.bl { left: 12px; bottom: 12px; } .mock-screw.br { right: 12px; bottom: 12px; }
       .mock-tag { position: absolute; left: 20px; bottom: 18px; font-size: 11.5px; font-weight: 800; letter-spacing: .1em; color: #d7ecf9; background: rgba(8,38,63,.62); border-radius: 999px; padding: 6px 13px; backdrop-filter: blur(6px); }
 
-      .mock-stand { min-height: 420px; display: grid; place-items: center; background: radial-gradient(120% 90% at 50% 10%, #eef7fd 0%, #dfeefa 45%, #cfe4f4 100%); }
-      .stand-scene { position: relative; perspective: 900px; width: 100%; height: 100%; display: grid; place-items: center; padding: 40px 20px; }
-      .stand-shadow { position: absolute; left: 50%; bottom: 54px; transform: translateX(-50%); width: 62%; height: 26px; background: radial-gradient(ellipse at center, rgba(12,44,70,.30), rgba(12,44,70,0) 70%); filter: blur(3px); }
+      .mock-stand { min-height: 420px; display: grid; place-items: center; background: radial-gradient(110% 80% at 50% 0%, #f7fcff 0%, #e6f2fb 42%, #d5e7f5 74%, #c7dcee 100%); }
+      .stand-scene { position: relative; width: 100%; height: 100%; display: grid; place-items: center; padding: 40px 20px 30px; }
+      .counter-top {
+        position: absolute; left: 0; right: 0; bottom: 0; height: 34%;
+        background: linear-gradient(180deg, #eef6fc 0%, #e2eef8 18%, #d3e5f3 100%);
+        border-top: 1px solid rgba(255,255,255,.9);
+        box-shadow: inset 0 8px 18px rgba(255,255,255,.85), inset 0 -14px 26px rgba(120,160,190,.22);
+      }
+      .counter-top::after {
+        content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px;
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 50%, rgba(255,255,255,0) 100%);
+      }
       .stand {
-        position: relative; width: min(78%, 320px); transform: rotateY(-16deg) rotateX(6deg);
-        transform-style: preserve-3d; filter: drop-shadow(0 24px 30px rgba(12,44,70,.20));
+        position: relative; width: min(72%, 300px); margin-bottom: 16%;
+        transform: perspective(1100px) rotateY(-15deg) rotateX(5deg);
+        transform-style: preserve-3d;
+      }
+      .stand-shadow {
+        position: absolute; left: 8%; right: 8%; bottom: -12px; height: 22px;
+        background: radial-gradient(ellipse at center, rgba(12,44,70,.28), rgba(12,44,70,0) 72%);
+        filter: blur(4px);
       }
       .stand-face {
-        border-radius: 10px; padding: 22px 20px 20px; text-align: center;
-        background: linear-gradient(155deg, #ffffff 0%, #f4fbff 55%, #e7f4fd 100%);
-        border: 1px solid rgba(255,255,255,.9); box-shadow: inset 0 1px 0 #fff, inset 0 -8px 18px rgba(10,116,189,.06);
+        position: relative; border-radius: 10px; padding: 24px 20px 22px; text-align: center;
+        background: linear-gradient(155deg, rgba(255,255,255,.98) 0%, #f6fcff 52%, #e6f4fe 100%);
+        border: 1.5px solid rgba(255,255,255,.95);
+        box-shadow: inset 0 1px 0 #fff, inset 0 -12px 22px rgba(10,116,189,.10), 0 18px 26px rgba(12,44,70,.16);
+      }
+      .sf-edge {
+        position: absolute; inset: 7px; border-radius: 6px; pointer-events: none;
+        border: 1px solid rgba(120,180,220,.35);
+        box-shadow: inset 0 0 12px rgba(255,255,255,.9);
       }
       .stand-face .sf-top { font-size: 9.5px; font-weight: 900; letter-spacing: .26em; color: #0a74bd; }
-      .stand-face .sf-title { font-size: 18px; font-weight: 900; color: #08263f; letter-spacing: -.02em; margin: 7px 0 3px; }
+      .stand-face .sf-title { font-size: 20px; font-weight: 900; color: #08263f; letter-spacing: -.025em; margin: 8px 0 4px; line-height: 1.22; }
       .stand-face .sf-sub { font-size: 11.5px; font-weight: 800; color: #0a74bd; }
       .stand-face .sf-dot { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 12px; }
       .stand-face .sf-dot i { width: 5px; height: 5px; border-radius: 50%; background: #8fd8f7; }
       .stand-base {
-        height: 14px; margin: 0 -10px; border-radius: 0 0 8px 8px;
-        background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(190,214,230,.75));
-        box-shadow: 0 8px 14px rgba(12,44,70,.18);
+        height: 16px; margin: 0 -12px; border-radius: 0 0 9px 9px;
+        background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(214,232,244,.92) 55%, rgba(160,192,214,.92));
+        box-shadow: 0 12px 18px rgba(12,44,70,.24), inset 0 1px 0 #fff;
       }
       .mock-stand .mock-tag { color: #37627f; background: rgba(255,255,255,.8); border: 1px solid #d9e8f3; }
 
@@ -1835,7 +1857,7 @@
       .benefit-list .bl-ico { flex: none; width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; background: var(--chip); color: #0a74bd; font-size: 13px; }
 
       /* ---------- 출장 지역 인포그래픽 ---------- */
-      .area-stage { display: grid; grid-template-columns: .92fr 1.08fr; gap: 30px; align-items: center; }
+      .area-stage { display: grid; grid-template-columns: 1.12fr .88fr; gap: 26px; align-items: stretch; }
       .area-map { position: relative; border-radius: 22px; padding: 18px; background: radial-gradient(110% 90% at 30% 0%, #f4fbff 0%, #e6f2fb 55%, #dbeaf7 100%); border: 1px solid var(--line); box-shadow: 0 14px 36px rgba(8,38,63,.08); }
       .area-map svg { width: 100%; height: auto; display: block; }
       .area-legend { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 10px; font-size: 12.5px; font-weight: 800; color: #4c6b84; }
@@ -1848,9 +1870,9 @@
       .area-zone .zc { font-size: 12.5px; font-weight: 800; color: #0a74bd; letter-spacing: .02em; margin: 0 0 12px; }
       .area-chips { display: flex; flex-wrap: wrap; gap: 6px; }
       .area-chips span { font-size: 12.3px; font-weight: 700; color: var(--muted); background: var(--surface-2); border-radius: 7px; padding: 4px 9px; }
-      .area-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
-      .area-flow div { padding: 16px 18px; border-radius: 14px; background: linear-gradient(120deg, #08263f, #0b3d63); color: #d9edf9; font-size: 13.6px; line-height: 1.55; }
-      .area-flow b { display: block; color: #8fd8f7; font-size: 12px; letter-spacing: .14em; margin-bottom: 5px; }
+      .area-flow { display: grid; grid-template-columns: 1fr; gap: 12px; align-content: center; }
+      .area-flow div { padding: 20px 22px; border-radius: 16px; background: linear-gradient(120deg, #08263f, #0b3d63); color: #d9edf9; font-size: 14.5px; line-height: 1.55; box-shadow: 0 12px 26px rgba(8,38,63,.14); }
+      .area-flow b { display: block; color: #8fd8f7; font-size: 11.5px; letter-spacing: .16em; margin-bottom: 6px; }
 
       /* ---------- 클린서비스 요약 카드 ---------- */
       .svc-sum-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 26px 0 4px; }
@@ -1875,7 +1897,9 @@
       }
       @media (max-width: 720px) {
         .pc-grid, .sp-grid, .tb-grid, .sh-grid, .area-zone-grid, .svc-sum-grid, .spec-card-grid { grid-template-columns: 1fr; }
-        .sp-wide { grid-column: span 1; grid-template-columns: 1fr; }
+        .sp-wide { grid-template-columns: 1fr; }
+        .sp-wide img { min-height: 200px; }
+        .sp-wide .sp-wide-body { padding: 22px 20px; }
         .pc-body { padding: 18px 18px 20px; }
         .v3-band + .v3-band { margin-top: 52px; }
         .mock-door, .mock-stand { min-height: 320px; }
@@ -3101,7 +3125,7 @@
             '<span class="v3-kicker">SERVICE SCOPE</span>' +
             '<h2>손이 닿지 않는 곳까지,<br />분해해서 닦습니다</h2>' +
             '<p>물과 얼음이 지나가는 8개 부품을 하나씩 분해해, 부품에 맞는 방법으로 세척합니다.</p>' +
-            '</div><div class="sp-grid">' + wide + cards + '</div></div>');
+            '</div>' + wide + '<div class="sp-grid">' + cards + '</div></div>');
         }
 
         /* --- 제빙기 종류 : 메탈릭 브랜드 뱃지 + 얼음 형태 --- */
@@ -3117,42 +3141,53 @@
         ];
 
         function iceSvg(kind) {
-          var g = '<defs><linearGradient id="icg-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d6eefc"/></linearGradient>' +
-            '<linearGradient id="icg-l" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bfe6fb"/><stop offset="1" stop-color="#8ecdf0"/></linearGradient>' +
-            '<linearGradient id="icg-r" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a9dcf6"/><stop offset="1" stop-color="#6fbfe8"/></linearGradient></defs>';
+          var g = '<defs>' +
+            '<linearGradient id="icg-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#eaf8ff"/><stop offset="1" stop-color="#c8ecfe"/></linearGradient>' +
+            '<linearGradient id="icg-l" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d3f0ff"/><stop offset="1" stop-color="#8ed0f2"/></linearGradient>' +
+            '<linearGradient id="icg-r" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9bd7f5"/><stop offset="1" stop-color="#4e9fd4"/></linearGradient>' +
+            '<radialGradient id="icg-sh" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#0a74bd" stop-opacity=".20"/><stop offset="1" stop-color="#0a74bd" stop-opacity="0"/></radialGradient>' +
+            '</defs>';
+          var shadow = '<ellipse cx="50" cy="90" rx="31" ry="6" fill="url(#icg-sh)"/>';
+          var w = ' stroke="#ffffff" stroke-width="1.6" stroke-opacity=".9"';
           if (kind === 'cube') {
-            return '<svg viewBox="0 0 100 100">' + g +
-              '<polygon points="50,18 82,34 50,50 18,34" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1.4"/>' +
-              '<polygon points="18,34 50,50 50,84 18,68" fill="url(#icg-l)" stroke="#ffffff" stroke-width="1.2"/>' +
-              '<polygon points="50,50 82,34 82,68 50,84" fill="url(#icg-r)" stroke="#ffffff" stroke-width="1.2"/>' +
-              '<path d="M26 42l14 7M26 52l14 7" stroke="#ffffff" stroke-width="1" opacity=".6"/></svg>';
+            return '<svg viewBox="0 0 100 100">' + g + shadow +
+              '<polygon points="50,10 89,31 50,52 11,31"' + w + ' fill="url(#icg-top)"/>' +
+              '<polygon points="11,31 50,52 50,86 11,65"' + w + ' fill="url(#icg-l)"/>' +
+              '<polygon points="50,52 89,31 89,65 50,86"' + w + ' fill="url(#icg-r)"/>' +
+              '<path d="M21 37l17 9M21 47l17 9M34 62l10 5" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-opacity=".8"/>' +
+              '<path d="M56 60l14-7" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-opacity=".55"/></svg>';
           }
           if (kind === 'moon') {
-            return '<svg viewBox="0 0 100 100">' + g +
-              '<path d="M16 62a34 34 0 0 1 68 0z" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1.5"/>' +
-              '<path d="M16 62a34 34 0 0 0 68 0z" fill="url(#icg-r)" stroke="#ffffff" stroke-width="1.2" opacity=".9"/>' +
-              '<path d="M24 62a26 26 0 0 1 52 0" fill="none" stroke="#ffffff" stroke-width="1.1" opacity=".7"/></svg>';
+            return '<svg viewBox="0 0 100 100">' + g + shadow +
+              '<ellipse cx="50" cy="70" rx="37" ry="8" fill="url(#icg-r)" opacity=".55"/>' +
+              '<path d="M13 69a37 37 0 0 1 74 0z"' + w + ' fill="url(#icg-top)"/>' +
+              '<path d="M13 69a37 37 0 0 0 74 0" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-opacity=".9"/>' +
+              '<path d="M26 62a24 24 0 0 1 24-21" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity=".85"/>' +
+              '<path d="M60 46a24 24 0 0 1 14 15" fill="none" stroke="#8fd4f6" stroke-width="1.6" stroke-opacity=".7"/></svg>';
           }
           if (kind === 'finger') {
-            return '<svg viewBox="0 0 100 100">' + g +
-              '<rect x="36" y="20" width="28" height="60" rx="14" fill="url(#icg-l)" stroke="#ffffff" stroke-width="1.3"/>' +
-              '<ellipse cx="50" cy="20" rx="14" ry="5" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1.1"/>' +
-              '<rect x="47" y="34" width="6" height="34" rx="3" fill="#ffffff" opacity=".55"/>' +
-              '<path d="M40 44v22" stroke="#ffffff" stroke-width="1" opacity=".55"/></svg>';
+            return '<svg viewBox="0 0 100 100">' + g + shadow +
+              '<rect x="33" y="14" width="34" height="68" rx="17"' + w + ' fill="url(#icg-l)"/>' +
+              '<ellipse cx="50" cy="14" rx="17" ry="6"' + w + ' fill="url(#icg-top)"/>' +
+              '<ellipse cx="50" cy="14" rx="6" ry="2.4" fill="#5aa8d6" opacity=".75"/>' +
+              '<rect x="40" y="32" width="5" height="38" rx="2.5" fill="#ffffff" opacity=".7"/>' +
+              '<path d="M60 36v30" stroke="#ffffff" stroke-width="1.6" stroke-opacity=".5"/></svg>';
           }
           if (kind === 'flake') {
-            return '<svg viewBox="0 0 100 100">' + g +
-              '<circle cx="38" cy="42" r="15" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1.2"/>' +
-              '<circle cx="61" cy="37" r="10" fill="url(#icg-l)" stroke="#ffffff" stroke-width="1.1"/>' +
-              '<circle cx="56" cy="58" r="14" fill="url(#icg-r)" stroke="#ffffff" stroke-width="1.1"/>' +
-              '<circle cx="34" cy="63" r="9" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1"/>' +
-              '<circle cx="72" cy="62" r="7" fill="url(#icg-l)" stroke="#ffffff" stroke-width="1"/></svg>';
+            return '<svg viewBox="0 0 100 100">' + g + shadow +
+              '<circle cx="37" cy="40" r="16"' + w + ' fill="url(#icg-top)"/>' +
+              '<circle cx="62" cy="35" r="11"' + w + ' fill="url(#icg-l)"/>' +
+              '<circle cx="57" cy="60" r="15"' + w + ' fill="url(#icg-r)"/>' +
+              '<circle cx="31" cy="63" r="10"' + w + ' fill="url(#icg-top)"/>' +
+              '<circle cx="74" cy="60" r="8"' + w + ' fill="url(#icg-l)"/>' +
+              '<path d="M30 34l6 4M55 30l4 3M28 58l5 3" stroke="#ffffff" stroke-width="1.4" stroke-opacity=".9" fill="none"/></svg>';
           }
-          return '<svg viewBox="0 0 100 100">' + g +
-            '<path d="M28 46l8-10 10 8-7 11z" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1"/>' +
-            '<path d="M52 34l11-5 7 12-12 5z" fill="url(#icg-l)" stroke="#ffffff" stroke-width="1"/>' +
-            '<path d="M40 62l13-4 6 12-14 4z" fill="url(#icg-r)" stroke="#ffffff" stroke-width="1"/>' +
-            '<path d="M66 55l9 2-1 11-10-2z" fill="url(#icg-top)" stroke="#ffffff" stroke-width="1"/></svg>';
+          return '<svg viewBox="0 0 100 100">' + g + shadow +
+            '<polygon points="24,52 33,35 48,41 41,59"' + w + ' fill="url(#icg-top)"/>' +
+            '<polygon points="47,34 62,26 71,41 55,47"' + w + ' fill="url(#icg-l)"/>' +
+            '<polygon points="35,66 52,60 60,76 41,81"' + w + ' fill="url(#icg-r)"/>' +
+            '<polygon points="62,54 76,56 75,72 61,69"' + w + ' fill="url(#icg-top)"/>' +
+            '<path d="M36 44l7 3M52 36l5 3M45 70l6 3" stroke="#ffffff" stroke-width="1.3" stroke-opacity=".8" fill="none"/></svg>';
         }
 
         var V3_SHAPES = [
@@ -3200,7 +3235,7 @@
         /* --- 이용 방식 : 안심 스티커 실물 목업 --- */
         function buildStickerShowcase() {
           var plaque = '<div class="mock mock-door">' +
-            '<img src="assets/visit.jpg" alt="카페 출입문 너머 매장" loading="lazy" />' +
+            '<img src="assets/cafe-door.jpg" alt="카페 유리 출입문" loading="lazy" />' +
             '<div class="mock-glass"></div>' +
             '<div class="mock-plaque">' +
             '<span class="mock-screw tl"></span><span class="mock-screw tr"></span><span class="mock-screw bl"></span><span class="mock-screw br"></span>' +
@@ -3212,10 +3247,11 @@
             '<div class="mp-foot">FOOD HYGIENE · ICELAB</div>' +
             '</div><span class="mock-tag">출입문 부착용 아크릴 마크</span></div>';
           var stand = '<div class="mock mock-stand">' +
-            '<div class="stand-scene"><div class="stand-shadow"></div>' +
-            '<div class="stand"><div class="stand-face">' +
+            '<div class="stand-scene"><div class="counter-top"></div>' +
+            '<div class="stand"><div class="stand-shadow"></div>' +
+            '<div class="stand-face"><span class="sf-edge"></span>' +
             '<div class="sf-top">ICELAB CLEAN ZONE</div>' +
-            '<div class="sf-title">얼음 위생 안심 매장</div>' +
+            '<div class="sf-title">얼음 위생<br />안심 매장</div>' +
             '<div class="sf-sub">정기 관리 · 고온스팀 살균</div>' +
             '<div class="sf-dot"><i></i><i></i><i></i></div>' +
             '</div><div class="stand-base"></div></div></div>' +
@@ -3234,32 +3270,33 @@
 
         /* --- 출장 지역 : 수도권 권역 인포그래픽 --- */
         function buildAreaInfographic() {
-          var svg = '<svg viewBox="0 0 520 380" role="img" aria-label="수도권 권역 출장 네트워크">' +
+          var svg = '<svg viewBox="0 0 520 420" role="img" aria-label="수도권 권역 출장 네트워크">' +
             '<defs><radialGradient id="areaGlow" cx="50%" cy="50%" r="50%">' +
-            '<stop offset="0" stop-color="#0a74bd" stop-opacity=".20"/><stop offset="1" stop-color="#0a74bd" stop-opacity="0"/></radialGradient></defs>' +
-            '<circle cx="260" cy="190" r="168" fill="url(#areaGlow)"/>' +
-            '<circle cx="260" cy="190" r="150" fill="none" stroke="#b9d8ec" stroke-width="1.4" stroke-dasharray="5 7"/>' +
-            '<circle cx="260" cy="190" r="106" fill="none" stroke="#8fc4e3" stroke-width="1.4" stroke-dasharray="5 6"/>' +
-            '<circle cx="260" cy="190" r="62" fill="none" stroke="#0a74bd" stroke-width="1.6" stroke-opacity=".55"/>' +
-            '<circle cx="260" cy="190" r="34" fill="#08263f"/>' +
-            '<text x="260" y="186" text-anchor="middle" font-size="12.5" font-weight="800" fill="#8fd8f7" font-family="inherit">ICELAB</text>' +
-            '<text x="260" y="202" text-anchor="middle" font-size="10.5" font-weight="700" fill="#cfe9f8" font-family="inherit">당일 방문</text>' +
+            '<stop offset="0" stop-color="#0a74bd" stop-opacity=".18"/><stop offset="1" stop-color="#0a74bd" stop-opacity="0"/></radialGradient></defs>' +
+            '<circle cx="260" cy="215" r="176" fill="url(#areaGlow)"/>' +
+            '<circle cx="260" cy="215" r="152" fill="none" stroke="#b9d8ec" stroke-width="1.4" stroke-dasharray="5 7"/>' +
+            '<circle cx="260" cy="215" r="108" fill="none" stroke="#8fc4e3" stroke-width="1.4" stroke-dasharray="5 6"/>' +
+            '<circle cx="260" cy="215" r="64" fill="none" stroke="#0a74bd" stroke-width="1.6" stroke-opacity=".5"/>' +
+            '<circle cx="260" cy="215" r="36" fill="#08263f"/>' +
+            '<circle cx="260" cy="215" r="36" fill="none" stroke="#8fd8f7" stroke-width="1.2" stroke-opacity=".45"/>' +
+            '<text x="260" y="211" text-anchor="middle" font-size="12.5" font-weight="800" fill="#8fd8f7" font-family="inherit">ICELAB</text>' +
+            '<text x="260" y="227" text-anchor="middle" font-size="10.5" font-weight="700" fill="#cfe9f8" font-family="inherit">당일 방문</text>' +
             '<g fill="#0a74bd">' +
-            '<circle cx="260" cy="128" r="4.6"/><circle cx="322" cy="150" r="4.6"/><circle cx="322" cy="232" r="4.6"/>' +
-            '<circle cx="260" cy="254" r="4.6"/><circle cx="198" cy="232" r="4.6"/><circle cx="198" cy="150" r="4.6"/></g>' +
+            '<circle cx="260" cy="151" r="4.6"/><circle cx="324" cy="174" r="4.6"/><circle cx="324" cy="256" r="4.6"/>' +
+            '<circle cx="260" cy="279" r="4.6"/><circle cx="196" cy="256" r="4.6"/><circle cx="196" cy="174" r="4.6"/></g>' +
             '<g fill="#2f9ddb">' +
-            '<circle cx="260" cy="84" r="5"/><circle cx="368" cy="108" r="5"/><circle cx="404" cy="190" r="5"/>' +
-            '<circle cx="368" cy="272" r="5"/><circle cx="260" cy="296" r="5"/><circle cx="152" cy="272" r="5"/>' +
-            '<circle cx="116" cy="190" r="5"/><circle cx="152" cy="108" r="5"/></g>' +
+            '<circle cx="260" cy="107" r="5"/><circle cx="368" cy="131" r="5"/><circle cx="407" cy="215" r="5"/>' +
+            '<circle cx="368" cy="299" r="5"/><circle cx="260" cy="323" r="5"/><circle cx="152" cy="299" r="5"/>' +
+            '<circle cx="113" cy="215" r="5"/><circle cx="152" cy="131" r="5"/></g>' +
             '<g fill="#7fc6e8">' +
-            '<circle cx="260" cy="40" r="4.2"/><circle cx="400" cy="62" r="4.2"/><circle cx="466" cy="140" r="4.2"/>' +
-            '<circle cx="466" cy="238" r="4.2"/><circle cx="400" cy="316" r="4.2"/><circle cx="260" cy="340" r="4.2"/>' +
-            '<circle cx="120" cy="316" r="4.2"/><circle cx="54" cy="238" r="4.2"/><circle cx="54" cy="140" r="4.2"/>' +
-            '<circle cx="120" cy="62" r="4.2"/></g>' +
-            '<text x="260" y="22" text-anchor="middle" font-size="11" font-weight="800" fill="#4c6b84" font-family="inherit">서울 북부 · 동부</text>' +
-            '<text x="260" y="370" text-anchor="middle" font-size="11" font-weight="800" fill="#4c6b84" font-family="inherit">경기 남부 · 동부</text>' +
-            '<text x="22" y="194" font-size="11" font-weight="800" fill="#4c6b84" font-family="inherit">인천</text>' +
-            '<text x="498" y="194" text-anchor="end" font-size="11" font-weight="800" fill="#4c6b84" font-family="inherit">경기 동부</text>' +
+            '<circle cx="260" cy="63" r="4.2"/><circle cx="400" cy="86" r="4.2"/><circle cx="466" cy="163" r="4.2"/>' +
+            '<circle cx="466" cy="267" r="4.2"/><circle cx="400" cy="344" r="4.2"/><circle cx="260" cy="367" r="4.2"/>' +
+            '<circle cx="120" cy="344" r="4.2"/><circle cx="54" cy="267" r="4.2"/><circle cx="54" cy="163" r="4.2"/>' +
+            '<circle cx="120" cy="86" r="4.2"/></g>' +
+            '<text x="260" y="34" text-anchor="middle" font-size="11.5" font-weight="800" fill="#4c6b84" font-family="inherit">서울 북부 · 동부</text>' +
+            '<text x="260" y="398" text-anchor="middle" font-size="11.5" font-weight="800" fill="#4c6b84" font-family="inherit">경기 남부 · 동부</text>' +
+            '<text x="14" y="219" font-size="11.5" font-weight="800" fill="#4c6b84" font-family="inherit">인천</text>' +
+            '<text x="506" y="219" text-anchor="end" font-size="11.5" font-weight="800" fill="#4c6b84" font-family="inherit">경기 동부</text>' +
             '</svg>';
           var seoul = ['강남', '강동', '강북', '강서', '관악', '광진', '구로', '금천', '노원', '도봉', '동대문', '동작', '마포', '서대문', '서초', '성동', '성북', '송파', '양천', '영등포', '용산', '은평', '종로', '중랑', '중구'];
           var gyeonggi = ['수원', '성남', '고양', '용인', '부천', '안산', '안양', '남양주', '화성', '평택', '의정부', '파주', '시흥', '광명', '김포', '구리', '하남', '양주', '동두천', '포천', '가평', '연천', '오산', '군포', '이천', '광주', '여주'];
