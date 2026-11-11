@@ -2964,7 +2964,7 @@
 
         function svcSection(key) {
           var s = SVC[key]; var meta = SUB[key];
-          var html = '<div class="sec-head svc-head"><p class="kicker">CLEAN SERVICE</p><h2>' + (s.head || meta.title) + '</h2><p>' + meta.desc + '</p></div>';
+          var html = '<div class="sec-head svc-head"><p class="kicker">CLEAN SERVICE</p><h2>' + (s.head || meta.title) + '</h2></div>';
           s.lead.forEach(function (t) { html += '<p class="svc-lead">' + t + '</p>'; });
           html += svcSummary(key);
           if (s.points) {
