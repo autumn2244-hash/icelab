@@ -1766,7 +1766,7 @@
         transition: transform .28s ease, box-shadow .28s ease;
       }
       .sh-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-      .sh-card svg { width: 84px; height: 84px; margin: 0 auto 8px; display: block; filter: drop-shadow(0 6px 12px rgba(10,116,189,.16)); }
+      .sh-card svg { width: 106px; height: 106px; margin: 0 auto 10px; display: block; filter: drop-shadow(0 10px 18px rgba(10,116,189,.20)); }
       .sh-card h4 { margin: 0 0 6px; font-size: 16.5px; font-weight: 850; color: var(--navy); }
       .sh-card p { margin: 0; font-size: 13.2px; line-height: 1.6; color: var(--muted); }
       .sh-en { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .16em; color: #8fb3c9; margin-top: 8px; }
@@ -3142,15 +3142,17 @@
 
         function iceSvg(kind) {
           var g = '<defs>' +
-            '<linearGradient id="icg-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#eaf8ff"/><stop offset="1" stop-color="#c8ecfe"/></linearGradient>' +
-            '<linearGradient id="icg-l" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d3f0ff"/><stop offset="1" stop-color="#8ed0f2"/></linearGradient>' +
-            '<linearGradient id="icg-r" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9bd7f5"/><stop offset="1" stop-color="#4e9fd4"/></linearGradient>' +
-            '<radialGradient id="icg-sh" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#0a74bd" stop-opacity=".20"/><stop offset="1" stop-color="#0a74bd" stop-opacity="0"/></radialGradient>' +
+            '<linearGradient id="icg-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#dcf3ff"/><stop offset="1" stop-color="#a9e0fb"/></linearGradient>' +
+            '<linearGradient id="icg-l" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bde7fb"/><stop offset="1" stop-color="#6fbce4"/></linearGradient>' +
+            '<linearGradient id="icg-r" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7cc6ec"/><stop offset="1" stop-color="#2b7fb8"/></linearGradient>' +
+            '<radialGradient id="icg-sh" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#0a74bd" stop-opacity=".22"/><stop offset="1" stop-color="#0a74bd" stop-opacity="0"/></radialGradient>' +
+            '<radialGradient id="icg-bg" cx="50%" cy="42%" r="58%"><stop offset="0" stop-color="#f6fcff"/><stop offset="1" stop-color="#e2f2fd"/></radialGradient>' +
             '</defs>';
+          var disc = '<circle cx="50" cy="50" r="49" fill="url(#icg-bg)"/>';
           var shadow = '<ellipse cx="50" cy="90" rx="31" ry="6" fill="url(#icg-sh)"/>';
           var w = ' stroke="#ffffff" stroke-width="1.6" stroke-opacity=".9"';
           if (kind === 'cube') {
-            return '<svg viewBox="0 0 100 100">' + g + shadow +
+            return '<svg viewBox="0 0 100 100">' + g + disc + shadow +
               '<polygon points="50,10 89,31 50,52 11,31"' + w + ' fill="url(#icg-top)"/>' +
               '<polygon points="11,31 50,52 50,86 11,65"' + w + ' fill="url(#icg-l)"/>' +
               '<polygon points="50,52 89,31 89,65 50,86"' + w + ' fill="url(#icg-r)"/>' +
@@ -3158,7 +3160,7 @@
               '<path d="M56 60l14-7" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-opacity=".55"/></svg>';
           }
           if (kind === 'moon') {
-            return '<svg viewBox="0 0 100 100">' + g + shadow +
+            return '<svg viewBox="0 0 100 100">' + g + disc + shadow +
               '<ellipse cx="50" cy="70" rx="37" ry="8" fill="url(#icg-r)" opacity=".55"/>' +
               '<path d="M13 69a37 37 0 0 1 74 0z"' + w + ' fill="url(#icg-top)"/>' +
               '<path d="M13 69a37 37 0 0 0 74 0" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-opacity=".9"/>' +
@@ -3166,7 +3168,7 @@
               '<path d="M60 46a24 24 0 0 1 14 15" fill="none" stroke="#8fd4f6" stroke-width="1.6" stroke-opacity=".7"/></svg>';
           }
           if (kind === 'finger') {
-            return '<svg viewBox="0 0 100 100">' + g + shadow +
+            return '<svg viewBox="0 0 100 100">' + g + disc + shadow +
               '<rect x="33" y="14" width="34" height="68" rx="17"' + w + ' fill="url(#icg-l)"/>' +
               '<ellipse cx="50" cy="14" rx="17" ry="6"' + w + ' fill="url(#icg-top)"/>' +
               '<ellipse cx="50" cy="14" rx="6" ry="2.4" fill="#5aa8d6" opacity=".75"/>' +
@@ -3174,7 +3176,7 @@
               '<path d="M60 36v30" stroke="#ffffff" stroke-width="1.6" stroke-opacity=".5"/></svg>';
           }
           if (kind === 'flake') {
-            return '<svg viewBox="0 0 100 100">' + g + shadow +
+            return '<svg viewBox="0 0 100 100">' + g + disc + shadow +
               '<circle cx="37" cy="40" r="16"' + w + ' fill="url(#icg-top)"/>' +
               '<circle cx="62" cy="35" r="11"' + w + ' fill="url(#icg-l)"/>' +
               '<circle cx="57" cy="60" r="15"' + w + ' fill="url(#icg-r)"/>' +
@@ -3182,7 +3184,7 @@
               '<circle cx="74" cy="60" r="8"' + w + ' fill="url(#icg-l)"/>' +
               '<path d="M30 34l6 4M55 30l4 3M28 58l5 3" stroke="#ffffff" stroke-width="1.4" stroke-opacity=".9" fill="none"/></svg>';
           }
-          return '<svg viewBox="0 0 100 100">' + g + shadow +
+          return '<svg viewBox="0 0 100 100">' + g + disc + shadow +
             '<polygon points="24,52 33,35 48,41 41,59"' + w + ' fill="url(#icg-top)"/>' +
             '<polygon points="47,34 62,26 71,41 55,47"' + w + ' fill="url(#icg-l)"/>' +
             '<polygon points="35,66 52,60 60,76 41,81"' + w + ' fill="url(#icg-r)"/>' +
