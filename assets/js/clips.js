@@ -56,6 +56,7 @@
 
   function ensure(v) {
     if (!v || v.tagName !== 'VIDEO' || !canPlay(v)) return;
+    if (v.getAttribute('data-inview') === '0') return;   // 화면 밖 클립은 재생하지 않는다
     if (!v.paused) return;
     var p;
     try { p = v.play(); } catch (e) { p = null; }
@@ -81,6 +82,17 @@
     if (!v || v.tagName !== 'VIDEO' || !stem) return;
     setPoster(v, still);
     if (alt) v.setAttribute('aria-label', alt);
+    if (!v.getAttribute('data-err-hook')) {
+      v.setAttribute('data-err-hook', '1');
+      v.addEventListener('error', function () {
+        var s = v.getAttribute('data-stem');
+        if (!s || v.getAttribute('data-err') === '1') return;
+        v.setAttribute('data-err', '1');      // blob 재생이 실패하면 원본 경로로 한 번만 재시도
+        v.removeAttribute('data-src-ready');
+        v.setAttribute('src', 'assets/' + s + '.mp4');
+        ensure(v);
+      });
+    }
     if (v.getAttribute('data-stem') === stem && v.getAttribute('data-src-ready') === '1') {
       ensure(v);
       return;
