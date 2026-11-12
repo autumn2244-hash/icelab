@@ -3090,6 +3090,7 @@
           if (it.gif) {
             // 720p 원본을 H.264/VP9 로 인코딩한 클립 (GIF/WebP 대비 선명도·용량 모두 개선)
             return '<video class="pc-video" autoplay muted loop playsinline preload="metadata"' +
+              ' data-stem="' + it.gif + '" data-poster="assets/' + it.gif + '.jpg"' +
               ' poster="assets/' + it.gif + '.jpg" aria-label="' + it.alt + '">' +
               '<source src="assets/' + it.gif + '.webm" type="video/webm" />' +
               '<source src="assets/' + it.gif + '.mp4" type="video/mp4" /></video>';
@@ -3543,6 +3544,7 @@
       })();
     </script>
 
+    <script src="assets/js/clips.js"></script>
     <script>
       /* --- Interactive Showcase: Process Showcase, B&A Slider, Falling Ice Canvas --- */
       (function() {
@@ -3601,13 +3603,9 @@
             img.style.opacity = '0.35';
             setTimeout(() => {
               if (img.tagName === 'VIDEO') {
-                const stem = 'assets/' + data.clip;
-                const srcs = img.querySelectorAll('source');
-                srcs[0].src = stem + '.webm';
-                if (srcs[1]) srcs[1].src = stem + '.mp4';
-                img.poster = stem + '.jpg';
-                try { img.load(); img.play(); } catch (e) {}
-                img.setAttribute('aria-label', data.title);
+                if (window.ICELAB_CLIP) {
+                  window.ICELAB_CLIP.attach(img, data.clip, 'assets/' + data.clip + '.jpg', data.title);
+                }
               } else {
                 img.src = data.still ? data.still : (window.ICELAB_CLIP_SRC ? window.ICELAB_CLIP_SRC(data.clip) : 'assets/' + data.clip + '.mp4');
                 img.alt = data.title;
@@ -3671,10 +3669,10 @@
           },
           {
             title: "물커튼 · 슬라이드 가이드",
-            desc: "제빙된 얼음이 물커튼을 타고 저장고로 미끄러지는 통로입니다. 미세한 홈과 틈마다 물때가 누렇게 배어 슬라임처럼 굳고, 그 위로 곰팡이가 번집니다. 탈거해 홈 하나하나를 약제로 불려 닦고 스팀으로 마무리하면 맑은 반투명 상태로 돌아옵니다.",
-            before: "assets/ba-tray-before.jpg",
-            after: "assets/ba-tray-after.jpg",
-            stat: ["홈마다 누런 슬라임", "반투명 복원"]
+            desc: "제빙된 얼음이 물커튼을 타고 저장고로 미끄러지는 통로입니다. 가이드의 홈과 틈마다 물때가 누렇게 배어 슬라임처럼 굳고, 그 사이로 곰팡이가 번집니다. 슬라이드 가이드를 탈거해 홈 하나하나를 약제로 불려 닦고 스팀으로 마무리하면 사진처럼 원래의 백색 상태로 돌아옵니다.",
+            before: "assets/ba-guide-before.jpg",
+            after: "assets/ba-guide-after.jpg",
+            stat: ["홈마다 누런 물때", "백색 가이드 복원"]
           },
           {
             title: "순환 워터펌프 · 저수조 스트레이너",
@@ -3971,22 +3969,14 @@
         function clipSrc(stem) { return 'assets/' + stem + '.mp4'; }
         window.ICELAB_CLIP_SRC = clipSrc;
 
-        /* 4대 공정 클립: mp4/webm 두 소스를 같은 <video>에 갈아끼워 720p 원본을 그대로 재생 */
+        /* 4대 공정 클립: MIME·자동재생 정책과 무관하게 재생되도록 clips.js 가 관리한다 */
         function setClip(video, stem, still, alt) {
-          if (!video) return;
-          if (still) {
-            video.poster = still;
-            var srcs = video.querySelectorAll('source');
-            if (srcs.length) {
-              srcs[0].src = 'assets/' + stem + '.webm';
-              srcs[1] && (srcs[1].src = 'assets/' + stem + '.mp4');
-              try { video.load(); } catch (e) {}
-              try { video.play(); } catch (e) {}
-              if (alt) video.setAttribute('aria-label', alt);
-            }
+          if (!video || !stem) return;
+          if (window.ICELAB_CLIP) {
+            window.ICELAB_CLIP.attach(video, stem, still || ('assets/' + stem + '.jpg'), alt);
             return;
           }
-          video.poster = 'assets/' + stem + '.jpg';
+          video.poster = still || ('assets/' + stem + '.jpg');
           var s = video.querySelectorAll('source');
           if (s.length) {
             s[0].src = 'assets/' + stem + '.webm';
@@ -4072,31 +4062,10 @@
       })();
     </script>
     <script>
-      /* v3.2 : 화면에 보이는 클립만 재생 — 숨김 페이지·화면 밖 영상은 멈춰 디코딩 부담을 줄인다 */
+      /* v3.3 : 화면에 보이는 클립만 재생 — clips.js(ICELAB_CLIP)가 가시성과 재생을 함께 관리한다 */
       (function () {
-        var clips = [].slice.call(document.querySelectorAll('video.pc-video, video.proc-img, #procImg'));
-        if (!('IntersectionObserver' in window)) {
-          clips.forEach(function (v) { try { v.play(); } catch (e) {} });
-          return;
-        }
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) {
-            var v = en.target;
-            if (en.isIntersecting) { try { v.play(); } catch (e) {} }
-            else { try { v.pause(); } catch (e) {} }
-          });
-        }, { threshold: 0.12 });
-        function watch() {
-          [].slice.call(document.querySelectorAll('video.pc-video, video.proc-img, #procImg')).forEach(function (v) {
-            if (v.getAttribute('data-io')) return;
-            v.setAttribute('data-io', '1');
-            io.observe(v);
-          });
-        }
-        watch();
-        window.addEventListener('hashchange', function () { setTimeout(watch, 80); });
-        // #/process 등 하위 페이지가 새로 그려질 때도 감시 대상에 포함
-        setInterval(watch, 1500);
+        var init = window.ICELAB_CLIP && window.ICELAB_CLIP.init;
+        if (typeof init === 'function') init();
       })();
     </script>
   </body>
