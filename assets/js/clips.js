@@ -56,6 +56,9 @@
 
   function ensure(v) {
     if (!v || v.tagName !== 'VIDEO' || !canPlay(v)) return;
+    v.muted = true;
+    v.defaultMuted = true;
+    v.playsInline = true;
     if (v.getAttribute('data-inview') === '0') return;   // 화면 밖 클립은 재생하지 않는다
     if (!v.paused) return;
     var p;
@@ -63,12 +66,10 @@
     if (p && p.catch) {
       p.catch(function () {
         v.setAttribute('data-need-play', '1');
-        if (v.getAttribute('data-inview') !== '0') {
-          var t = v.getAttribute('data-retry') | 0;
-          if (t < 1) {
-            v.setAttribute('data-retry', String(t + 1));
-            setTimeout(function () { ensure(v); }, 600);
-          }
+        var t = v.getAttribute('data-retry') | 0;
+        if (t < 2) {
+          v.setAttribute('data-retry', String(t + 1));
+          setTimeout(function () { ensure(v); }, 400);
         }
       });
     }
@@ -121,16 +122,22 @@
     });
   }
 
-  /* 자동재생이 막혔을 때 다시 시도할 수 있는 지점들 */
+  /* 자동재생이 막혔거나 PC 환경에서 스크롤/마우스 이동 시 즉시 재생 시도 */
+  var resumeTimer = null;
   function resumeAll() {
-    var list = document.querySelectorAll('video[src]');
-    for (var i = 0; i < list.length; i++) {
-      var v = list[i];
-      if (v.getAttribute('data-inview') === '0') continue;
-      if (v.paused) ensure(v);
-    }
+    if (resumeTimer) return;
+    resumeTimer = setTimeout(function () {
+      resumeTimer = null;
+      var list = document.querySelectorAll('video[src]');
+      for (var i = 0; i < list.length; i++) {
+        var v = list[i];
+        if (v.getAttribute('data-inview') === '0') continue;
+        if (v.paused) ensure(v);
+      }
+    }, 60);
   }
-  ['pointerdown', 'touchstart', 'keydown'].forEach(function (t) {
+  ['pointerdown', 'touchstart', 'keydown', 'scroll', 'wheel', 'mousemove'].forEach(function (t) {
+    window.addEventListener(t, resumeAll, { passive: true });
     document.addEventListener(t, resumeAll, { passive: true });
   });
   window.addEventListener('focus', resumeAll);
@@ -151,13 +158,14 @@
           var v = en.target;
           if (en.isIntersecting) {
             v.setAttribute('data-inview', '1');
+            v.muted = true;
             ensure(v);
           } else {
             v.setAttribute('data-inview', '0');
             if (!v.paused) { try { v.pause(); } catch (e) {} }
           }
         });
-      }, { threshold: 0.01, rootMargin: '120px 0px' });
+      }, { threshold: 0.001, rootMargin: '200px 0px' });
     }
     for (var i = 0; i < list.length; i++) {
       if (!list[i].getAttribute('data-io')) {
@@ -175,6 +183,11 @@
       var v = list[i];
       attach(v, v.getAttribute('data-stem'), v.getAttribute('data-poster'), v.getAttribute('aria-label'));
     }
+    var procImg = document.getElementById('procImg');
+    if (procImg && procImg.tagName === 'VIDEO' && !procImg.getAttribute('src')) {
+      attach(procImg, 'gif-steam', 'assets/gif-steam.jpg', '120℃ 고온 스팀 살균');
+    }
+    resumeAll();
     if (!started) {
       started = true;
       setInterval(observeAll, 1500);

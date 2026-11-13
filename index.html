@@ -1735,10 +1735,11 @@
       .ba-slider-wrap { height: clamp(340px, 46vw, 520px); }
       .ba-instance .ba-nav-tabs { gap: 8px; }
       .ba-instance .ba-nav-tab { padding: 11px 18px; font-size: 14px; border-radius: 999px; letter-spacing: -.01em; }
-      .ba-cap { margin: 20px auto 0; max-width: 780px; text-align: center; font-size: 15.5px; color: var(--muted); line-height: 1.7; }
-      .ba-cap strong { display: block; margin-bottom: 6px; font-size: 17px; font-weight: 800; color: var(--navy); }
-      .ba-stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-      .ba-stat { font-size: 12.5px; font-weight: 800; border-radius: 999px; padding: 6px 13px; background: var(--surface); border: 1px solid var(--line); color: var(--blue-strong); }
+      .ba-cap { margin: 24px auto 0; max-width: 780px; text-align: center; font-size: 15.5px; color: var(--muted); line-height: 1.7; }
+      .ba-cap strong, .ba-cap-title { display: block; margin-bottom: 8px; font-size: 18px; font-weight: 800; color: var(--navy); line-height: 1.4; }
+      .ba-cap-desc { margin: 0 0 14px; font-size: 15.5px; color: var(--muted); line-height: 1.7; }
+      .ba-stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+      .ba-stat { font-size: 13px; font-weight: 800; border-radius: 999px; padding: 6px 14px; background: var(--surface); border: 1px solid var(--line); color: var(--blue-strong); display: inline-flex; align-items: center; }
       .ba-stat.bad { color: #b83b3b; background: #fdf1f1; border-color: #f2d6d6; }
       .ba-instance .ba-slider-handle { font-size: 13px; letter-spacing: .06em; }
       @media (max-width: 700px) {
@@ -2464,81 +2465,10 @@
             </div>
 
             <div class="ba-cap" id="baCaption">
-              <strong>증발기 · 제빙 냉판 격자</strong>얼음이 얼어붙는 냉판 위 격자(제빙 셀)입니다. 수돗물의 칼슘·마그네슘이 물방울마다 마르며 격자 틈에 하얗게 굳고, 그 위로 물때와 녹물이 눌러앉아 얼음이 잘 떨어지지 않습니다. 약제로 석회를 불려 탈거한 뒤 고압 스팀으로 틈새까지 밀어내면 사진처럼 스테인리스 은백색 격자가 그대로 드러납니다.
-              <div class="ba-stats"><span class="ba-stat bad">석회 · 물때 두껍게 고착</span><span class="ba-stat">은백색 격자 복원</span></div>
+              <strong class="ba-cap-title">증발기 · 제빙 냉판 격자</strong>
+              <p class="ba-cap-desc">얼음이 얼어붙는 냉판 위 격자(제빙 셀)입니다. 수돗물의 칼슘·마그네슘이 물방울마다 마르며 격자 틈에 하얗게 굳고, 그 위로 물때와 녹물이 눌러앉아 얼음이 잘 떨어지지 않습니다. 약제로 석회를 불려 탈거한 뒤 고압 스팀으로 틈새까지 밀어내면 사진처럼 스테인리스 은백색 격자가 그대로 드러납니다.</p>
+              <div class="ba-stats"><span class="ba-stat bad">청소 전: 석회 · 물때 두껍게 고착</span><span class="ba-stat">청소 후: 은백색 격자 복원</span></div>
             </div>
-          </div>
-
-          <!-- 업종별 탭 -->
-          <div class="pf-tabs" id="pfTabs">
-            <button class="pf-tab active" data-filter="all">전체보기</button>
-            <button class="pf-tab" data-filter="cafe">프랜차이즈 카페</button>
-            <button class="pf-tab" data-filter="bakery">베이커리·디저트</button>
-            <button class="pf-tab" data-filter="hotel">호텔·음식점</button>
-          </div>
-
-          <!-- 포트폴리오 그리드 (6개 대표 카드 : 실제 사진 부품 형상 1:1 일치) -->
-          <div class="pf-grid" id="pfGrid">
-            <div class="pf-card" data-cat="cafe" tabindex="0">
-              <div class="pf-img-wrap"><img src="assets/cleaning2.jpg" alt="얼음 배출 슬라이드 부품 고온 스팀 살균 현장" loading="lazy" /><span class="pf-badge">프랜차이즈 카페</span>
-              </div>
-              <div class="pf-body">
-                <div class="pf-brand">얼음 배출 가이드 부품 · 일산 카페</div>
-                <h4>얼음 슬라이드 탈거 부품 고온 스팀 살균</h4>
-              </div>
-                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 01</span><strong class="pf-rt">얼음 슬라이드 탈거 부품 고온 스팀 살균</strong><p>매일 얼음이 닿으며 미끄러져 내려오는 투명 얼음 슬라이드 부품을 완전 탈거하여, 좁은 격자 틈새의 미세 물때와 곰팡이를 120℃ 고온 스팀 노즐로 박멸 세척했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
-            </div>
-            <div class="pf-card" data-cat="bakery" tabindex="0">
-              <div class="pf-img-wrap"><img src="assets/cleaning-open.jpg" alt="제빙기 하부 기계실 개방 및 배관 점검 현장" loading="lazy" /><span class="pf-badge">대형 베이커리</span>
-              </div>
-              <div class="pf-body">
-                <div class="pf-brand">하부 기계실 · 남양주 베이커리</div>
-                <h4>하부 패널 개방 및 핵심 냉매 배관 정밀 점검</h4>
-              </div>
-                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 02</span><strong class="pf-rt">하부 패널 개방 및 핵심 냉매 배관 정밀 점검</strong><p>상단 대용량 저장고 아래 하부 전면 패널을 완전히 탈거하여 콤프레셔, 냉매 순환 구리 배관, 제어 기판 주변의 누수 및 진동 이음 부품을 정밀 점검했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
-            </div>
-            <div class="pf-card" data-cat="hotel" tabindex="0">
-              <div class="pf-img-wrap"><img src="assets/deep-clean.jpg" alt="저수조 전용 세척제 투입 및 순환 세척" loading="lazy" /><span class="pf-badge">호텔 라운지</span>
-              </div>
-              <div class="pf-body">
-                <div class="pf-brand">증발기 하부 저수조 · 광화문 호텔</div>
-                <h4>저수조 친환경 세정제 투입 및 냉판 순환 세척</h4>
-              </div>
-                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 03</span><strong class="pf-rt">저수조 친환경 세정제 투입 및 냉판 순환 세척</strong><p>수직 제빙판 바로 아래 위치한 저수조 수조통에 친환경 규격 세정제를 정량 투입하고 워터펌프를 순환시켜 냉판 격자의 고착 석회질을 안전하게 용해 박리했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
-            </div>
-            <div class="pf-card" data-cat="cafe" tabindex="0">
-              <div class="pf-img-wrap"><img src="assets/field-record.jpg" alt="언더카운터 제빙기 상판 탈거 분해 현장" loading="lazy" /><span class="pf-badge">로스터리 카페</span>
-              </div>
-              <div class="pf-body">
-                <div class="pf-brand">언더카운터 상판 탈거 · 성수 로스터리</div>
-                <h4>상판 분리 및 내부 증발기·냉각 라인 완전 노출</h4>
-              </div>
-                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 04</span><strong class="pf-rt">상판 분리 및 내부 증발기·냉각 라인 완전 노출</strong><p>카운터 아래 매립된 제빙기의 상판과 전면 커버를 모두 분해하여, 평소 접근이 불가능했던 내부 단열 프레임과 냉각 유로 배관 전체를 정밀 세척 가능한 상태로 개방했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
-            </div>
-            <div class="pf-card" data-cat="hotel" tabindex="0">
-              <div class="pf-img-wrap"><img src="assets/visit.jpg" alt="제빙실 물커튼 패널 개방 및 내부 유로 세척" loading="lazy" /><span class="pf-badge">레스토랑 & 펍</span>
-              </div>
-              <div class="pf-body">
-                <div class="pf-brand">물커튼 도어 개방 · 강남 라운지</div>
-                <h4>물커튼 슬라이드 개방 및 제빙실 내부 유로 세척</h4>
-              </div>
-                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 05</span><strong class="pf-rt">물커튼 슬라이드 개방 및 제빙실 내부 유로 세척</strong><p>얼음이 생성되어 떨어지는 내부의 대형 물커튼(슬라이드 배플) 도어를 들어 올려, 안쪽 저수조와 물 흐름 유로 전반에 형성된 물때 침전물을 꼼꼼히 세척했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
-            </div>
-            <div class="pf-card" data-cat="bakery" tabindex="0">
-              <div class="pf-img-wrap"><img src="assets/ice-cubes.jpg" alt="세척 후 최종 제빙된 깨끗한 각얼음 검증" loading="lazy" /><span class="pf-badge">디저트 카페</span>
-              </div>
-              <div class="pf-body">
-                <div class="pf-brand">최종 제빙 품질 · 의정부 디저트</div>
-                <h4>완전 조립 후 투명하고 단단한 각얼음 제빙 검증</h4>
-              </div>
-                <div class="pf-reveal" aria-hidden="true"><span class="pf-rk">FIELD NOTE 06</span><strong class="pf-rt">완전 조립 후 투명하고 단단한 각얼음 제빙 검증</strong><p>분해 세척과 고압 헹굼을 마친 후 현장에서 제빙기를 정상 재가동하여 기포나 이물질 없이 맑고 단단한 식용 각얼음이 만들어지는지 투명도와 모양을 최종 검수했습니다.</p><span class="pf-go">현장 사진 전체보기 →</span></div>
-            </div>
-          </div>
-
-          <div style="text-align:center;margin-top:36px;">
-            <a href="#/photos" class="btn" style="background:var(--navy);color:#ffffff;padding:14px 28px;border-radius:10px;font-weight:800;text-decoration:none;font-size:15px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 18px rgba(8,38,63,0.18);">
-              현장 사진 갤러리 전체보기 (100+ 사례) →
-            </a>
           </div>
         </div>
       </section>
@@ -3683,10 +3613,10 @@
           },
           {
             title: "물 분배기 · 분사 노즐 파이프",
-            desc: "제빙판 위로 물을 고르게 뿌리는 분사 노즐 파이프입니다. 구멍마다 석회와 갈색 이물질이 끼어 막히면 물이 한쪽으로만 뿌려져 얼음이 기형으로 얼고 생산량도 줄어듭니다. 약제로 불려 구멍을 하나씩 뚫고 헹구면 다시 물이 고르게 퍼집니다.",
+            desc: "제빙판 위로 물을 고르게 뿌리는 분사 노즐 파이프입니다. 제빙기에서 완전히 탈거하여 확인하면 구멍마다 석회와 갈색 슬라임이 두껍게 끼어 막혀 있습니다. 전용 약제로 불려 구멍을 하나씩 뚫고 고압 세척하면 동일 부품의 분사 구멍이 완벽히 복원되어 얼음이 고르게 얼어붙습니다.",
             before: "assets/ba-nozzle-before.jpg",
             after: "assets/ba-nozzle-after.jpg",
-            stat: ["노즐 구멍 막힘", "분사 구멍 복원"]
+            stat: ["분사 구멍 석회·물때 막힘", "노즐 분사 구멍 완전 복원"]
           }
         ];
 
@@ -3701,9 +3631,10 @@
           if (b) { b.src = item.before; b.alt = item.title + ' 청소 전'; }
           if (a) { a.src = item.after; a.alt = item.title + ' 청소 후'; }
           if (cap) {
-            cap.innerHTML = '<strong>' + item.title + '</strong>' + item.desc +
-              (item.stat ? '<div class="ba-stats"><span class="ba-stat bad">청소 전 ' + item.stat[0] +
-                '</span><span class="ba-stat">청소 후 ' + item.stat[1] + '</span></div>' : '');
+            cap.innerHTML = '<strong class="ba-cap-title">' + item.title + '</strong>' +
+              '<p class="ba-cap-desc">' + item.desc + '</p>' +
+              (item.stat ? '<div class="ba-stats"><span class="ba-stat bad">청소 전: ' + item.stat[0] +
+                '</span><span class="ba-stat">청소 후: ' + item.stat[1] + '</span></div>' : '');
           }
         }
 
