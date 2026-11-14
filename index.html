@@ -3531,8 +3531,11 @@
 
           if (img) {
             /* v3.4 : 새 클립의 첫 프레임이 실제로 준비된 뒤에 밝기를 되돌린다.
-               (준비 전에 되돌리면 poster 정지 이미지가 그대로 남아 멈춘 것처럼 보였다) */
-            img.style.opacity = '0.35';
+               (준비 전에 되돌리면 poster 정지 이미지가 그대로 남아 멈춘 것처럼 보였다)
+               이미 같은 클립이 붙어 있으면 바뀔 프레임이 없으므로 흐리게 만들지 않는다. */
+            const sameClip = img.tagName === 'VIDEO' && img.getAttribute('data-stem') === data.clip;
+            if (sameClip) { img.style.opacity = '1'; }
+            else { img.style.opacity = '0.35'; }
             setTimeout(() => {
               let revealed = false;
               const reveal = () => {
@@ -3545,8 +3548,11 @@
                 if (window.ICELAB_CLIP) {
                   window.ICELAB_CLIP.attach(img, data.clip, 'assets/' + data.clip + '.jpg', data.title);
                 }
-                img.addEventListener('loadeddata', reveal);
-                setTimeout(reveal, 900);
+                if (sameClip) { reveal(); }
+                else {
+                  img.addEventListener('loadeddata', reveal);
+                  setTimeout(reveal, 900);
+                }
               } else {
                 img.src = data.still ? data.still : (window.ICELAB_CLIP_SRC ? window.ICELAB_CLIP_SRC(data.clip) : 'assets/' + data.clip + '.mp4');
                 img.alt = data.title;
@@ -3941,7 +3947,8 @@
           var media = inst.querySelector('.proc-img');
           var still = tab.getAttribute('data-still');
           if (media) {
-            media.style.opacity = '0';
+            var sameStem = media.tagName === 'VIDEO' && media.getAttribute('data-stem') === tab.getAttribute('data-gif');
+            media.style.opacity = sameStem ? '1' : '0';
             setTimeout(function () {
               var revealed = false;
               var reveal = function () {
@@ -3952,8 +3959,11 @@
               };
               if (media.tagName === 'VIDEO') {
                 setClip(media, tab.getAttribute('data-gif'), still, tab.getAttribute('data-title'));
-                media.addEventListener('loadeddata', reveal);
-                setTimeout(reveal, 900);
+                if (sameStem) { reveal(); }
+                else {
+                  media.addEventListener('loadeddata', reveal);
+                  setTimeout(reveal, 900);
+                }
               } else {
                 media.src = still ? still : clipSrc(tab.getAttribute('data-gif'));
                 media.alt = tab.getAttribute('data-title');
