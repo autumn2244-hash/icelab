@@ -3530,17 +3530,28 @@
           const desc = document.getElementById('procDesc');
 
           if (img) {
+            /* v3.4 : 새 클립의 첫 프레임이 실제로 준비된 뒤에 밝기를 되돌린다.
+               (준비 전에 되돌리면 poster 정지 이미지가 그대로 남아 멈춘 것처럼 보였다) */
             img.style.opacity = '0.35';
             setTimeout(() => {
+              let revealed = false;
+              const reveal = () => {
+                if (revealed) return;
+                revealed = true;
+                img.removeEventListener('loadeddata', reveal);
+                img.style.opacity = '1';
+              };
               if (img.tagName === 'VIDEO') {
                 if (window.ICELAB_CLIP) {
                   window.ICELAB_CLIP.attach(img, data.clip, 'assets/' + data.clip + '.jpg', data.title);
                 }
+                img.addEventListener('loadeddata', reveal);
+                setTimeout(reveal, 900);
               } else {
                 img.src = data.still ? data.still : (window.ICELAB_CLIP_SRC ? window.ICELAB_CLIP_SRC(data.clip) : 'assets/' + data.clip + '.mp4');
                 img.alt = data.title;
+                reveal();
               }
-              img.style.opacity = '1';
             }, 100);
           }
           if (badge) badge.textContent = data.badge;
@@ -3932,13 +3943,22 @@
           if (media) {
             media.style.opacity = '0';
             setTimeout(function () {
+              var revealed = false;
+              var reveal = function () {
+                if (revealed) return;
+                revealed = true;
+                media.removeEventListener('loadeddata', reveal);
+                media.style.opacity = '1';
+              };
               if (media.tagName === 'VIDEO') {
                 setClip(media, tab.getAttribute('data-gif'), still, tab.getAttribute('data-title'));
+                media.addEventListener('loadeddata', reveal);
+                setTimeout(reveal, 900);
               } else {
                 media.src = still ? still : clipSrc(tab.getAttribute('data-gif'));
                 media.alt = tab.getAttribute('data-title');
+                reveal();
               }
-              media.style.opacity = '1';
             }, 120);
           }
           var live = inst.querySelector('.proc-live');
